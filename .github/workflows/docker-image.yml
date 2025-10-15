@@ -9,9 +9,7 @@ on:
 jobs:
 
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -33,9 +31,7 @@ jobs:
           platforms: linux/amd64
   deploy:
     runs-on: ubunutu-latest
-    
     needs: build
-    
     steps:
       - name: SSH docker pull
         uses: appleboy/ssh-action@v1.0.3
