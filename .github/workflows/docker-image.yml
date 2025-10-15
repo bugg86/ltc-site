@@ -31,3 +31,16 @@ jobs:
             #${{ vars.SITE_NAME }}:$(date +%s)
           file: ./Dockerfile
           platforms: linux/amd64
+  deploy:
+    runs-on: ubunutu-latest
+    
+    needs: build
+    
+    steps:
+      - name: SSH docker pull
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
