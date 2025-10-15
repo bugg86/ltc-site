@@ -36,9 +36,9 @@ jobs:
       - name: SSH docker pull
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ssh.convex.coffee
-          username: serveruser
-          password: baseball86
+          host: ${{secrets.SSH_HOST}}
+          username: ${{secrets.SSH_USERNAME}}
+          password: ${{secrets.SSH_PASSWORD}}
           port: 23
           script: |
             echo "test"
