@@ -41,4 +41,7 @@ jobs:
           password: ${{secrets.SSH_PASSWORD}}
           port: 23
           script: |
-            echo "test"
+            docker pull ${{ secrets.DOCKER_USERNAME }}/${{vars.SITE_NAME }}:latest
+            docker stop ${{ vars.SITE_NAME }}
+            docker rm ${{ vars.SITE_NAME }}
+            docker run -d --name ${{ vars.SITE_NAME }} -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/${{vars.SITE_NAME}}:latest
