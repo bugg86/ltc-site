@@ -1,0 +1,5 @@
+- use a fuck ton of svgs for the design?
+- nav bar is simplistic and not hard to implement?
+- still have to figure out how to transition the down arrow of the home page
+- add filler pages for all of the different nav bar routes
+- backend api for teams, staff, mappool and schedule

@@ -1,0 +1,31 @@
+"use client";
+
+import Image from "next/image";
+import { styled } from "@mui/material";
+
+const Wrapper = styled("div")({
+  top: "591px",
+  left: "0",
+  right: "0",
+  width: "1974px",
+  height: "424px",
+  fill: "var(--Primary-Pistachio, #9FB878)",
+  stroke: "var(--Shade-White, #FFFCEA)",
+  strokeWidth: "18px",
+//   overflow: "hidden",
+  position: "absolute",
+});
+
+const VectorImage = (
+  <svg width="1821" height="382" viewBox="0 0 1821 382" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M-8 6.14008C544.721 333.429 1777.36 259.822 1816 234.784L1796.32 378.14H-8V6.14008Z" fill="#374426" stroke="#37622A" stroke-width="7"/>
+</svg>
+);
+
+export function Vector3() {
+  return (
+    <Wrapper>
+        {VectorImage}
+    </Wrapper>
+    );
+}
