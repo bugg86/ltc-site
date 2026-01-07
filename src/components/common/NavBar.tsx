@@ -5,9 +5,9 @@ import Stack from "@mui/material/Stack";
 import Link from "next/link";
 
 const Wrapper = styled("nav")({
-  padding: "28px 0",
   position: "relative",
-  zIndex: "2"
+  zIndex: "2",
+  left: "56px"
 });
 
 const NavWrapper = styled("div")({
@@ -15,10 +15,8 @@ const NavWrapper = styled("div")({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  width: "100%",
+  width: "1807px",
   height: "138px",
-  margin: "0 auto",
-  padding: "0 24px",
 });
 
 const Logo = styled("div")({
@@ -38,11 +36,8 @@ const NavItems = styled("ul")({
   height: "47px",
   display: "flex",
   alignItems: "center",
-  flexDirection: "row",
   justifyContent: "center",
   gap: "10%",
-  padding: 1,
-  margin: 0,
   borderRadius: "200px",
   border: "1px solid var(--Primary-Pistachio, #9FB878);",
   background: "linear-gradient(270deg, var(--Primary-Deep-Forest, rgba(55, 68, 38, 0.34)) 0%, rgba(55, 98, 42, 0.34) 100%);"
@@ -66,7 +61,6 @@ export function DesktopNavbar() {
         <NavWrapper>
           <Stack flexDirection="row"
           alignItems="center"
-          gap="96px"
           justifyContent="space-between"
           sx={{ width: "100%" }}>
             <Logo />
