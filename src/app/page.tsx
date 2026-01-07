@@ -3,7 +3,11 @@
 import { DesktopNavbar } from "../components/common/NavBar";
 import { LelaAvatar } from "../components/home/LelaAvatar";
 import { Vectors } from "../components/home/VectorsGroup";
+import { Name } from "../components/home/Name";
 import { useRef, useState } from 'react';
+import { MushroomsLeft } from "../components/home/MushroomsLeft";
+import { MushroomsRight } from "../components/home/MushroomsRight";
+import { NextPageButton } from "../components/home/NextPageButton";
 
 export default function Home() {
 
@@ -20,10 +24,11 @@ export default function Home() {
       <div className="first-half">
         <DesktopNavbar />
         <LelaAvatar />
+        <MushroomsLeft />
+        <MushroomsRight />
         <Vectors />
-        <button onClick={scrollToSecondHalf}>
-          Go to Second Half
-        </button>
+        <Name />
+        <NextPageButton onClick={scrollToSecondHalf} />
       </div>
 
       <div ref={secondSectionRef} className="second-half">

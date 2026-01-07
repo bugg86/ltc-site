@@ -7,7 +7,7 @@ const Container = styled("div")({
   position: "absolute",
   width: "1464px",
   height: "924px",
-  top: "114px",
+  top: "184px",
   overflow: "hidden"
 });
 
