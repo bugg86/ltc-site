@@ -30,7 +30,7 @@ export function NextPageButton({ onClick, className = '', ariaLabel = 'Next page
       onClick={onClick}
       aria-label={ariaLabel}
     >
-      <Image src="/home/nextpage.svg" alt="Next page" width={32} height={32} />
+      <Image src="/home/nextpage.svg" alt="Next page" fill />
     </Button>
   );
 }

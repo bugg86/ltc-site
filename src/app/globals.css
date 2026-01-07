@@ -50,7 +50,36 @@ body {
   width: 1920px
 }
 
+.second-half-sub-background {
+  position: relative;
+  fill: linear-gradient(0deg, var(--Primary-Pale-Yellow, #FFF7C2) 0%, var(--Shade-White, #FFFCEA) 100%);
+  width: 1804px;
+  height: 684px;
+  top: 113px;
+  left: 58px;
+  border: 8px;
+  stroke-width: 8px;
+  stroke: #9FB878;
+  z-index: 2;
+}
 
+.left-decor {
+  width: 29px;
+  height: 243px;
+  position: absolute;
+  top: 1413px;
+  left: 82px;
+  z-index: 3;
+}
+
+.right-decor {
+  width: 29px;
+  height: 243px;
+  position: absolute;
+  top: 1413px;
+  left: 1811px;
+  z-index: 3;
+}
 
 .nav-bar {
   background-color: rgba(255, 255, 255, 0.8);
