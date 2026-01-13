@@ -15,7 +15,7 @@ const Button = styled("button")({
   position: "absolute",
   width: "37px",
   height: "42px",
-  top: "1026px",
+  top: "946px",
   left: "941px",
   zIndex: "3"
 });

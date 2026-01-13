@@ -8,7 +8,7 @@ const Container = styled("div")({
   width: "628px",
   height: "366px",
   left: "648px",
-  top: "723px",
+  top: "639px",
   zIndex: "3"
 });
 

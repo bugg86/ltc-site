@@ -4,10 +4,10 @@ import Image from "next/image";
 import { styled } from "@mui/material";
 
 const Container = styled("div")({
-  position: "relative",
+  position: "absolute",
   width: "588px",
   height: "91px",
-  top: "810px",
+  top: "860px",
   left: "58px",
   zIndex: "2"
 });

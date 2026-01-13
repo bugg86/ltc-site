@@ -7,7 +7,7 @@ const Container = styled("div")({
   position: "absolute",
   width: "351px",
   height: "83px",
-  top: "928px",
+  top: "848px",
   left: "1511px",
   zIndex: "2"
 });
@@ -52,8 +52,8 @@ const Text = styled("a")({
     position: "absolute",
     width: "235px",
     height: "62px",
-    top: "21px",
-    left: "58px",
+    top: "25%",
+    left: "16.5%",
     font: "Josefin Sans",
     fontWeight: "500",
     fontStyle: "italic",

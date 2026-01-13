@@ -12,6 +12,9 @@ import { Register } from "../components/home/RegistrationButton";
 import { Links } from "../components/home/Links";
 import { Animal } from "../components/home/Animal";
 import Image from "next/image";
+import { SponsorText } from "../components/home/SponsorText";
+import { SponsorHighlight } from "@/components/home/SponsorHighlight";
+import { SponsorCarousel } from "@/components/home/SponsorCarousel";
 
 export default function Home() {
 
@@ -65,6 +68,9 @@ export default function Home() {
                   />
         </div>
         <Animal />
+        <SponsorText />
+        <SponsorHighlight />
+        <SponsorCarousel />
       </div>
     </div>
   );

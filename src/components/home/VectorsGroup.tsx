@@ -7,7 +7,7 @@ const Container = styled("div")({
   position: "absolute",
   width: "1974px",
   height: "507px",
-  top: "588px",
+  top: "508px",
   left: "-36px",
   zIndex: "2"
 });
@@ -24,7 +24,7 @@ const VectorLayer2 = styled("div")({
     position: "absolute",
     width: "100%",
     height: "100%",
-    top: "1px",
+    top: "0px",
     left: "140px"
 });
 
@@ -32,8 +32,8 @@ const VectorLayer3 = styled("div")({
     position: "absolute",
     width: "100%",
     height: "100%",
-    top: "1px",
-    left: "24px",
+    top: "0px",
+    left: "-8px",
 });
 
 const VECTOR_1 = (

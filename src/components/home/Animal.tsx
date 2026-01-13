@@ -7,7 +7,7 @@ const ImageLayer = styled("div")({
   position: "absolute",
   width: "585px",
   height: "476px",
-  top: "1567px",
+  top: "1467px",
   left: "18px",
   aspectRatio: "0.8056",
   zIndex: 3,
