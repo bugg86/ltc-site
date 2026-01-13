@@ -7,7 +7,7 @@ const Container = styled("div")({
   position: "absolute",
   width: "249.295px",
   height: "191.146px",
-  top: "618px",
+  top: "528px",
   left: "318px",
   zIndex: "2"
 });
@@ -16,13 +16,15 @@ const MushroomLayer1 = styled("div")({
     position: "absolute",
     width: "165.08px",
     height: "161.1194px",
+    rotate: "-2.2deg",
+    top: "15px"
 });
 
 const MushroomLayer2 = styled("div")({
     position: "absolute",
     width: "148.3422px",
     height: "144.782px",
-    top: "31px",
+    top: "46px",
     left: "86px",
     rotate: "6deg"
 });

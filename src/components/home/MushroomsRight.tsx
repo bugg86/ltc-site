@@ -7,7 +7,7 @@ const Container = styled("div")({
   position: "absolute",
   width: "268.8444px",
   height: "262.3922px",
-  top: "563px",
+  top: "478px",
   left: "1613px",
   rotate: "0deg",
   zIndex: "2"
