@@ -84,9 +84,9 @@ const EmblaButton = styled("button")({
 
 const images = [
 	"/home/concon.svg",
-	"/home/momokai.svg",
-	"/home/concon.svg",
-    "/home/momokai.svg",
+	"/home/drunkdeer.svg",
+	"/home/solvari.svg",
+    "/home/anon.svg",
 ];
 
 export function SponsorCarousel() {
