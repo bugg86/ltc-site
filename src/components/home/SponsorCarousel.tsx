@@ -82,11 +82,19 @@ const EmblaButton = styled("button")({
 	},
 });
 
+
 const images = [
 	"/home/concon.svg",
 	"/home/drunkdeer.svg",
 	"/home/solvari.svg",
-    "/home/anon.svg",
+	"/home/anon.svg",
+];
+
+const links = [
+	"https://concon.shop/collections/rhythm-games", // Example links, replace as needed
+	"https://drunkdeer.com/products/drunkdeer-a75-ultra-magnetic-keyboard-he-keyboard-keyboard-for-fps-gaming-keyboard?variant=52102310494511",
+	"https://twitch.tv/solovari",
+	"",
 ];
 
 export function SponsorCarousel() {
@@ -130,14 +138,21 @@ export function SponsorCarousel() {
 				<EmblaContainer>
 					{images.map((src, idx) => (
 						<EmblaSlide key={`${src}-${idx}`}>
-							<Image
-								src={src}
-								alt={`Sponsor ${idx + 1}`}
-								width={154}
-								height={154}
-								style={{ objectFit: "contain", display: "block", margin: "auto" }}
-								priority={idx === 0}
-							/>
+							<a
+								href={links[idx]}
+								target="_blank"
+								rel="noopener noreferrer"
+								style={{ display: "block", width: "100%", height: "100%" }}
+							>
+								<Image
+									src={src}
+									alt={`Sponsor ${idx + 1}`}
+									width={154}
+									height={154}
+									style={{ objectFit: "contain", display: "block", margin: "auto" }}
+									priority={idx === 0}
+								/>
+							</a>
 						</EmblaSlide>
 					))}
 				</EmblaContainer>
