@@ -45,7 +45,7 @@ export function SponsorText() {
   return (
     <Container>
       <TitleText>Our Sponsors</TitleText>
-      <DescriptionText>Thank you to our sponsors! We appreciate you. If you are a company or organization and are interested in collaborating, please contact us.</DescriptionText>
+      <DescriptionText>Thank you to our sponsors! We appreciate you. If you are a company or organization and are interested in collaborating, please contact us at lelastechcup@gmail.com.</DescriptionText>
     </Container>
   );
 }

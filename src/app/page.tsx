@@ -15,6 +15,7 @@ import Image from "next/image";
 import { SponsorText } from "../components/home/SponsorText";
 import { SponsorHighlight } from "@/components/home/SponsorHighlight";
 import { SponsorCarousel } from "@/components/home/SponsorCarousel";
+import { NavigationMenu } from "@/components/ui/navigation-menu";
 
 export default function Home() {
 
