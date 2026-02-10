@@ -19,7 +19,7 @@ const Wrapper = styled("nav")({
   height: "138px",
 });
 
-const Logo = styled("div")({
+const Logo = styled(Link)({
   display: "flex",
   backgroundImage: "url(/home/logo.svg)",
   backgroundRepeat: "no-repeat",
@@ -28,6 +28,8 @@ const Logo = styled("div")({
   backgroundColor: "transparent",
   width: "244px",
   height: "111px",
+  cursor: "pointer",
+  zIndex: 5,
 });
 
 const NavItems = styled("ul")({
@@ -66,7 +68,7 @@ export function DesktopNavbar() {
 
   return (
     <Wrapper>
-      <Logo />
+      <Logo href="/" aria-label="Home" />
       <NavigationMenu className="ml-auto" viewport={false}>
         <NavigationMenuList>
           <NavigationMenuItem>
