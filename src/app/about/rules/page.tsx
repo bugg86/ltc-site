@@ -1,5 +1,6 @@
 "use client";
 import { DesktopNavbar } from "@/components/common/NavBar";
+import Image from "next/image";
 
 export default function RulesPage() {
   const handleNavClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -17,6 +18,20 @@ export default function RulesPage() {
     event.preventDefault()
     target.scrollIntoView({ behavior: "smooth", block: "start" })
   }
+
+  const Separator = () => (
+    <div
+      style={{
+        position: "relative",
+        width: "30vw",
+        left: "20vw",
+        height: "48px",
+        margin: "5vh 0",
+      }}
+    >
+      <Image src="/rules/separator.svg" alt="separator" fill />
+    </div>
+  );
 
   const navItems = [
     {
@@ -50,6 +65,7 @@ export default function RulesPage() {
             <li>Trolling during matches is prohibited, show respect for your referees and the other players. Follow any and all instructions given by your referee.</li>
             <li><span style={{color: "#9FB878"}}>Cheating is obviously not allowed.</span></li>
           </ul>
+          <Separator />
         </>
       ),
     },
@@ -81,6 +97,7 @@ export default function RulesPage() {
             <li>The mappools will be unconventional overall. There will be no strict format to the slots in the pools, please pay attention to the skillset/notes attached to the maps. We will aim to include maps that have not been pooled often.</li>
             <li><span style={{color: "#9FB878"}}>EZ multiplier</span>, if there is a freemod in an EX slot and/or Tiebreaker, will be given a custom EZ multiplier if warranted.</li>
           </ul>
+          <Separator />
         </>
       ),
     },
@@ -113,6 +130,7 @@ export default function RulesPage() {
             <li>The top 32 teams from qualifiers will advance to the bracket stage. All other teams will be <span style={{color: "#9FB878"}}>eliminated.</span></li>
             <li>Seeding will be determined by the sum of percentiles assuming a normal curve (also known as Z-percentile).</li>
           </ul>
+          <Separator />
         </>
       ),
     },
@@ -243,6 +261,7 @@ export default function RulesPage() {
             <li>All mod combinations are acceptable for all players. (ex. both players on a team can use HR)</li>
             <li><span style={{color: "#9FB878"}}>EZ</span> again will vary based on the map selected, and will be given a custom EZ multiplier.</li>
           </ul>
+          <Separator />
         </>
       ),
     },
@@ -254,19 +273,47 @@ export default function RulesPage() {
       content: (
         <>
           <h2 style={{ fontSize: "36px", marginBottom: "12px" }}>Schedule</h2>
-          <ul
+          <table
             style={{
-              margin: 0,
-              paddingLeft: "2.2vw",
-              listStyleType: "disc",
               color: "#FFFCEA",
               fontFamily: "var(--font-josefin-sans)",
               fontSize: "24px",
               lineHeight: "36px",
+              width: "60vw",
             }}
           >
-            <li>Add your content for Schedule here.</li>
-          </ul>
+            <tbody>
+              <tr>
+                <td style={{ paddingLeft: ".5vw", paddingBottom: "2vh", fontWeight: "700"}}>Registration</td>
+                <td style={{ paddingLeft: "3vw", paddingBottom: "2vh" }}>Feb 14 - Feb 28</td>
+                <td style={{ paddingLeft: "10vw", paddingBottom: "2vh", fontWeight: "700" }}>Quarterfinals</td>
+                <td style={{ paddingLeft: "0vw", paddingBottom: "2vh" }}>Apr 10 - Apr 13</td>
+              </tr>
+              <tr>
+                <td style={{ paddingLeft: ".5vw", paddingBottom: "2vh", fontWeight: "700" }}>Screening</td>
+                <td style={{ paddingLeft: "3vw", paddingBottom: "2vh" }}>Mar 1 - Mar 15</td>
+                <td style={{ paddingLeft: "10vw", paddingBottom: "2vh", fontWeight: "700" }}>Semifinals</td>
+                <td style={{ paddingLeft: "0vw", paddingBottom: "2vh" }}>Apr 17 - Apr 20</td>
+              </tr>
+              <tr>
+                <td style={{ paddingLeft: ".5vw", paddingBottom: "2vh", fontWeight: "700" }}>Qualifiers</td>
+                <td style={{ paddingLeft: "3vw", paddingBottom: "2vh" }}>Mar 20 - Mar 23</td>
+                <td style={{ paddingLeft: "10vw", paddingBottom: "2vh", fontWeight: "700" }}>Finals</td>
+                <td style={{ paddingLeft: "0vw", paddingBottom: "2vh" }}>Apr 24 - Apr 27</td>
+              </tr>
+              <tr>
+                <td style={{ paddingLeft: ".5vw", paddingBottom: "2vh", fontWeight: "700" }}>Ro32</td>
+                <td style={{ paddingLeft: "3vw", paddingBottom: "2vh" }}>Mar 27 - Mar 30</td>
+                <td style={{ paddingLeft: "10vw", paddingBottom: "2vh", fontWeight: "700" }}>Grandfinals</td>
+                <td style={{ paddingLeft: "0vw", paddingBottom: "2vh" }}>May 1 ~ (TBA)</td>
+              </tr>
+              <tr>
+                <td style={{ paddingLeft: ".5vw", paddingBottom: "2vh", fontWeight: "700" }}>Ro16</td>
+                <td style={{ paddingLeft: "3vw", paddingBottom: "2vh" }}>Apr 3 - Apr 6</td>
+              </tr>
+            </tbody>
+          </table>
+          <Separator />
         </>
       ),
     },
@@ -294,6 +341,7 @@ export default function RulesPage() {
             <li style={{textIndent: "5vw"}}><span style={{color: "#9FB878"}}>Tournament staff:</span> individual banner</li>
             <li style={{fontStyle: "italic"}}>We will be going for tri-badge as well</li>
           </ul>
+          <Separator />
         </>
       ),
     },
@@ -321,6 +369,7 @@ export default function RulesPage() {
             <li>AFSP works to save lives and to bring hope through research, education, advocacy, and support for individuals and families affected by suicide. A charity that has helped me personally and holds deep meaning to me.</li>
             <li>Every donation is a way to remember those we have lost, to honor the impact they had on us, and to help ensure that compassion and support remain present for those who are still here fighting; and still deserving of care. Thank you for taking this moment to remember and for supporting a cause that reflects the care, meaning, and the values this community holds deeply.</li>
           </ul>
+          <Separator />
         </>
       ),
     },
@@ -429,7 +478,7 @@ export default function RulesPage() {
           fontFamily: "var(--font-sunlight-dreams)",
         }}
       >
-        {navItems.map((item) => (
+        {navItems.map((item, index) => (
           <section
             key={item.id}
             id={item.id}
@@ -451,7 +500,7 @@ export default function RulesPage() {
           top: "30vh",
           left: "-10vw",
           width: "120vw",
-          height: "100%",
+          height: "105%",
           backgroundColor: "#374426",
           border: "6px solid #FFF7C2",
           zIndex: 1,
