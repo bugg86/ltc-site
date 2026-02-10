@@ -75,7 +75,7 @@ function NavigationMenuTrigger({
   const baseStyle: React.CSSProperties = {
     height: "100%",
     fontWeight: "400",
-    fontFamily: "Sunlight Dreams",
+    fontFamily: "var(--font-sunlight-dreams)",
     fontSize: "24px",
     lineHeight: "normal",
     color: "#FFFCEA",
@@ -151,7 +151,7 @@ function NavigationMenuLink({
       )}
       style={{
         fontWeight: "400",
-        fontFamily: "Sunlight Dreams",
+        fontFamily: "var(--font-sunlight-dreams)",
         fontSize: "24px",
         lineHeight: "normal",
         color: "#FFFCEA"

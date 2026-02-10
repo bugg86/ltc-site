@@ -54,7 +54,7 @@ const Text = styled("a")({
     height: "62px",
     top: "25%",
     left: "16.5%",
-    font: "Josefin Sans",
+    fontFamily: "var(--font-josefin-sans)",
     fontWeight: "500",
     fontStyle: "italic",
     fontSize: "36px",

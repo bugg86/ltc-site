@@ -49,7 +49,7 @@ const NavItem = styled("li")({
   justifyContent: "center",
   height: "100%",
   fontWeight: "400",
-  fontFamily: "Sunlight Dreams",
+  fontFamily: "var(--font-sunlight-dreams)",
   fontSize: "24px",
   lineHeight: "normal",
   color: "var(--Shade-White, #FFCEA)"
@@ -146,7 +146,7 @@ function ListItem({
             <div className="" 
               style={{ 
                 color: active ? activeColor : defaultColor,
-                fontFamily: "Sunlight Dreams",
+                fontFamily: "var(--font-sunlight-dreams)",
                 fontSize: "15px",
                 lineHeight: "100%",
                 fontWeight: "400",
