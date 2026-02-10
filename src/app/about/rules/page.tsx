@@ -1,5 +1,6 @@
 "use client";
 import { DesktopNavbar } from "@/components/common/NavBar";
+import { PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import Image from "next/image";
 
 export default function RulesPage() {
@@ -369,6 +370,10 @@ export default function RulesPage() {
             <li>AFSP works to save lives and to bring hope through research, education, advocacy, and support for individuals and families affected by suicide. A charity that has helped me personally and holds deep meaning to me.</li>
             <li>Every donation is a way to remember those we have lost, to honor the impact they had on us, and to help ensure that compassion and support remain present for those who are still here fighting; and still deserving of care. Thank you for taking this moment to remember and for supporting a cause that reflects the care, meaning, and the values this community holds deeply.</li>
           </ul>
+          <div style={{ display: "flex", gap: "5vw", marginTop: "15vh", paddingLeft: "16vw"}}>
+            <PaginationNext href="https://afsp.org/" label="LEARN MORE" aria-label="learn-more" />
+            <PaginationNext href="https://ko-fi.com/lelastechcup" label="DONATE" aria-label="donate" />
+          </div>
           <Separator />
         </>
       ),
@@ -500,7 +505,7 @@ export default function RulesPage() {
           top: "30vh",
           left: "-10vw",
           width: "120vw",
-          height: "105%",
+          height: "109%",
           backgroundColor: "#374426",
           border: "6px solid #FFF7C2",
           zIndex: 1,
