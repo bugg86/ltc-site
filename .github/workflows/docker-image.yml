@@ -43,5 +43,4 @@ jobs:
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/${{vars.SITE_NAME }}:latest
             curl -o docker-compose-prod.yml -L "https://raw.githubusercontent.com/bugg86/ltc-site/refs/heads/master/docker-compose-prod.yml"
-            docker compose down
             docker compose -f docker-compose-prod.yml up -d
