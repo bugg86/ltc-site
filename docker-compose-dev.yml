@@ -10,7 +10,7 @@ services:
       - "3000:3000"
     environment:
       # MongoDB connection string with authentication
-      - MONGODB_URI=mongodb://ltcuser:ltcpass@mongo:27017/ltcdb?authSource=admin
+      - MONGODB_URI=mongodb://ltcuser:ltcpass@mongo:27017/ltcdb?authSource=ltcdb
     depends_on:
       - mongo
     restart: unless-stopped
