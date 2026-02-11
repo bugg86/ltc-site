@@ -1,5 +1,6 @@
 "use client";
 import { DesktopNavbar } from "@/components/common/NavBar";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface StaffMember {
@@ -78,9 +79,9 @@ export default function StaffPage() {
         style={{
           position: "relative",
           zIndex: 2,
-          paddingTop: "48vh",
-          paddingLeft: "10vw",
-          paddingRight: "10vw",
+          paddingTop: "35vh",
+          paddingLeft: "2vw",
+          paddingRight: "2vw",
           paddingBottom: "10vh",
           color: "#FFF7C2",
           fontFamily: "var(--font-sunlight-dreams)",
@@ -93,13 +94,12 @@ export default function StaffPage() {
             const members = staffByPosition[position];
             if (!members || members.length === 0) return null;
             return (
-              <section key={position} style={{ marginBottom: "8vh" }}>
+              <section key={position} style={{ marginBottom: "4vh" }}>
                 <h2
                   style={{
-                    fontSize: "36px",
+                    fontSize: "64px",
                     marginBottom: "24px",
-                    borderBottom: "2px solid #FFF7C2",
-                    paddingBottom: "8px",
+                    fontFamily: "var(--font-sunlight-dreams)",
                   }}
                 >
                   {position}
@@ -119,15 +119,17 @@ export default function StaffPage() {
                       rel="noopener noreferrer"
                       style={{
                         display: "flex",
-                        flexDirection: "column",
+                        flexDirection: "row",
                         alignItems: "center",
-                        width: "160px",
-                        padding: "16px",
-                        borderRadius: "12px",
-                        backgroundColor: "rgba(255, 247, 194, 0.08)",
-                        border: "1px solid rgba(255, 247, 194, 0.2)",
+                        width: "30.6vw",
+                        height: "17vh",
+                        borderRadius: "0 12px 12px 12px",
+                        overflow: "hidden",
+                        backgroundColor: "#D1DFD5",
                         textDecoration: "none",
-                        color: "#FFF7C2",
+                        color: "#070905",
+                        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
+                        position: "relative",
                       }}
                     >
                       {member.profilePicture && (
@@ -135,47 +137,60 @@ export default function StaffPage() {
                           src={member.profilePicture}
                           alt={member.osuName}
                           style={{
-                            width: "80px",
-                            height: "80px",
-                            borderRadius: "50%",
+                            width: "auto",
+                            height: "100%",
+                            aspectRatio: "1",
                             objectFit: "cover",
-                            marginBottom: "8px",
+                            flexShrink: 0,
                           }}
                         />
                       )}
-                      <span
-                        style={{
-                          fontSize: "16px",
-                          fontWeight: "bold",
-                          textAlign: "center",
-                        }}
-                      >
-                        {member.osuName}
-                      </span>
-                      {member.country && (
-                        <img
-                          src={member.country}
-                          alt="flag"
-                          style={{
-                            width: "24px",
-                            height: "24px",
-                            marginTop: "4px",
-                          }}
-                        />
-                      )}
-                      {member.role && (
-                        <span
-                          style={{
-                            fontSize: "12px",
-                            marginTop: "4px",
-                            opacity: 0.7,
-                          }}
-                        >
-                          {member.role}
-                        </span>
-                      )}
+                      <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", marginLeft: "12px" }}>
+                        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "8px" }}>
+                          <span
+                            style={{
+                              fontSize: "40px",
+                              fontWeight: "500",
+                              fontFamily: "var(--font-josefin-sans)",
+                            }}
+                          >
+                            {member.osuName}
+                          </span>
+                          {member.country && (
+                            <img
+                              src={member.country}
+                              alt="flag"
+                              style={{
+                                width: "40px",
+                                height: "40px",
+                              }}
+                            />
+                          )}
+                        </div>
+                        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "8px", marginTop: "4px" }}>
+                          {member.discordName && (
+                            <>
+                              <img src="/staff/discord.png" alt="discord" style={{ width: "3vh", height: "3vh" }} />
+                              <span style={{ fontSize: "20px", opacity: 0.7, fontFamily: "var(--font-josefin-sans)", fontStyle: "normal", letterSpacing: "0%", lineHeight: "36px" }}>
+                                {member.discordName}
+                              </span>
+                            </>
+                          )}
+                          {member.role && (
+                            <span style={{ fontSize: "20px", opacity: 0.7, fontFamily: "var(--font-josefin-sans)", fontStyle: "normal", letterSpacing: "0%", lineHeight: "36px" }}>
+                              {member.role}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      <div style={{ position: "absolute", bottom: "8px", left: "63%", width: "2.5vw", height: "2vh" }}>
+                        <Image src="/staff/design.svg" alt="design" fill style={{ objectFit: "contain" }} />
+                      </div>
                     </a>
                   ))}
+                </div>
+                <div style={{ position: "relative", width: "100%", height: "48px", margin: "6vh 0" }}>
+                  <Image src="/staff/separator.svg" alt="separator" fill />
                 </div>
               </section>
             );
@@ -189,7 +204,7 @@ export default function StaffPage() {
           left: "-10vw",
           width: "120vw",
           bottom: 0,
-          backgroundColor: "#374426",
+          background: "linear-gradient(0deg, #374426 0%, #37622A 50%, #9FB878 100%)",
           border: "6px solid #FFF7C2",
           zIndex: 1,
           pointerEvents: "none",
