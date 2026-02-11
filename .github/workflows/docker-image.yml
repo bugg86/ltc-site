@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: SSH docker pull
+      - name: Deploy with docker compose
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{secrets.SSH_HOST}}
@@ -42,6 +42,5 @@ jobs:
           port: 23
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/${{vars.SITE_NAME }}:latest
-            docker stop ${{ vars.SITE_NAME }}
-            docker rm ${{ vars.SITE_NAME }}
-            docker run -d --name ${{ vars.SITE_NAME }} -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/${{vars.SITE_NAME}}:latest
+            curl -o docker-compose-prod.yml -L "https://raw.githubusercontent.com/${{ github.repository }}/master/docker-compose-prod.yml"
+            docker compose -f docker-compose-prod.yml up -d

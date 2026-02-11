@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  web:
+    image: bugg86/ltc-site:latest}
+    container_name: ltc-site-web
+    ports:
+      - "3000:3000"
+    environment:
+      # MongoDB connection string with authentication
+      - MONGODB_URI=mongodb://ltcuser:ltcpass@mongo:27017/ltcdb?authSource=admin
+    depends_on:
+      - mongo
+    restart: unless-stopped
+    networks:
+      - ltc-network
+
+  mongo:
+    image: mongo:6.0
+    container_name: ltc-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: ltcdb
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpass
+    volumes:
+      - mongo_data:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      - ltc-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
+      interval: 120s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  mongo_data:
+
+networks:
+  ltc-network:
+    driver: bridge
