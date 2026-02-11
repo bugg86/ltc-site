@@ -1,12 +1,16 @@
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/ltcdb";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://ltcuser:ltcpass@localhost:27017/ltcdb?authSource=ltcdb";
 
 const StaffSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  osuName: { type: String, required: true },
+  position: { type: String, required: true },
+  discordName: { type: String, required: true },
   role: { type: String },
-  // Add more fields as needed
+  country: { type: String, required: true },
+  profilePicture: { type: String, required: true },
+  profileLink: { type: String },
 });
 
 const Staff = mongoose.models.Staff || mongoose.model("Staff", StaffSchema);
@@ -19,7 +23,10 @@ async function connectDB() {
 
 export async function GET(request: Request) {
   await connectDB();
-  const staff = await Staff.find({});
+  const { searchParams } = new URL(request.url);
+  const position = searchParams.get("position");
+  const filter = position ? { position } : {};
+  const staff = await Staff.find(filter);
   return NextResponse.json(staff);
 }
 

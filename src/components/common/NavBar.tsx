@@ -88,7 +88,7 @@ export function DesktopNavbar() {
               </ListItem>
               <ListItem href="/about/rules" title="Rules" active={isActive("/about/rules")}>
               </ListItem>
-              <ListItem href="/about/prizes" title="Prizes" active={isActive("/about/prizes")}>
+              <ListItem href="/about/rules#rules-prizes" title="Prizes" active={isActive("/about/prizes")}>
               </ListItem>
             </ul>
             </NavigationMenuContent>

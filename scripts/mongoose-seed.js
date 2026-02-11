@@ -63,10 +63,12 @@ var TeamSchema = new mongoose_1.default.Schema({
 });
 var StaffSchema = new mongoose_1.default.Schema({
     osuName: { type: String, required: true, unique: false },
+    position: { type: String, required: true, unique: false },
     discordName: { type: String, required: true, unique: false },
     role: { type: String, required: true, unique: false },
-    county: { type: String, required: true, unique: false },
+    country: { type: String, required: true, unique: false },
     profilePicture: { type: String, required: true, unique: false },
+    profileLink: { type: String, required: false, unique: false },
 });
 var ScheduleSchema = new mongoose_1.default.Schema({});
 // Example models
@@ -151,8 +153,10 @@ function seed() {
                             osuName: "Convex",
                             discordName: "convex",
                             role: "Web Dev",
-                            county: "US",
+                            position: "Website Developer",
+                            country: "https://osuflags.omkserver.nl/US.png",
                             profilePicture: "https://a.ppy.sh/11292327",
+                            profileLink: "https://osu.ppy.sh/users/11292327"
                         })];
                 case 10:
                     _d.sent();
