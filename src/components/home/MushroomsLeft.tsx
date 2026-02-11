@@ -31,7 +31,7 @@ const MushroomLayer2 = styled("div")({
 
 const MUSHROOM_1 = (
   <Image
-            src="/home/mushroom3.svg"
+            src="/home/mushroom3.png"
             alt="Mushroom3"
             fill
           />
@@ -39,7 +39,7 @@ const MUSHROOM_1 = (
 
 const MUSHROOM_2 = (
   <Image
-            src="/home/mushroom1.svg"
+            src="/home/mushroom1.png"
             alt="Mushroom1"
             fill
           />

@@ -15,7 +15,7 @@ const Container = styled("div")({
 
 const MUSHROOM_1 = (
   <Image
-            src="/home/mushroom2.svg"
+            src="/home/mushroom2.png"
             alt="Mushroom2"
             fill
           />

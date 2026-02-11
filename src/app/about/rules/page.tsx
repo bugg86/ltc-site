@@ -417,7 +417,7 @@ export default function RulesPage() {
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: "url(/rules/bg.png)",
+            backgroundImage: "url(/rules/bg.webp)",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "top center",
             backgroundSize: "100% auto",

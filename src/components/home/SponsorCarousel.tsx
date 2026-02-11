@@ -86,7 +86,7 @@ const EmblaButton = styled("button")({
 const images = [
 	"/home/concon.svg",
 	"/home/drunkdeer.svg",
-	"/home/solvari.svg",
+	"/home/solvari.webp",
 	"/home/anon.svg",
 ];
 

@@ -151,28 +151,28 @@ export default function LorePage() {
       label: "Origin",
       title: "Lore One",
       body: pageOneContent,
-      backgroundImage: "/lore/lore1.png",
+      backgroundImage: "/lore/lore1.webp",
     },
     {
       id: "lore-2",
       label: "Realm",
       title: "Lore Two",
       body: pageTwoContent,
-      backgroundImage: "/lore/lore2.png",
+      backgroundImage: "/lore/lore2.webp",
     },
     {
       id: "lore-3",
       label: "Heroes",
       title: "Lore Three",
       body: pageThreeContent,
-      backgroundImage: "/lore/lore3.png",
+      backgroundImage: "/lore/lore3.webp",
     },
     {
       id: "lore-4",
       label: "Legacy",
       title: "Lore Four",
       body: pageFourContent,
-      backgroundImage: "/lore/lore4.png",
+      backgroundImage: "/lore/lore4.webp",
     },
   ]
 

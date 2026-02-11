@@ -11,7 +11,7 @@ body {
 }
 
 .first-half { 
-  background:url(/home/homebg.png);
+  background:url(/home/homebg.webp);
   background-size: 2437px 1380px;
   background-repeat: no-repeat;
   background-blend-mode: overlay;
