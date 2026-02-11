@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    image: bugg86/ltc-site:latest}
+    image: bugg86/ltc-site:latest
     container_name: ltc-site-web
     ports:
       - "3000:3000"
