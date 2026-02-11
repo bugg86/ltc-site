@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://ltcuser:ltcpass@localhost:27017/ltcdb?authSource=ltcdb";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://ltcuser:ltcpass@ltc-mongo:27017/ltcdb?authSource=ltcdb";
 
 const StaffSchema = new mongoose.Schema({
   osuName: { type: String, required: true },
