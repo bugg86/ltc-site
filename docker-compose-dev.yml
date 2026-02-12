@@ -11,6 +11,7 @@ services:
     environment:
       # MongoDB connection string with authentication
       - MONGODB_URI=mongodb://ltcuser:ltcpass@mongo:27017/ltcdb?authSource=ltcdb
+      - NODE_OPTIONS=--enable-source-maps
     depends_on:
       - mongo
     restart: unless-stopped
