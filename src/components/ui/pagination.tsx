@@ -68,7 +68,7 @@ function PaginationLink({
 
 const REGISTER = (
   <Image
-              src="/home/register.svg"
+              src="/home/register.webp"
               alt="Register"
               fill
             />

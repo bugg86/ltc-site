@@ -4,6 +4,7 @@ import { styled } from "@mui/material";
 import * as React from "react";
 import Stack from "@mui/material/Stack";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuViewport, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 
@@ -18,41 +19,12 @@ const Wrapper = styled("nav")({
 });
 
 const Logo = styled(Link)({
+  position: "relative",
   display: "flex",
-  backgroundImage: "url(/home/logo.svg)",
-  backgroundRepeat: "no-repeat",
-  backgroundPosition: "50% 50%",
-  backgroundSize: "contain",
-  backgroundColor: "transparent",
   width: "12.7vw",
   height: "10.3vh",
   cursor: "pointer",
   zIndex: 5,
-});
-
-const NavItems = styled("ul")({
-  left: "46vw",
-  width: "48vw",
-  height: "4.4vh",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: "10%",
-  borderRadius: "200px",
-  border: "1px solid var(--Primary-Pistachio, #9FB878);",
-  background: "linear-gradient(270deg, var(--Primary-Deep-Forest, rgba(55, 68, 38, 0.34)) 0%, rgba(55, 98, 42, 0.34) 100%);"
-});
-
-const NavItem = styled("li")({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  height: "100%",
-  fontWeight: "400",
-  fontFamily: "var(--font-sunlight-dreams)",
-  fontSize: "1.25vw",
-  lineHeight: "normal",
-  color: "var(--Shade-White, #FFCEA)"
 });
 
 export function DesktopNavbar() {
@@ -66,7 +38,9 @@ export function DesktopNavbar() {
 
   return (
     <Wrapper>
-      <Logo href="/" aria-label="Home" />
+      <Logo href="/" aria-label="Home">
+        <Image src="/home/logo.svg" alt="Logo" fill style={{ objectFit: "contain" }} />
+      </Logo>
       <NavigationMenu className="ml-auto" viewport={false}>
         <NavigationMenuList>
           <NavigationMenuItem>

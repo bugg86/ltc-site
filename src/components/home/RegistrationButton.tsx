@@ -70,7 +70,7 @@ const Text = styled("span")({
 
 const REGISTER = (
   <Image
-              src="/home/register.svg"
+              src="/home/register.webp"
               alt="Register"
               fill
             />

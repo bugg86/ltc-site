@@ -85,9 +85,9 @@ const EmblaButton = styled("button")({
 
 const images = [
 	"/home/concon.svg",
-	"/home/drunkdeer.svg",
+	"/home/drunkdeer.webp",
 	"/home/solvari.webp",
-	"/home/anon.svg",
+	"/home/anon.webp",
 ];
 
 const links = [

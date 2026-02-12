@@ -39,7 +39,7 @@ const zones = [
 
 const LinkImage = (
   <Image
-    src="/home/links.svg"
+    src="/home/links.webp"
     alt="Links"
     fill
     style={{ zIndex: 1 }}

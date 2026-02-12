@@ -26,6 +26,7 @@ RUN bun run build
 
 # use Node.js for the production runtime (Bun has compatibility issues with Next.js)
 FROM node:20-slim AS release
+RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
 WORKDIR /usr/src/app
 
 COPY --from=install /temp/prod/node_modules node_modules

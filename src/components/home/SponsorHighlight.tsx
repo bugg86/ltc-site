@@ -36,7 +36,7 @@ const SponsorLayer3 = styled("div")({
 const SPONSOR_1 = (
   <a href="https://yuki.gg/" target="_blank" rel="noopener noreferrer" aria-label="Yukiaim" style={{ display: "block", width: "100%", height: "100%" }}>
     <Image
-      src="/home/yukiaim.svg"
+      src="/home/yukiaim.webp"
       alt="Yukiaim"
       fill
     />
@@ -46,7 +46,7 @@ const SPONSOR_1 = (
 const SPONSOR_2 = (
   <a href="https://oneofzero.net/" target="_blank" rel="noopener noreferrer" aria-label="OneOfZero" style={{ display: "block", width: "100%", height: "100%" }}>
     <Image
-      src="/home/oneofzero.svg"
+      src="/home/oneofzero.webp"
       alt="OneOfZero"
       fill
     />

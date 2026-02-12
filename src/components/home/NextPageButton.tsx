@@ -17,7 +17,8 @@ const Button = styled("button")({
   height: "4.12vh",
   top: "90vh",
   left: "49.01vw",
-  zIndex: "3"
+  zIndex: "3",
+  cursor: "pointer",
 });
 
 

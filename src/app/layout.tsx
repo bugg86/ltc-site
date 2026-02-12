@@ -22,7 +22,6 @@ const sunlightDreams = localFont({
   variable: "--font-sunlight-dreams",
   src: [
     { path: "../../public/fonts/Sunlight Dreams.woff" },
-    { path: "../../public/fonts/Sunlight Dreams.otf" },
   ],
 });
 
