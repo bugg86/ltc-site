@@ -39,7 +39,7 @@ jobs:
           host: ${{secrets.SSH_HOST}}
           username: ${{secrets.SSH_USERNAME}}
           password: ${{secrets.SSH_PASSWORD}}
-          port: 23
+          port: 22
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/${{vars.SITE_NAME }}:latest
             curl -o docker-compose-prod.yml -L "https://raw.githubusercontent.com/bugg86/ltc-site/refs/heads/master/docker-compose-prod.yml"

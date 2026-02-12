@@ -20,8 +20,6 @@ services:
     image: mongo:6.0
     container_name: ltc-mongo
     restart: unless-stopped
-    ports:
-      - "27017:27017"
     environment:
       MONGO_INITDB_DATABASE: ltcdb
       MONGO_INITDB_ROOT_USERNAME: root
