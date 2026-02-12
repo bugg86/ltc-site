@@ -296,7 +296,7 @@ export default function LorePage() {
             <PaginationNext
               href={
                 currentIndex === sections.length - 1
-                  ? "https://google.com"
+                  ? "https://docs.google.com/forms/d/e/1FAIpQLSdsePfqBTXkRO-qfAEVDVDAGumcuLKH52H0hRVAtWINP1PdEw/viewform"
                   : "#"
               }
               label={currentIndex === sections.length - 1 ? "REGISTER" : "NEXT"}

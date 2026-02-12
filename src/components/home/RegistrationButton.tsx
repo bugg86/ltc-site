@@ -78,7 +78,7 @@ const REGISTER = (
 
 export function Register() {
   return (
-    <Container href="https://google.com">
+    <Container href="https://docs.google.com/forms/d/e/1FAIpQLSdsePfqBTXkRO-qfAEVDVDAGumcuLKH52H0hRVAtWINP1PdEw/viewform">
         <SubContainer>
             <Shape1></Shape1>
             <Shape2></Shape2>

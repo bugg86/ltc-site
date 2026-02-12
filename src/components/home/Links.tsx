@@ -19,7 +19,7 @@ const zones = [
     label: "Discord",
   },
   {
-    href: "https://twitch.tv/",
+    href: "https://www.twitch.tv/lelastechcup",
     label: "Twitch",
   },
   {
