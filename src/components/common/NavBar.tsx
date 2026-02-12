@@ -10,13 +10,11 @@ import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuL
 const Wrapper = styled("nav")({
   position: "relative",
   zIndex: "4",
-  left: "56px",
+  left: "3vw",
   display: "flex",
-  // flexDirection: "column",
-  // justifyContent: "space-between",
   alignItems: "center",
-  width: "1807px",
-  height: "138px",
+  width: "94vw",
+  height: "13vh",
 });
 
 const Logo = styled(Link)({
@@ -26,16 +24,16 @@ const Logo = styled(Link)({
   backgroundPosition: "50% 50%",
   backgroundSize: "contain",
   backgroundColor: "transparent",
-  width: "244px",
-  height: "111px",
+  width: "12.7vw",
+  height: "10.3vh",
   cursor: "pointer",
   zIndex: 5,
 });
 
 const NavItems = styled("ul")({
-  left: "884px",
-  width: "923px",
-  height: "47px",
+  left: "46vw",
+  width: "48vw",
+  height: "4.4vh",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -52,7 +50,7 @@ const NavItem = styled("li")({
   height: "100%",
   fontWeight: "400",
   fontFamily: "var(--font-sunlight-dreams)",
-  fontSize: "24px",
+  fontSize: "1.25vw",
   lineHeight: "normal",
   color: "var(--Shade-White, #FFCEA)"
 });
@@ -149,7 +147,7 @@ function ListItem({
               style={{ 
                 color: active ? activeColor : defaultColor,
                 fontFamily: "var(--font-sunlight-dreams)",
-                fontSize: "15px",
+                fontSize: "0.78vw",
                 lineHeight: "100%",
                 fontWeight: "400",
                 letterSpacing: "0%",

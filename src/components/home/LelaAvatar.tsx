@@ -13,10 +13,10 @@ import { styled } from "@mui/material";
 
 const ImageLayer = styled("div")({
   position: "absolute",
-  width: "891px",
-  height: "1106px",
-  top: "40px",
-  left: "522px",
+  width: "40vw",
+  height: "52vw",
+  left: "32vw",
+  top: "12vh",
   // aspectRatio: "0.8056",
   zIndex: 2,
 });
@@ -26,7 +26,7 @@ export function LelaAvatar() {
     // <Container>
       <ImageLayer>
         <Image
-          src="/home/lela-avatar.svg"
+          src="/home/lela-avatar.png"
           alt="Lela"
           fill
         />

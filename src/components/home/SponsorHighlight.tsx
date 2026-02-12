@@ -7,29 +7,29 @@ const Container = styled("div")({
   position: "absolute",
   display: "flex",
   justifyContent: "space-between",
-  width: "736px",
-  height: "167px",
-  top: "1234px",
-  left: "973px",
+  width: "38.333vw",
+  height: "16.373vh",
+  top: "120.980vh",
+  left: "50.677vw",
   zIndex: "3"
 });
 
 const SponsorLayer1 = styled("div")({
     position: "relative",
-    width: "167px",
-    height: "167px",
+    width: "8.698vw",
+    height: "16.373vh",
 });
 
 const SponsorLayer2 = styled("div")({
     position: "relative",
-    width: "315px",
-    height: "167px",
+    width: "16.406vw",
+    height: "16.373vh",
 });
 
 const SponsorLayer3 = styled("div")({
     position: "relative",
-    width: "166px",
-    height: "167px",
+    width: "8.646vw",
+    height: "16.373vh",
 });
 
 

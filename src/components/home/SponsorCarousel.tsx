@@ -5,13 +5,13 @@ import { styled } from "@mui/material";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback } from "react";
 
-const BUTTON_WIDTH = 40; // px, matches 2.5rem
+const BUTTON_WIDTH_VW = "2.083vw";
 const CarouselContainer = styled("div")({
 	position: "absolute",
-	width: "740px",
-	height: "154px",
-	top: "1513px",
-	left: "970px",
+	width: "38.542vw",
+	height: "15.098vh",
+	top: "148.333vh",
+	left: "50.521vw",
 	zIndex: 3,
 	display: "flex",
 	flexDirection: "row",
@@ -21,11 +21,11 @@ const CarouselContainer = styled("div")({
 
 const EmblaViewport = styled("div")({
 	overflow: "hidden",
-	width: `calc(100% - ${BUTTON_WIDTH * 2}px)`,
-	maxWidth: `calc(100% - ${BUTTON_WIDTH * 2}px)`,
-	height: "154px",
-	borderRadius: "16px",
-	margin: `0 ${BUTTON_WIDTH}px`,
+	width: `calc(100% - ${BUTTON_WIDTH_VW} - ${BUTTON_WIDTH_VW})`,
+	maxWidth: `calc(100% - ${BUTTON_WIDTH_VW} - ${BUTTON_WIDTH_VW})`,
+	height: "15.098vh",
+	borderRadius: "0.833vw",
+	margin: `0 ${BUTTON_WIDTH_VW}`,
 	background: "transparent",
 });
 
@@ -36,7 +36,7 @@ const EmblaContainer = styled("div")({
 const EmblaSlide = styled("div")({
 	position: "relative",
 	minWidth: "33.3333%",
-	height: "154px",
+	height: "15.098vh",
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",

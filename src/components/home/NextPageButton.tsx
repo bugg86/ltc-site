@@ -13,10 +13,10 @@ interface NextPageButtonProps {
 
 const Button = styled("button")({
   position: "absolute",
-  width: "37px",
-  height: "42px",
-  top: "946px",
-  left: "941px",
+  width: "1.93vw",
+  height: "4.12vh",
+  top: "90vh",
+  left: "49.01vw",
   zIndex: "3"
 });
 

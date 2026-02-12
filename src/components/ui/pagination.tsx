@@ -82,15 +82,15 @@ function PaginationPrevious({
   const registerStyle: React.CSSProperties = {
     background:
       "linear-gradient(90deg, rgba(55, 68, 38, 0.50) 0%, rgba(55, 98, 42, 0.50) 100%), var(--Primary-Deep-Forest, #374426)",
-    borderRadius: "200px",
-    borderRight: "2px solid var(--Primary-Pistachio, #9FB878)",
-    borderBottom: "2px solid var(--Primary-Pistachio, #9FB878)",
-    borderLeft: "2px solid var(--Primary-Pistachio, #9FB878)",
+    borderRadius: "2vh",
+    borderRight: ".2vh solid var(--Primary-Pistachio, #9FB878)",
+    borderBottom: ".2vh solid var(--Primary-Pistachio, #9FB878)",
+    borderLeft: ".2vh solid var(--Primary-Pistachio, #9FB878)",
     color: "#FFF7C2",
     fontFamily: "var(--font-josefin-sans)",
     fontStyle: "italic",
     fontWeight: 500,
-    fontSize: "36px",
+    fontSize: "3.6vh",
   }
 
   return (
@@ -130,15 +130,15 @@ function PaginationNext({
   const registerStyle: React.CSSProperties = {
     background:
       "linear-gradient(90deg, rgba(55, 68, 38, 0.50) 0%, rgba(55, 98, 42, 0.50) 100%), var(--Primary-Deep-Forest, #374426)",
-    borderRadius: "200px",
-    borderRight: "2px solid var(--Primary-Pistachio, #9FB878)",
-    borderBottom: "2px solid var(--Primary-Pistachio, #9FB878)",
-    borderLeft: "2px solid var(--Primary-Pistachio, #9FB878)",
+    borderRadius: "2vh",
+    borderRight: ".2vh solid var(--Primary-Pistachio, #9FB878)",
+    borderBottom: ".2vh solid var(--Primary-Pistachio, #9FB878)",
+    borderLeft: ".2vh solid var(--Primary-Pistachio, #9FB878)",
     color: "#FFF7C2",
     fontFamily: "var(--font-josefin-sans)",
     fontStyle: "italic",
     fontWeight: 500,
-    fontSize: "36px"
+    fontSize: "3.6vh"
   }
 
   return (

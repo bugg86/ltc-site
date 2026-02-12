@@ -5,10 +5,10 @@ import { styled } from "@mui/material";
 
 const ImageLayer = styled("div")({
   position: "absolute",
-  width: "585px",
-  height: "476px",
-  top: "1467px",
-  left: "18px",
+  width: "30.469vw",
+  height: "46.667vh",
+  top: "143.824vh",
+  left: "0.938vw",
   aspectRatio: "0.8056",
   zIndex: 3,
 });
@@ -17,7 +17,7 @@ export function Animal() {
   return (
       <ImageLayer>
         <Image
-          src="/home/animal1.svg"
+          src="/home/animal1.png"
           alt="Animal"
           fill
         />

@@ -5,27 +5,27 @@ import { styled } from "@mui/material";
 
 const Container = styled("div")({
   position: "absolute",
-  width: "249.295px",
-  height: "191.146px",
-  top: "528px",
-  left: "318px",
+  width: "12.98vw",
+  height: "18.74vh",
+  top: "51.76vh",
+  left: "16.56vw",
   zIndex: "2"
 });
 
 const MushroomLayer1 = styled("div")({
     position: "absolute",
-    width: "165.08px",
-    height: "161.1194px",
+    width: "8.60vw",
+    height: "15.80vh",
     rotate: "-2.2deg",
-    top: "15px"
+    top: "1.47vh"
 });
 
 const MushroomLayer2 = styled("div")({
     position: "absolute",
-    width: "148.3422px",
-    height: "144.782px",
-    top: "46px",
-    left: "86px",
+    width: "7.73vw",
+    height: "14.19vh",
+    top: "4.51vh",
+    left: "4.48vw",
     rotate: "6deg"
 });
 

@@ -16,11 +16,11 @@ export default function LorePage() {
         left: "5vw",
         top: "4vh",
         background: "rgba(159, 184, 120, 0.25)",
-        border: "2px solid var(--Primary-Pistachio, #9FB878)",
-        borderRadius: "12px",
-        padding: "24px",
+        border: ".2vh solid var(--Primary-Pistachio, #9FB878)",
+        borderRadius: "1.2vh",
+        padding: "2.4vh",
         fontFamily: "var(--font-josefin-sans)",
-        fontSize: "40px",
+        fontSize: "3.8vh",
         lineHeight: "100%",
         letterSpacing: "0%",
         fontWeight: "400",
@@ -41,11 +41,11 @@ export default function LorePage() {
         top: "15vh",
         left: "10vw",
         background: "rgba(159, 184, 120, 0.25)",
-        border: "2px solid var(--Primary-Pistachio, #9FB878)",
-        borderRadius: "16px",
-        padding: "20px",
+        border: ".2vh solid var(--Primary-Pistachio, #9FB878)",
+        borderRadius: "1.6vh",
+        padding: "2vh",
         fontFamily: "var(--font-josefin-sans)",
-        fontSize: "40px",
+        fontSize: "3.8vh",
         lineHeight: "100%",
         letterSpacing: "0%",
         fontWeight: "400",
@@ -66,11 +66,11 @@ export default function LorePage() {
         top: "10vh",
         left: "2vw",
         background: "rgba(159, 184, 120, 0.25)",
-        border: "2px solid var(--Primary-Pistachio, #9FB878)",
-        borderRadius: "20px",
-        padding: "20px",
+        border: ".2vh solid var(--Primary-Pistachio, #9FB878)",
+        borderRadius: "2vh",
+        padding: "2vh",
         fontFamily: "var(--font-josefin-sans)",
-        fontSize: "40px",
+        fontSize: "3.8vh",
         lineHeight: "100%",
         letterSpacing: "0%",
         fontWeight: "400",
@@ -92,11 +92,11 @@ export default function LorePage() {
           top: "2vh",
           position: "absolute",
           background: "rgba(159, 184, 120, 0.25)",
-          border: "2px solid var(--Primary-Pistachio, #9FB878)",
-          borderRadius: "20px",
-          padding: "20px",
+          border: ".2vh solid var(--Primary-Pistachio, #9FB878)",
+          borderRadius: "2vh",
+          padding: "2vh",
           fontFamily: "var(--font-josefin-sans)",
-          fontSize: "40px",
+          fontSize: "3.8vh",
           lineHeight: "100%",
           letterSpacing: "0%",
           fontWeight: "400",
@@ -109,7 +109,7 @@ export default function LorePage() {
           gap: "2vh"
         }}
       >
-        <p style={{ fontSize: "64px" }}>
+        <p style={{ fontSize: "6.3vh" }}>
           "Join me"
         </p>
         <p>She says, her voice soft.</p>
@@ -122,11 +122,11 @@ export default function LorePage() {
           top: "30vh",
           right: "3vw",
           background: "rgba(159, 184, 120, 0.25)",
-          border: "2px solid var(--Primary-Pistachio, #9FB878)",
-          borderRadius: "20px",
-          padding: "20px",
+          border: ".2vh solid var(--Primary-Pistachio, #9FB878)",
+          borderRadius: "2vh",
+          padding: "2vh",
           fontFamily: "var(--font-josefin-sans)",
-          fontSize: "40px",
+          fontSize: "3.8vh",
           lineHeight: "100%",
           letterSpacing: "0%",
           fontWeight: "400",
@@ -257,6 +257,7 @@ export default function LorePage() {
           style={{ ...getBackgroundStyle(previousIndex)}}
         />
       )}
+      <div className="absolute inset-0 bg-black/20" />
       <DesktopNavbar />
       <main className="relative mx-auto min-h-[60vh] px-6 py-20 text-[var(--Shade-White,_#FFFCEA)]">
         <div className="relative">

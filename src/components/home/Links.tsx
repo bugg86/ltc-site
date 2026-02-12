@@ -6,10 +6,10 @@ import { styled } from "@mui/material";
 
 const Container = styled("div")({
   position: "absolute",
-  width: "588px",
-  height: "91px",
-  top: "860px",
-  left: "58px",
+  width: "32vw",
+  height: "8.9vh",
+  top: "81vh",
+  left: "46vw",
   zIndex: 2,
 });
 
@@ -59,10 +59,10 @@ export function Links() {
           aria-label={zone.label}
           style={{
             position: "absolute",
-            left: `${(588 / 5) * idx}px`,
+            left: `${(32 / 5) * idx}vw`,
             top: 0,
-            width: `${588 / 5}px`,
-            height: "91px",
+            width: `${32 / 5}vw`,
+            height: "8.9vh",
             zIndex: 2,
             display: "block",
           }}

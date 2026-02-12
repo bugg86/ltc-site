@@ -5,10 +5,10 @@ import { styled } from "@mui/material";
 
 const Container = styled("div")({
   position: "absolute",
-  width: "268.8444px",
-  height: "262.3922px",
-  top: "478px",
-  left: "1613px",
+  width: "14.00vw",
+  height: "25.72vh",
+  top: "46.86vh",
+  left: "84.01vw",
   rotate: "0deg",
   zIndex: "2"
 });

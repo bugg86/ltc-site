@@ -54,7 +54,7 @@ export default function StaffPage() {
   return (
     <div
       style={{
-        width: "1950px",
+        width: "110%",
         minHeight: "100vh",
         position: "relative",
         overflowX: "hidden",
@@ -97,8 +97,8 @@ export default function StaffPage() {
               <section key={position} style={{ marginBottom: "4vh" }}>
                 <h2
                   style={{
-                    fontSize: "64px",
-                    marginBottom: "24px",
+                    fontSize: "3.3vw",
+                    marginBottom: "2vw",
                     fontFamily: "var(--font-sunlight-dreams)",
                   }}
                 >
@@ -108,7 +108,7 @@ export default function StaffPage() {
                   style={{
                     display: "flex",
                     flexWrap: "wrap",
-                    gap: "24px",
+                    gap: "2vw",
                   }}
                 >
                   {members.map((member) => (
@@ -123,12 +123,12 @@ export default function StaffPage() {
                         alignItems: "center",
                         width: "30.6vw",
                         height: "17vh",
-                        borderRadius: "0 12px 12px 12px",
+                        borderRadius: "0 1vw 1vw 1vw",
                         overflow: "hidden",
                         backgroundColor: "#D1DFD5",
                         textDecoration: "none",
                         color: "#070905",
-                        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
+                        boxShadow: "0 .3vh 1vh rgba(0, 0, 0, 0.3)",
                         position: "relative",
                       }}
                     >
@@ -145,11 +145,11 @@ export default function StaffPage() {
                           }}
                         />
                       )}
-                      <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", marginLeft: "12px" }}>
-                        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "8px" }}>
+                      <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", marginLeft: "1vw" }}>
+                        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "0.6vw" }}>
                           <span
                             style={{
-                              fontSize: "40px",
+                              fontSize: "3.8vh",
                               fontWeight: "500",
                               fontFamily: "var(--font-josefin-sans)",
                             }}
@@ -161,35 +161,35 @@ export default function StaffPage() {
                               src={member.country}
                               alt="flag"
                               style={{
-                                width: "40px",
-                                height: "40px",
+                                width: "2.1vw",
+                                height: "3.8vh",
                               }}
                             />
                           )}
                         </div>
-                        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "8px", marginTop: "4px" }}>
+                        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "0.4vw", marginTop: "0.3vw" }}>
                           {member.discordName && (
                             <>
                               <img src="/staff/discord.png" alt="discord" style={{ width: "3vh", height: "3vh" }} />
-                              <span style={{ fontSize: "20px", opacity: 0.7, fontFamily: "var(--font-josefin-sans)", fontStyle: "normal", letterSpacing: "0%", lineHeight: "36px" }}>
+                              <span style={{ fontSize: "1.9vh", opacity: 0.7, fontFamily: "var(--font-josefin-sans)", fontStyle: "normal", letterSpacing: "0%", lineHeight: "36px" }}>
                                 {member.discordName}
                               </span>
                             </>
                           )}
                           {member.role && (
-                            <span style={{ fontSize: "20px", opacity: 0.7, fontFamily: "var(--font-josefin-sans)", fontStyle: "normal", letterSpacing: "0%", lineHeight: "36px" }}>
+                            <span style={{ fontSize: "1.9vh", opacity: 0.7, fontFamily: "var(--font-josefin-sans)", fontStyle: "normal", letterSpacing: "0%", lineHeight: "36px" }}>
                               {member.role}
                             </span>
                           )}
                         </div>
                       </div>
-                      <div style={{ position: "absolute", bottom: "8px", left: "63%", width: "2.5vw", height: "2vh" }}>
+                      <div style={{ position: "absolute", bottom: ".8vh", left: "63%", width: "2.5vw", height: "2vh" }}>
                         <Image src="/staff/design.svg" alt="design" fill style={{ objectFit: "contain" }} />
                       </div>
                     </a>
                   ))}
                 </div>
-                <div style={{ position: "relative", width: "100%", height: "48px", margin: "6vh 0" }}>
+                <div style={{ position: "relative", width: "100%", height: "4.6vh", margin: "6vh 0" }}>
                   <Image src="/staff/separator.svg" alt="separator" fill />
                 </div>
               </section>
@@ -205,7 +205,7 @@ export default function StaffPage() {
           width: "120vw",
           bottom: 0,
           background: "linear-gradient(0deg, #374426 0%, #37622A 50%, #9FB878 100%)",
-          border: "6px solid #FFF7C2",
+          border: ".6vh solid #FFF7C2",
           zIndex: 1,
           pointerEvents: "none",
         }}

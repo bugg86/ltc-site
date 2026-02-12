@@ -37,7 +37,7 @@ function NavigationMenuList({
     <NavigationMenuPrimitive.List
       data-slot="navigation-menu-list"
       className={cn(
-        "group flex flex-1 list-none items-center justify-center gap-10 rounded-full px-15",
+        "group flex flex-1 list-none items-center justify-center gap-[2vw] rounded-full px-[3vw]",
         className
       )}
       style={{ 
@@ -63,7 +63,7 @@ function NavigationMenuItem({
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-[24px] font-sans hover:underline disabled:pointer-events-none disabled:opacity-50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1"
+  "group inline-flex w-max items-center justify-center rounded-md bg-transparent px-[0.8vw] py-[0.4vw] text-[1.25vw] font-sans hover:underline disabled:pointer-events-none disabled:opacity-50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1"
 )
 
 function NavigationMenuTrigger({
@@ -76,7 +76,7 @@ function NavigationMenuTrigger({
     height: "100%",
     fontWeight: "400",
     fontFamily: "var(--font-sunlight-dreams)",
-    fontSize: "24px",
+    fontSize: "1.25vw",
     lineHeight: "normal",
     color: "#FFFCEA",
   }
@@ -152,7 +152,7 @@ function NavigationMenuLink({
       style={{
         fontWeight: "400",
         fontFamily: "var(--font-sunlight-dreams)",
-        fontSize: "24px",
+        fontSize: "1.25vw",
         lineHeight: "normal",
         color: "#FFFCEA"
       }}

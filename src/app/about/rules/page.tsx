@@ -26,7 +26,7 @@ export default function RulesPage() {
         position: "relative",
         width: "30vw",
         left: "20vw",
-        height: "48px",
+        height: "4.8vh",
         margin: "5vh 0",
       }}
     >
@@ -38,11 +38,11 @@ export default function RulesPage() {
     {
       id: "rules-basic-info",
       label: "Basic Info",
-      size: "32px",
+      size: "3vh",
       marginBottom: "24vh",
       content: (
         <>
-          <h2 style={{ fontSize: "36px", marginBottom: "12px" }}>Basic Info</h2>
+          <h2 style={{ fontSize: "3.5vh", marginBottom: "1.2vh" }}>Basic Info</h2>
           <ul
             style={{
               margin: 0,
@@ -50,8 +50,8 @@ export default function RulesPage() {
               listStyleType: "disc",
               color: "#FFFCEA",
               fontFamily: "var(--font-josefin-sans)",
-              fontSize: "24px",
-              lineHeight: "36px",
+              fontSize: "2.3vh",
+              lineHeight: "3.5vh",
               
             }}
           >
@@ -73,11 +73,11 @@ export default function RulesPage() {
     {
       id: "rules-mappool",
       label: "Mappool Slot Description",
-      size: "32px",
+      size: "3vh",
       marginBottom: "24vh",
       content: (
         <>
-          <h2 style={{ fontSize: "36px", marginBottom: "12px" }}>Mappool Slot Description</h2>
+          <h2 style={{ fontSize: "3.5vh", marginBottom: "1.2vh" }}>Mappool Slot Description</h2>
           <ul
             style={{
               margin: 0,
@@ -85,8 +85,8 @@ export default function RulesPage() {
               listStyleType: "disc",
               color: "#FFFCEA",
               fontFamily: "var(--font-josefin-sans)",
-              fontSize: "24px",
-              lineHeight: "36px",
+              fontSize: "2.3vh",
+              lineHeight: "3.5vh",
             }}
           >
             <li>There will be <span style={{color: "#9FB878"}}>NO dedicated freemod</span> category in this tournament.</li>
@@ -105,11 +105,11 @@ export default function RulesPage() {
     {
       id: "rules-qualifiers-procedures",
       label: "Qualifiers Procedures",
-      size: "32px",
+      size: "3vh",
       marginBottom: "24vh",
       content: (
         <>
-          <h2 style={{ fontSize: "36px", marginBottom: "12px" }}>Qualifiers Procedures</h2>
+          <h2 style={{ fontSize: "3.5vh", marginBottom: "1.2vh" }}>Qualifiers Procedures</h2>
           <ul
             style={{
               margin: 0,
@@ -117,8 +117,8 @@ export default function RulesPage() {
               listStyleType: "disc",
               color: "#FFFCEA",
               fontFamily: "var(--font-josefin-sans)",
-              fontSize: "24px",
-              lineHeight: "36px",
+              fontSize: "2.3vh",
+              lineHeight: "3.5vh",
             }}
           >
             <li>Qualifiers will be played to determine who qualifies (top 32 teams), in addition to team seeding.</li>
@@ -138,22 +138,22 @@ export default function RulesPage() {
     {
       id: "rules-bracket-stage",
       label: "Bracket Stage Procedures",
-      size: "32px",
+      size: "3vh",
       content: (
         <>
-          <h2 style={{ fontSize: "36px", marginBottom: "12px" }}>Bracket Stage Procedures</h2>
+          <h2 style={{ fontSize: "3.5vh", marginBottom: "1.2vh" }}>Bracket Stage Procedures</h2>
         </>
       ),
     },
     {
       id: "rules-scheduling",
       label: "Scheduling",
-      size: "24px",
+      size: "2.3vh",
       marginBottom: "14vh",
       indent: "2vw",
       content: (
         <>
-          <h3 style={{ fontSize: "28px", marginBottom: "10px", paddingLeft: "1vw", color: "#FFFCEA" }}>Scheduling</h3>
+          <h3 style={{ fontSize: "2.6vh", marginBottom: "1vh", paddingLeft: "1vw", color: "#FFFCEA" }}>Scheduling</h3>
           <ul
             style={{
               margin: 0,
@@ -161,8 +161,8 @@ export default function RulesPage() {
               listStyleType: "disc",
               color: "#FFFCEA",
               fontFamily: "var(--font-josefin-sans)",
-              fontSize: "24px",
-              lineHeight: "36px",
+              fontSize: "2.3vh",
+              lineHeight: "3.5vh",
             }}
           >
             <li>Matches will have a default schedule, which can be found on the main sheet.</li>
@@ -177,12 +177,12 @@ export default function RulesPage() {
     {
       id: "rules-match-procedures",
       label: "Match Procedures",
-      size: "24px",
+      size: "2.3vh",
       marginBottom: "14vh",
       indent: "2vw",
       content: (
         <>
-          <h3 style={{ fontSize: "28px", marginBottom: "10px", paddingLeft: "1vw", color: "#FFFCEA" }}>Match Procedures</h3>
+          <h3 style={{ fontSize: "2.6vh", marginBottom: "1vh", paddingLeft: "1vw", color: "#FFFCEA" }}>Match Procedures</h3>
           <ul
             style={{
               margin: 0,
@@ -190,8 +190,8 @@ export default function RulesPage() {
               listStyleType: "disc",
               color: "#FFFCEA",
               fontFamily: "var(--font-josefin-sans)",
-              fontSize: "24px",
-              lineHeight: "36px",
+              fontSize: "2.3vh",
+              lineHeight: "3.5vh",
             }}
           >
             <li><span style={{color: "#9FB878"}}>NoFail and ScoreV2 will be required for all maps.</span></li>
@@ -211,12 +211,12 @@ export default function RulesPage() {
     {
       id: "rules-bans-and-picks",
       label: "Bans and Picks",
-      size: "24px",
+      size: "2.3vh",
       marginBottom: "14vh",
       indent: "2vw",
       content: (
         <>
-          <h3 style={{ fontSize: "28px", marginBottom: "10px", paddingLeft: "1vw", color: "#FFFCEA" }}>Bans and Picks</h3>
+          <h3 style={{ fontSize: "2.6vh", marginBottom: "1vh", paddingLeft: "1vw", color: "#FFFCEA" }}>Bans and Picks</h3>
           <ul
             style={{
               margin: 0,
@@ -224,8 +224,8 @@ export default function RulesPage() {
               listStyleType: "disc",
               color: "#FFFCEA",
               fontFamily: "var(--font-josefin-sans)",
-              fontSize: "24px",
-              lineHeight: "36px",
+              fontSize: "2.3vh",
+              lineHeight: "3.5vh",
             }}
           >
             <li>Each team captain must !roll in the lobby chat. The highest roll will choose if their team <span style={{color: "#9FB878"}}>picks first and bans last or bans first and picks last</span> (ABAB).</li>
@@ -240,12 +240,12 @@ export default function RulesPage() {
     {
       id: "rules-tiebreaker",
       label: "Tiebreaker",
-      size: "24px",
+      size: "2.3vh",
       marginBottom: "24vh",
       indent: "2vw",
       content: (
         <>
-          <h3 style={{ fontSize: "28px", marginBottom: "10px", paddingLeft: "1vw", color: "#FFFCEA" }}>Tiebreaker</h3>
+          <h3 style={{ fontSize: "2.6vh", marginBottom: "1vh", paddingLeft: "1vw", color: "#FFFCEA" }}>Tiebreaker</h3>
           <ul
             style={{
               margin: 0,
@@ -253,8 +253,8 @@ export default function RulesPage() {
               listStyleType: "disc",
               color: "#FFFCEA",
               fontFamily: "var(--font-josefin-sans)",
-              fontSize: "24px",
-              lineHeight: "36px",
+              fontSize: "2.3vh",
+              lineHeight: "3.5vh",
             }}
           >
             <li>If both teams are one point away from the required amount to win the round, the Tiebreaker map will be played.</li>
@@ -269,17 +269,17 @@ export default function RulesPage() {
     {
       id: "rules-schedule",
       label: "Schedule",
-      size: "32px",
+      size: "3vh",
       marginBottom: "24vh",
       content: (
         <>
-          <h2 style={{ fontSize: "36px", marginBottom: "12px" }}>Schedule</h2>
+          <h2 style={{ fontSize: "3.5vh", marginBottom: "1.2vh" }}>Schedule</h2>
           <table
             style={{
               color: "#FFFCEA",
               fontFamily: "var(--font-josefin-sans)",
-              fontSize: "24px",
-              lineHeight: "36px",
+              fontSize: "2.3vh",
+              lineHeight: "3.5vh",
               width: "60vw",
             }}
           >
@@ -321,18 +321,18 @@ export default function RulesPage() {
     {
       id: "rules-prizes",
       label: "Prizes",
-      size: "32px",
+      size: "3vh",
       marginBottom: "20vh",
       content: (
         <>
-          <h2 style={{ fontSize: "36px", marginBottom: "12px" }}>Prizes</h2>
+          <h2 style={{ fontSize: "3.5vh", marginBottom: "1.2vh" }}>Prizes</h2>
           <ul
             style={{
               margin: 0,
               color: "#FFFCEA",
               fontFamily: "var(--font-josefin-sans)",
-              fontSize: "24px",
-              lineHeight: "36px",
+              fontSize: "2.3vh",
+              lineHeight: "3.5vh",
             }}
           >
             <li>Our amazing sponsors have contributed to our prize pool. The top three teams will have the option of selecting which products they’d like, giving first place winners priority and so forth. Additionally; if we have donations, that will be added to the prizepool.</li>
@@ -349,19 +349,19 @@ export default function RulesPage() {
     {
       id: "rules-charity-donation",
       label: "Charity Donation",
-      size: "24px",
+      size: "2.3vh",
       marginBottom: "20vh",
       indent: "2vw",
       content: (
         <>
-          <h3 style={{ fontSize: "28px", marginBottom: "10px", color:"#FFFCEA"}}>Charity Donation</h3>
+          <h3 style={{ fontSize: "2.6vh", marginBottom: "1vh", color:"#FFFCEA"}}>Charity Donation</h3>
           <ul
             style={{
               margin: 0,
               color: "#FFFCEA",
               fontFamily: "var(--font-josefin-sans)",
-              fontSize: "24px",
-              lineHeight: "36px",
+              fontSize: "2.3vh",
+              lineHeight: "3.5vh",
             }}
           >
             <li>This tournament’s donation contributions are dedicated to members of the osu! community who are no longer with us. We are accepting donations in support of the American Foundation for Suicide Prevention (AFSP) to honor their memory and to extend care to those who continue to struggle.</li>
@@ -381,18 +381,18 @@ export default function RulesPage() {
     {
       id: "rules-screening",
       label: "Screening",
-      size: "32px",
+      size: "3vh",
       marginBottom: "20vh",
       content: (
         <>
-          <h2 style={{ fontSize: "36px", marginBottom: "12px" }}>Screening</h2>
+          <h2 style={{ fontSize: "3.5vh", marginBottom: "1.2vh" }}>Screening</h2>
           <ul
             style={{
               margin: 0,
               color: "#FFFCEA",
               fontFamily: "var(--font-josefin-sans)",
-              fontSize: "24px",
-              lineHeight: "36px",
+              fontSize: "2.3vh",
+              lineHeight: "3.5vh",
             }}
           >
             <li>Screening will be conducted by osu! staff.</li>
@@ -407,8 +407,8 @@ export default function RulesPage() {
   return (
     <div
       style={{
-        width: "1920px",
-        height: "7500px",
+        width: "105%",
+        minHeight: "110vh",
         position: "relative",
         overflowX: "hidden",
       }}
@@ -431,10 +431,10 @@ export default function RulesPage() {
         style={{
           position: "fixed",
           top: "34vh",
-          left: "24px",
+          left: "1.3vw",
           width: "24vw",
           overflowY: "auto",
-          padding: "16px",
+          padding: ".9vw",
           zIndex: 4,
           fontWeight: "400",
           color: "#FFF7C2",
@@ -453,7 +453,7 @@ export default function RulesPage() {
             margin: 0,
             display: "flex",
             flexDirection: "column",
-            gap: "20px",
+            gap: "2vh",
           }}
         >
           {navItems.map((item) => (
@@ -507,7 +507,7 @@ export default function RulesPage() {
           width: "120vw",
           height: "109%",
           backgroundColor: "#374426",
-          border: "6px solid #FFF7C2",
+          border: ".6vh solid #FFF7C2",
           zIndex: 1,
           pointerEvents: "none",
         }}
