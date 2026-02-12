@@ -1,13 +1,27 @@
 version: '3.8'
 
 services:
+  caddy:
+    image: caddy:2
+    container_name: ltc-caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - web
+    networks:
+      - ltc-network
+
   web:
     image: bugg86/ltc-site:latest
     container_name: ltc-site-web
-    ports:
-      - "3000:3000"
     environment:
-      # MongoDB connection string with authentication
       - MONGODB_URI=mongodb://ltcuser:ltcpass@mongo:27017/ltcdb?authSource=ltcdb
       - NODE_OPTIONS=--enable-source-maps
     depends_on:
@@ -37,6 +51,8 @@ services:
 
 volumes:
   mongo_data:
+  caddy_data:
+  caddy_config:
 
 networks:
   ltc-network:
