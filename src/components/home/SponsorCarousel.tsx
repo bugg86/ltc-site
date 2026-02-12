@@ -118,7 +118,7 @@ export function SponsorCarousel() {
 		<CarouselContainer>
 			<EmblaButtonGroup>
 				<EmblaButtonWrapper style={{ justifyContent: "flex-start" }}>
-					<EmblaButton onClick={scrollNext} aria-label="Next sponsor">
+					<EmblaButton onClick={scrollPrev} aria-label="Previous sponsor">
 						<svg width="20" height="39" viewBox="0 0 20 39" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<line y1="-2" x2="23.4181" y2="-2" transform="matrix(-0.628391 0.777898 0.776591 0.630005 17.8221 2.52002)" stroke="#374426" strokeWidth="4"/>
 							<line y1="-2" x2="23.4181" y2="-2" transform="matrix(0.628391 0.777898 -0.776591 0.630005 1.80792 19.8694)" stroke="#374426" strokeWidth="4"/>
@@ -126,7 +126,7 @@ export function SponsorCarousel() {
 					</EmblaButton>
 				</EmblaButtonWrapper>
 				<EmblaButtonWrapper style={{ justifyContent: "flex-end" }}>
-					<EmblaButton onClick={scrollPrev} aria-label="Previous sponsor">
+					<EmblaButton onClick={scrollNext} aria-label="Next sponsor">
 						<svg width="20" height="39" viewBox="0 0 20 39" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<line y1="-2" x2="23.4181" y2="-2" transform="matrix(0.628391 0.777898 -0.776591 0.630005 1.80786 2.52002)" stroke="#374426" strokeWidth="4"/>
 							<line y1="-2" x2="23.4181" y2="-2" transform="matrix(-0.628391 0.777898 0.776591 0.630005 17.822 19.8695)" stroke="#374426" strokeWidth="4"/>
