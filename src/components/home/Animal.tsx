@@ -6,8 +6,8 @@ import { styled } from "@mui/material";
 const ImageLayer = styled("div")({
   position: "absolute",
   width: "30.469vw",
-  height: "46.667vh",
-  top: "143.824vh",
+  height: "26.250vw",
+  top: "24.651vw",
   left: "0.938vw",
   aspectRatio: "0.8056",
   zIndex: 3,

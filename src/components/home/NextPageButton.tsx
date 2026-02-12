@@ -14,8 +14,8 @@ interface NextPageButtonProps {
 const Button = styled("button")({
   position: "absolute",
   width: "1.93vw",
-  height: "4.12vh",
-  top: "90vh",
+  height: "2.318vw",
+  top: "50.625vw",
   left: "49.01vw",
   zIndex: "3",
   cursor: "pointer",

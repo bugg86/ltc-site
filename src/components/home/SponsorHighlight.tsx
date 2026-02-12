@@ -8,8 +8,8 @@ const Container = styled("div")({
   display: "flex",
   justifyContent: "space-between",
   width: "38.333vw",
-  height: "16.373vh",
-  top: "120.980vh",
+  height: "9.210vw",
+  top: "11.801vw",
   left: "50.677vw",
   zIndex: "3"
 });
@@ -17,19 +17,19 @@ const Container = styled("div")({
 const SponsorLayer1 = styled("div")({
     position: "relative",
     width: "8.698vw",
-    height: "16.373vh",
+    height: "9.210vw",
 });
 
 const SponsorLayer2 = styled("div")({
     position: "relative",
     width: "16.406vw",
-    height: "16.373vh",
+    height: "9.210vw",
 });
 
 const SponsorLayer3 = styled("div")({
     position: "relative",
     width: "8.646vw",
-    height: "16.373vh",
+    height: "9.210vw",
 });
 
 

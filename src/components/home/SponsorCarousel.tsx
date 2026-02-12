@@ -9,8 +9,8 @@ const BUTTON_WIDTH_VW = "2.083vw";
 const CarouselContainer = styled("div")({
 	position: "absolute",
 	width: "38.542vw",
-	height: "15.098vh",
-	top: "148.333vh",
+	height: "8.493vw",
+	top: "27.187vw",
 	left: "50.521vw",
 	zIndex: 3,
 	display: "flex",
@@ -23,7 +23,7 @@ const EmblaViewport = styled("div")({
 	overflow: "hidden",
 	width: `calc(100% - ${BUTTON_WIDTH_VW} - ${BUTTON_WIDTH_VW})`,
 	maxWidth: `calc(100% - ${BUTTON_WIDTH_VW} - ${BUTTON_WIDTH_VW})`,
-	height: "15.098vh",
+	height: "8.493vw",
 	borderRadius: "0.833vw",
 	margin: `0 ${BUTTON_WIDTH_VW}`,
 	background: "transparent",
@@ -36,7 +36,7 @@ const EmblaContainer = styled("div")({
 const EmblaSlide = styled("div")({
 	position: "relative",
 	minWidth: "33.3333%",
-	height: "15.098vh",
+	height: "8.493vw",
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",

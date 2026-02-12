@@ -15,14 +15,14 @@ const Wrapper = styled("nav")({
   display: "flex",
   alignItems: "center",
   width: "94vw",
-  height: "13vh",
+  height: "7.313vw",
 });
 
 const Logo = styled(Link)({
   position: "relative",
   display: "flex",
   width: "12.7vw",
-  height: "10.3vh",
+  height: "5.794vw",
   cursor: "pointer",
   zIndex: 5,
 });

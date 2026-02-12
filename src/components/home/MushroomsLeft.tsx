@@ -6,8 +6,8 @@ import { styled } from "@mui/material";
 const Container = styled("div")({
   position: "absolute",
   width: "12.98vw",
-  height: "18.74vh",
-  top: "51.76vh",
+  height: "10.541vw",
+  top: "29.115vw",
   left: "16.56vw",
   zIndex: "2"
 });
@@ -15,16 +15,16 @@ const Container = styled("div")({
 const MushroomLayer1 = styled("div")({
     position: "absolute",
     width: "8.60vw",
-    height: "15.80vh",
+    height: "8.888vw",
     rotate: "-2.2deg",
-    top: "1.47vh"
+    top: "0.827vw"
 });
 
 const MushroomLayer2 = styled("div")({
     position: "absolute",
     width: "7.73vw",
-    height: "14.19vh",
-    top: "4.51vh",
+    height: "7.982vw",
+    top: "2.537vw",
     left: "4.48vw",
     rotate: "6deg"
 });

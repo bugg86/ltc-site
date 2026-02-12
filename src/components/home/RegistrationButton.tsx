@@ -6,8 +6,8 @@ import { styled } from "@mui/material";
 const Container = styled("a")({
   position: "absolute",
   width: "18.28vw",
-  height: "8.14vh",
-  top: "83.14vh",
+  height: "4.579vw",
+  top: "46.766vw",
   left: "78.70vw",
   zIndex: "2",
   textDecoration: "none",
@@ -17,15 +17,15 @@ const Container = styled("a")({
 const SubContainer = styled("div")({
   position: "absolute",
   width: "18.28vw",
-  height: "7.06vh",
-  top: "1.08vh",
+  height: "3.971vw",
+  top: "0.608vw",
   zIndex: "2"
 });
 
 const ImageLayer = styled("div")({
     position: "absolute",
     width: "11.72vw",
-    height: "2.25vh",
+    height: "1.266vw",
     left: "3.28vw",
     zIndex: "3"
 });
@@ -33,7 +33,7 @@ const ImageLayer = styled("div")({
 const Shape1 = styled("div")({
     position: "absolute",
     width: "18.28vw",
-    height: "7.06vh",
+    height: "3.971vw",
     borderRadius: "200px",
     background: "linear-gradient(90deg, rgba(55, 68, 38, 0.5) 0%, rgba(55, 98, 42, 0.5) 100%);"
 });
@@ -41,19 +41,19 @@ const Shape1 = styled("div")({
 const Shape2 = styled("div")({
     position: "absolute",
     width: "17.97vw",
-    height: "6.57vh",
+    height: "3.696vw",
     borderRadius: "200px",
     borderRight: "2px solid var(--Primary-Pistachio, #9FB878)",
     borderBottom: "2px solid var(--Primary-Pistachio, #9FB878)",
     borderLeft: "2px solid var(--Primary-Pistachio, #9FB878)",
     left: "0.16vw",
-    top: "0.20vh",
+    top: "0.113vw",
 });
 
 const Text = styled("span")({
     position: "absolute",
     width: "12.24vw",
-    height: "6.08vh",
+    height: "3.420vw",
     top: "25%",
     left: "16.5%",
     fontFamily: "var(--font-josefin-sans)",

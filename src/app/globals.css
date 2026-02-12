@@ -16,7 +16,7 @@ body {
   background-repeat: no-repeat;
   background-blend-mode: overlay;
   overflow: hidden;
-  height: 100vh;
+  height: max(100vh, 56.25vw);
   width: 100vw;
   position: relative;
   z-index: 2;
@@ -36,16 +36,17 @@ body {
 
 .second-half {
   background: var(--Primary-Deep-Forest, #374426);
-  height: 100vh;
+  height: max(100vh, 56.25vw);
   width: 100vw;
+  position: relative;
 }
 
 .second-half-sub-background {
   position: relative;
   fill: linear-gradient(0deg, var(--Primary-Pale-Yellow, #FFF7C2) 0%, var(--Shade-White, #FFFCEA) 100%);
   width: 93.958vw;
-  height: 67.059vh;
-  top: 11.078vh;
+  height: 37.721vw;
+  top: 6.231vw;
   left: 3.021vw;
   border: 0.417vw;
   stroke-width: 0.417vw;
@@ -55,18 +56,18 @@ body {
 
 .left-decor {
   width: 1.510vw;
-  height: 23.824vh;
+  height: 13.401vw;
   position: absolute;
-  top: 131.667vh;
+  top: 17.813vw;
   left: 4.271vw;
   z-index: 3;
 }
 
 .right-decor {
   width: 1.510vw;
-  height: 23.824vh;
+  height: 13.401vw;
   position: absolute;
-  top: 131.667vh;
+  top: 17.813vw;
   left: 94.323vw;
   z-index: 3;
 }

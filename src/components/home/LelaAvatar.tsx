@@ -16,7 +16,7 @@ const ImageLayer = styled("div")({
   width: "40vw",
   height: "52vw",
   left: "32vw",
-  top: "12vh",
+  top: "6.75vw",
   // aspectRatio: "0.8056",
   zIndex: 2,
 });

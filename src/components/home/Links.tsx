@@ -8,7 +8,7 @@ const Container = styled("div")({
   position: "absolute",
   width: "32vw",
   height: "4.6vw",
-  top: "81vh",
+  top: "45.563vw",
   left: "46vw",
   zIndex: 2,
 });
@@ -62,7 +62,7 @@ export function Links() {
             left: `${(32 / 5) * idx}vw`,
             top: 0,
             width: `${32 / 5}vw`,
-            height: "8.9vh",
+            height: "5.006vw",
             zIndex: 2,
             display: "block",
           }}

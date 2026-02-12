@@ -6,8 +6,8 @@ import { styled } from "@mui/material";
 const Container = styled("div")({
   position: "absolute",
   width: "14.00vw",
-  height: "25.72vh",
-  top: "46.86vh",
+  height: "14.468vw",
+  top: "26.359vw",
   left: "84.01vw",
   rotate: "0deg",
   zIndex: "2"
