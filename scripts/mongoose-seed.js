@@ -52,6 +52,7 @@ var PlayerSchema = new mongoose_1.default.Schema({
     discordName: { type: String, required: true, unique: false },
     country: { type: String, required: true, unique: false },
     profilePicture: { type: String, required: true, unique: false },
+    profileLink: { type: String, required: true, unique: false },
     rank: { type: Number, required: true, unique: false },
 });
 var TeamSchema = new mongoose_1.default.Schema({

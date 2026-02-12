@@ -8,7 +8,7 @@ const MapSchema = new mongoose.Schema({
   round: { type: String, required: true, unique: false },
   slot: { type: String, required: true, unique: false },
   name: { type: String, required: true, unique: false },
-  difficulty: { type: String, required: true, unique: false},
+  difficulty: { type: String, required: true, unique: false },
   mapper: { type: String, required: true, unique: false },
 });
 
@@ -17,6 +17,7 @@ const PlayerSchema = new mongoose.Schema({
   discordName: { type: String, required: true, unique: false },
   country: { type: String, required: true, unique: false },
   profilePicture: { type: String, required: true, unique: false },
+  profileLink: { type: String, required: true, unique: false },
   rank: { type: Number, required: true, unique: false },
 });
 
@@ -30,15 +31,15 @@ const TeamSchema = new mongoose.Schema({
 
 const StaffSchema = new mongoose.Schema({
   osuName: { type: String, required: true, unique: false },
+  position: { type: String, required: true, unique: false },
   discordName: { type: String, required: true, unique: false },
   role: { type: String, required: true, unique: false },
-  county: { type: String, required: true, unique: false },
+  country: { type: String, required: true, unique: false },
   profilePicture: { type: String, required: true, unique: false },
+  profileLink: { type: String, required: false, unique: false },
 });
 
-const ScheduleSchema = new mongoose.Schema({
-  
-});
+const ScheduleSchema = new mongoose.Schema({});
 
 // Example models
 const Map = mongoose.model("Map", MapSchema);
@@ -57,12 +58,12 @@ async function seed() {
   // await Post.deleteMany({});
 
   // Example: Insert initial db values to generate collections
-  await Map.create({ 
+  await Map.create({
     round: "temp",
     slot: "NM1",
     name: "Harumachi Clover",
     difficulty: "Insane",
-    mapper: "Sotarks" 
+    mapper: "Sotarks"
   });
 
   await Player.create({
@@ -96,16 +97,18 @@ async function seed() {
     player2: await Player.findOne({ osuName: "Accnome" }).then(p => p?._id),
     player3: await Player.findOne({ osuName: "Valene" }).then(p => p?._id),
   });
+
   await Staff.create({
     osuName: "Convex",
     discordName: "convex",
     role: "Web Dev",
-    county: "US",
+    position: "Website Developer",
+    country: "https://osuflags.omkserver.nl/US.png",
     profilePicture: "https://a.ppy.sh/11292327",
+    profileLink: "https://osu.ppy.sh/users/11292327"
   });
-  await Schedule.create({
 
-  });
+  await Schedule.create({});
 
   console.log("Database seeded!");
   await mongoose.disconnect();

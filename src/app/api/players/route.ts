@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/ltcdb";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://ltcuser:ltcpass@localhost:27017/ltcdb?authSource=ltcdb";
 
 const PlayerSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  team: { type: mongoose.Schema.Types.ObjectId, ref: "Team" },
-  rank: { type: Number },
-  // Add more fields as needed
+  osuName: { type: String, required: true },
+  discordName: { type: String, required: true },
+  country: { type: String, required: true },
+  profilePicture: { type: String, required: true },
+  rank: { type: Number, required: true },
 });
 
 const Player = mongoose.models.Player || mongoose.model("Player", PlayerSchema);
