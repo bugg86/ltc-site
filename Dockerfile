@@ -1,5 +1,4 @@
-# use the official Bun image
-# see all versions at https://hub.docker.com/r/oven/bun/tags
+# use the official Bun image for fast install & build
 FROM oven/bun:1 AS base
 WORKDIR /usr/src/app
 
@@ -21,20 +20,19 @@ FROM base AS prerelease
 COPY --from=install /temp/dev/node_modules node_modules
 COPY . .
 
-# [optional] tests & build
+# build
 ENV NODE_ENV=production
-# RUN bun test
 RUN bun run build
 
-# copy production dependencies and source code into final image
-FROM base AS release
+# use Node.js for the production runtime (Bun has compatibility issues with Next.js)
+FROM node:20-slim AS release
+WORKDIR /usr/src/app
+
 COPY --from=install /temp/prod/node_modules node_modules
 COPY --from=prerelease /usr/src/app .
 
-RUN mkdir -p /usr/src/app/.next/cache/images && \
-    chown -R bun:bun /usr/src/app
+RUN mkdir -p /usr/src/app/.next/cache/images
 
 # run the app
-USER bun
 EXPOSE 3000/tcp
-ENTRYPOINT [ "bun", "run", "start" ]
+CMD ["npx", "next", "start"]
