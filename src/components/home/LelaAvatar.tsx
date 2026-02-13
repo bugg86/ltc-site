@@ -29,6 +29,7 @@ export function LelaAvatar() {
           src="/home/lela-avatar.png"
           alt="Lela"
           fill
+          priority
         />
       </ImageLayer>
     // </Container>

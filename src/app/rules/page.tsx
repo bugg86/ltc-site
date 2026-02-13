@@ -39,7 +39,7 @@ export default function RulesPage() {
       id: "rules-basic-info",
       label: "Basic Info",
       size: "3vh",
-      marginBottom: "24vh",
+      marginBottom: "10vh",
       content: (
         <>
           <h2 style={{ fontSize: "3.5vh", marginBottom: "1.2vh" }}>Basic Info</h2>
@@ -74,7 +74,7 @@ export default function RulesPage() {
       id: "rules-mappool",
       label: "Mappool Slot Description",
       size: "3vh",
-      marginBottom: "24vh",
+      marginBottom: "10vh",
       content: (
         <>
           <h2 style={{ fontSize: "3.5vh", marginBottom: "1.2vh" }}>Mappool Slot Description</h2>
@@ -106,7 +106,7 @@ export default function RulesPage() {
       id: "rules-qualifiers-procedures",
       label: "Qualifiers Procedures",
       size: "3vh",
-      marginBottom: "24vh",
+      marginBottom: "10vh",
       content: (
         <>
           <h2 style={{ fontSize: "3.5vh", marginBottom: "1.2vh" }}>Qualifiers Procedures</h2>
@@ -149,7 +149,7 @@ export default function RulesPage() {
       id: "rules-scheduling",
       label: "Scheduling",
       size: "2.3vh",
-      marginBottom: "14vh",
+      marginBottom: "6vh",
       indent: "2vw",
       content: (
         <>
@@ -178,7 +178,7 @@ export default function RulesPage() {
       id: "rules-match-procedures",
       label: "Match Procedures",
       size: "2.3vh",
-      marginBottom: "14vh",
+      marginBottom: "6vh",
       indent: "2vw",
       content: (
         <>
@@ -212,7 +212,7 @@ export default function RulesPage() {
       id: "rules-bans-and-picks",
       label: "Bans and Picks",
       size: "2.3vh",
-      marginBottom: "14vh",
+      marginBottom: "6vh",
       indent: "2vw",
       content: (
         <>
@@ -241,7 +241,7 @@ export default function RulesPage() {
       id: "rules-tiebreaker",
       label: "Tiebreaker",
       size: "2.3vh",
-      marginBottom: "24vh",
+      marginBottom: "10vh",
       indent: "2vw",
       content: (
         <>
@@ -270,7 +270,7 @@ export default function RulesPage() {
       id: "rules-schedule",
       label: "Schedule",
       size: "3vh",
-      marginBottom: "24vh",
+      marginBottom: "10vh",
       content: (
         <>
           <h2 style={{ fontSize: "3.5vh", marginBottom: "1.2vh" }}>Schedule</h2>
@@ -322,7 +322,7 @@ export default function RulesPage() {
       id: "rules-prizes",
       label: "Prizes",
       size: "3vh",
-      marginBottom: "20vh",
+      marginBottom: "10vh",
       content: (
         <>
           <h2 style={{ fontSize: "3.5vh", marginBottom: "1.2vh" }}>Prizes</h2>
@@ -350,7 +350,7 @@ export default function RulesPage() {
       id: "rules-charity-donation",
       label: "Charity Donation",
       size: "2.3vh",
-      marginBottom: "20vh",
+      marginBottom: "10vh",
       indent: "2vw",
       content: (
         <>
@@ -382,7 +382,7 @@ export default function RulesPage() {
       id: "rules-screening",
       label: "Screening",
       size: "3vh",
-      marginBottom: "20vh",
+      marginBottom: "10vh",
       content: (
         <>
           <h2 style={{ fontSize: "3.5vh", marginBottom: "1.2vh" }}>Screening</h2>
@@ -427,6 +427,20 @@ export default function RulesPage() {
           }}
         />
       <DesktopNavbar />
+      <h1
+        style={{
+          position: "absolute",
+          top: "19vh",
+          left: "4vw",
+          zIndex: 3,
+          color: "#FFF7C2",
+          fontFamily: "var(--font-sunlight-dreams)",
+          fontSize: "4vw",
+          margin: 0,
+        }}
+      >
+        Rules & Prizes
+      </h1>
       <nav
         style={{
           position: "fixed",

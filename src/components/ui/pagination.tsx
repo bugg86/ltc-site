@@ -82,7 +82,7 @@ function PaginationPrevious({
   const registerStyle: React.CSSProperties = {
     background:
       "linear-gradient(90deg, rgba(55, 68, 38, 0.50) 0%, rgba(55, 98, 42, 0.50) 100%), var(--Primary-Deep-Forest, #374426)",
-    borderRadius: "2vh",
+    borderRadius: "50vh",
     borderRight: ".2vh solid var(--Primary-Pistachio, #9FB878)",
     borderBottom: ".2vh solid var(--Primary-Pistachio, #9FB878)",
     borderLeft: ".2vh solid var(--Primary-Pistachio, #9FB878)",
@@ -91,6 +91,7 @@ function PaginationPrevious({
     fontStyle: "italic",
     fontWeight: 500,
     fontSize: "3.6vh",
+    overflow: "hidden",
   }
 
   return (
@@ -98,12 +99,18 @@ function PaginationPrevious({
       aria-label="Go to previous page"
       size="default"
       className={cn(
-        "relative gap-2 px-6 w-[16.6667vw] h-[7.6923vh] -translate-y-[10vh]",
+        "group relative gap-2 px-6 w-[16.6667vw] h-[7.6923vh] -translate-y-[10vh]",
         className
       )}
       style={{ ...registerStyle, ...style }}
       {...props}
     >
+      <span
+        className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-800 ease-in-out group-hover:opacity-100"
+        style={{
+          background: "linear-gradient(270deg, rgba(55, 68, 38, 0.50) 0%, rgba(159, 184, 120, 0.50) 100%), var(--Primary-Deep-Forest, #374426)",
+        }}
+      />
       <span
         className="pointer-events-none absolute left-1/2 -translate-x-1/2"
         style={{
@@ -125,12 +132,13 @@ function PaginationNext({
   className,
   style,
   label = "NEXT",
+  hoverBackground,
   ...props
-}: React.ComponentProps<typeof PaginationLink> & { label?: string }) {
+}: React.ComponentProps<typeof PaginationLink> & { label?: string; hoverBackground?: string }) {
   const registerStyle: React.CSSProperties = {
     background:
       "linear-gradient(90deg, rgba(55, 68, 38, 0.50) 0%, rgba(55, 98, 42, 0.50) 100%), var(--Primary-Deep-Forest, #374426)",
-    borderRadius: "2vh",
+    borderRadius: "50vh",
     borderRight: ".2vh solid var(--Primary-Pistachio, #9FB878)",
     borderBottom: ".2vh solid var(--Primary-Pistachio, #9FB878)",
     borderLeft: ".2vh solid var(--Primary-Pistachio, #9FB878)",
@@ -138,7 +146,8 @@ function PaginationNext({
     fontFamily: "var(--font-josefin-sans)",
     fontStyle: "italic",
     fontWeight: 500,
-    fontSize: "3.6vh"
+    fontSize: "3.6vh",
+    overflow: "hidden",
   }
 
   return (
@@ -146,12 +155,18 @@ function PaginationNext({
       aria-label="Go to next page"
       size="default"
       className={cn(
-        "relative gap-2 px-6 w-[16.6667vw] h-[7.6923vh] -translate-y-[10vh]",
+        "group relative gap-2 px-6 w-[16.6667vw] h-[7.6923vh] -translate-y-[10vh]",
         className
       )}
       style={{ ...registerStyle, ...style }}
       {...props}
     >
+      <span
+        className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-800 ease-in-out group-hover:opacity-100"
+        style={{
+          background: hoverBackground || "linear-gradient(270deg, rgba(55, 68, 38, 0.50) 0%, rgba(159, 184, 120, 0.50) 100%), var(--Primary-Deep-Forest, #374426)",
+        }}
+      />
       <span
         className="pointer-events-none absolute left-1/2 -translate-x-1/2"
         style={{

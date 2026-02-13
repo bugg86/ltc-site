@@ -283,15 +283,17 @@ export default function LorePage() {
       />
       <Pagination className="fixed bottom-0 left-1/2 w-auto -translate-x-1/2">
         <PaginationContent className="gap-6">
-          <PaginationItem>
-            <PaginationPrevious
-              href="#"
-              onClick={(event) => {
-                event.preventDefault()
-                handlePrevious()
-              }}
-            />
-          </PaginationItem>
+          {currentIndex > 0 && (
+            <PaginationItem>
+              <PaginationPrevious
+                href="#"
+                onClick={(event) => {
+                  event.preventDefault()
+                  handlePrevious()
+                }}
+              />
+            </PaginationItem>
+          )}
           <PaginationItem>
             <PaginationNext
               href={
@@ -300,6 +302,7 @@ export default function LorePage() {
                   : "#"
               }
               label={currentIndex === sections.length - 1 ? "REGISTER" : "NEXT"}
+              hoverBackground="linear-gradient(270deg, rgba(159, 184, 120, 0.50) 0%, rgba(55, 68, 38, 0.50) 100%), var(--Primary-Deep-Forest, #374426)"
               onClick={(event) => {
                 if (currentIndex !== sections.length - 1) {
                   event.preventDefault()

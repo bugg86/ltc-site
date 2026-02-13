@@ -49,16 +49,31 @@ export default function TeamsPage() {
         style={{
           position: "absolute",
           inset: 0,
+          top: "-25vh",
           backgroundImage: "url(/teams/bg.webp)",
           backgroundRepeat: "no-repeat",
-          backgroundPosition: "top center",
+          backgroundPosition: "",
           backgroundSize: "100% auto",
-          opacity: 0.7,
+          opacity: 1,
           pointerEvents: "none",
           zIndex: 0,
         }}
       />
       <DesktopNavbar />
+      <h1
+        style={{
+          position: "absolute",
+          top: "19vh",
+          left: "4vw",
+          zIndex: 3,
+          color: "#FFF7C2",
+          fontFamily: "var(--font-sunlight-dreams)",
+          fontSize: "4vw",
+          margin: 0,
+        }}
+      >
+        Teams
+      </h1>
       <div
         style={{
           position: "absolute",

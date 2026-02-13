@@ -54,7 +54,7 @@ export default function StaffPage() {
   return (
     <div
       style={{
-        width: "110%",
+        width: "100%",
         minHeight: "100vh",
         position: "relative",
         overflowX: "hidden",
@@ -75,11 +75,25 @@ export default function StaffPage() {
         }}
       />
       <DesktopNavbar />
+      <h1
+        style={{
+          position: "absolute",
+          top: "19vh",
+          left: "4vw",
+          zIndex: 3,
+          color: "#FFF7C2",
+          fontFamily: "var(--font-sunlight-dreams)",
+          fontSize: "4vw",
+          margin: 0,
+        }}
+      >
+        Staff
+      </h1>
       <div
         style={{
           position: "relative",
           zIndex: 2,
-          paddingTop: "35vh",
+          paddingTop: "25vh",
           paddingLeft: "2vw",
           paddingRight: "2vw",
           paddingBottom: "10vh",
@@ -200,7 +214,7 @@ export default function StaffPage() {
       <div
         style={{
           position: "absolute",
-          top: "42vh",
+          top: "30vh",
           left: "-10vw",
           width: "120vw",
           bottom: 0,

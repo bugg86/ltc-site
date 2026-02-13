@@ -34,6 +34,7 @@ const MUSHROOM_1 = (
             src="/home/mushroom3.png"
             alt="Mushroom3"
             fill
+            priority
           />
 );
 
@@ -42,6 +43,7 @@ const MUSHROOM_2 = (
             src="/home/mushroom1.png"
             alt="Mushroom1"
             fill
+            priority
           />
 );
 

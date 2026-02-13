@@ -20,6 +20,7 @@ export function Animal() {
           src="/home/animal1.png"
           alt="Animal"
           fill
+          priority
         />
       </ImageLayer>
   );

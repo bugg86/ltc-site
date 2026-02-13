@@ -6,10 +6,10 @@ import { styled } from "@mui/material";
 
 const Container = styled("div")({
   position: "absolute",
-  width: "32vw",
+  width: "31.1vw",
   height: "4.6vw",
   top: "45.563vw",
-  left: "46vw",
+  left: "34.7vw",
   zIndex: 2,
 });
 
@@ -23,7 +23,7 @@ const zones = [
     label: "Twitch",
   },
   {
-    href: "https://docs.google.com/spreadsheets/",
+    href: "https://docs.google.com/spreadsheets/d/15AIikFo6gDeDBX6J8aN37i0XKSGysg2S21UZe39pJ0Q/edit?usp=sharing",
     label: "Main Sheet",
   },
   {
@@ -42,6 +42,7 @@ const LinkImage = (
     src="/home/links.webp"
     alt="Links"
     fill
+    priority
     style={{ zIndex: 1 }}
   />
 );

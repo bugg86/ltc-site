@@ -35,14 +35,26 @@ const Shape1 = styled("div")({
     width: "18.28vw",
     height: "3.971vw",
     borderRadius: "200px",
-    background: "linear-gradient(90deg, rgba(55, 68, 38, 0.5) 0%, rgba(55, 98, 42, 0.5) 100%);"
+    background: "linear-gradient(90deg, rgba(55, 68, 38, 0.5) 0%, rgba(55, 98, 42, 0.5) 100%)",
+    "&::before": {
+        content: '""',
+        position: "absolute",
+        inset: 0,
+        borderRadius: "inherit",
+        background: "linear-gradient(270deg, rgba(55, 68, 38, 0.50) 0%, rgba(159, 184, 120, 0.50) 100%), var(--Primary-Deep-Forest, #374426)",
+        opacity: 0,
+        transition: "opacity .8s ease",
+    },
+    "a:hover &::before": {
+        opacity: 1,
+    },
 });
 
 const Shape2 = styled("div")({
     position: "absolute",
     width: "17.97vw",
     height: "3.696vw",
-    borderRadius: "200px",
+    borderRadius: "50vh",
     borderRight: "2px solid var(--Primary-Pistachio, #9FB878)",
     borderBottom: "2px solid var(--Primary-Pistachio, #9FB878)",
     borderLeft: "2px solid var(--Primary-Pistachio, #9FB878)",

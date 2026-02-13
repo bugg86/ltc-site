@@ -19,6 +19,7 @@ export function Vectors() {
         src="/home/vectors.png"
         alt="Vectors"
         fill
+        priority
         style={{ objectFit: "cover" }}
       />
     </Container>

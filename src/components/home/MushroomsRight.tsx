@@ -18,6 +18,7 @@ const MUSHROOM_1 = (
             src="/home/mushroom2.png"
             alt="Mushroom2"
             fill
+            priority
           />
 );
 
