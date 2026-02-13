@@ -9,6 +9,7 @@ interface Player {
   discordName: string;
   country: string;
   profilePicture: string;
+  profileLink: string;
   rank: number;
 }
 
@@ -65,7 +66,7 @@ export default function TeamsPage() {
           left: "-10vw",
           width: "120vw",
           bottom: 0,
-          backgroundColor: "#374426",
+          background: "linear-gradient(0deg, #374426 0%, #37622A 50%, #9FB878 100%)",
           border: "6px solid #FFF7C2",
           zIndex: 1,
           pointerEvents: "none",
@@ -75,42 +76,107 @@ export default function TeamsPage() {
         style={{
           position: "relative",
           zIndex: 2,
-          paddingTop: "35vh",
+          paddingTop: "25vh",
           paddingLeft: "4vw",
           paddingRight: "4vw",
           paddingBottom: "10vh",
-          display: "grid",
-          gridTemplateColumns: "repeat(6, 1fr)",
-          gap: "1.5vw",
         }}
       >
+        <div
+          style={{
+            backgroundColor: "rgba(159, 184, 120, 1)",
+            border: "0.417vw solid rgba(255, 247, 194, 1)",
+            borderRadius: "0.833vw",
+            padding: "1.5vw",
+            display: "grid",
+            gridTemplateColumns: "repeat(6, 1fr)",
+            gridAutoRows: "min-content",
+            alignItems: "start",
+            gap: "1.5vw",
+          }}
+        >
         {loading ? (
           <p style={{ fontSize: "24px", color: "#FFF7C2", gridColumn: "1 / -1" }}>Loading teams...</p>
         ) : teams.map((team) => (
           <div
             key={team._id}
             style={{
-              backgroundColor: "rgba(255, 247, 194, 0.9)",
-              borderRadius: "0.833vw",
-              padding: "1.2vw",
+              backgroundColor: "rgba(209, 223, 213, 1)",
+              borderRadius: "0 0.833vw 0.833vw 0.833vw",
+              overflow: "hidden",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
               display: "flex",
               flexDirection: "column",
-              gap: "0.5vh",
+              alignSelf: "start",
+              fontFamily: "var(--font-josefin-sans)",
             }}
           >
-            <h3 style={{ margin: 0, color: "#374426", fontSize: "1.1vw", fontWeight: 700 }}>
+            {team.teamPicture && (
+              <img
+                src={team.teamPicture}
+                alt={team.teamName}
+                style={{
+                  width: "100%",
+                  display: "block",
+                  objectFit: "cover",
+                }}
+              />
+            )}
+            <h3 style={{ margin: 0, padding: "0.5vh 0.6vw 0", color: "#000000", fontSize: "1.2vw", fontWeight: 700, fontFamily: "var(--font-josefin-sans)" }}>
               {team.teamName}
             </h3>
-            <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
-              {[team.player1, team.player2, team.player3].map((player) => (
-                <li key={player._id} style={{ color: "#374426", fontSize: "0.85vw" }}>
-                  {player.osuName} ({player.country}) #{player.rank}
-                </li>
-              ))}
+            <ul style={{ margin: 0, padding: "0.3vh 0.6vw 0.6vw", listStyle: "none", display: "flex", flexDirection: "column", gap: "2vh" }}>
+              {[team.player1, team.player2, team.player3].flatMap((player, i, arr) => [
+                <li key={player._id}>
+                  <a
+                    href={player.profileLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "#000000", fontSize: "0.85vw", display: "flex", alignItems: "center", gap: "0.4vw", textDecoration: "none" }}
+                  >
+                    {player.profilePicture && (
+                      <img
+                        src={player.profilePicture}
+                        alt={player.osuName}
+                        style={{
+                          width: "3.8vw",
+                          height: "3.8vw",
+                          borderRadius: "0.5vw",
+                          objectFit: "cover",
+                          flexShrink: 0,
+                        }}
+                      />
+                    )}
+                    <div style={{ display: "flex", flexDirection: "column", gap: "0.2vh", flex: 1, minWidth: 0 }}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                        <span>{player.osuName}</span>
+                        {player.country && (
+                          <img
+                            src={player.country}
+                            alt="country"
+                            style={{ height: "0.85vw" }}
+                          />
+                        )}
+                      </div>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", opacity: 0.75 }}>
+                        <span style={{ display: "flex", alignItems: "center", gap: "0.15vw" }}>
+                          <img src="/teams/discord.png" alt="discord" style={{ height: "1vw" }} />
+                          {player.discordName}
+                        </span>
+                        <span>#{player.rank}</span>
+                      </div>
+                    </div>
+                  </a>
+                </li>,
+                ...(i < arr.length - 1 ? [<li key={`sep-${player._id}`} style={{ display: "flex", justifyContent: "center", margin: "-0.8vh 0" }}>
+                  <img src="/teams/design.png" alt="" style={{ width: "10%" }} />
+                </li>] : []),
+              ])}
             </ul>
           </div>
         ))}
         </div>
+      </div>
     </div>
   );
 }
