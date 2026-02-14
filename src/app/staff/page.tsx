@@ -150,6 +150,7 @@ export default function StaffPage() {
                         <img
                           src={member.profilePicture}
                           alt={member.osuName}
+                          referrerPolicy="no-referrer"
                           style={{
                             width: "auto",
                             height: "100%",

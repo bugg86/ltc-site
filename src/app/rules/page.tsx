@@ -407,7 +407,7 @@ export default function RulesPage() {
   return (
     <div
       style={{
-        width: "105%",
+        width: "100%",
         minHeight: "110vh",
         position: "relative",
         overflowX: "hidden",
