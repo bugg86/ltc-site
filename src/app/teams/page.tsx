@@ -112,6 +112,11 @@ export default function TeamsPage() {
         >
         {loading ? (
           <p style={{ fontSize: "24px", color: "#FFF7C2", gridColumn: "1 / -1" }}>Loading teams...</p>
+        ) : teams.length === 0 ? (
+          <div style={{ gridColumn: "1 / -1", display: "flex", flexDirection: "column", alignItems: "center", padding: "4vh 0" }}>
+            <p style={{ fontSize: "2vw", color: "#FFF7C2", textAlign: "center", fontFamily: "var(--font-josefin-sans)", margin: 0 }}>No teams found...</p>
+            <img src="/teams/noteams.png" alt="" style={{ marginTop: "2vh" }} />
+          </div>
         ) : teams.map((team) => (
           <div
             key={team._id}
