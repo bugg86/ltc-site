@@ -505,7 +505,7 @@ export default function RulesPage() {
               marginBottom: item.marginBottom, 
               scrollMarginTop: "20vh", 
               whiteSpace: "normal",
-              maxWidth: "72vw",
+              maxWidth: "68vw",
               overflowWrap: "anywhere",
             }}
           >

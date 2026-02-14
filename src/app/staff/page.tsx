@@ -26,6 +26,8 @@ const POSITIONS = [
   "PLAYTESTERS",
   "SHEETERS",
   "WEBSITE DEVELOPERS",
+  "GRANDS TB",
+  "COLLAB",
   "Referees",
 ];
 
