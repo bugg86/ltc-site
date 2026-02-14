@@ -31,7 +31,7 @@ const zones = [
     label: "Challonge",
   },
   {
-    href: "https://osu.ppy.sh/community/forums/",
+    href: "https://osu.ppy.sh/community/forums/topics/2179445?n=1",
     label: "Forum Post",
   },
 ];
