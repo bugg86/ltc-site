@@ -26,7 +26,7 @@ const TeamSchema = new mongoose.Schema({
   teamPicture: { type: String, required: true, unique: false },
   player1: { type: mongoose.Schema.Types.ObjectId, ref: 'Player', required: true },
   player2: { type: mongoose.Schema.Types.ObjectId, ref: 'Player', required: true },
-  player3: { type: mongoose.Schema.Types.ObjectId, ref: 'Player', required: true },
+  player3: { type: mongoose.Schema.Types.ObjectId, ref: 'Player', required: false },
 });
 
 const StaffSchema = new mongoose.Schema({
