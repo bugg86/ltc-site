@@ -1,52 +1,398 @@
 [
   {
-    "album": "The White Stripes",
-    "year": 1999,
-    "US_peak_chart_post": "-"
+    "teamName": "test team 1",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
   },
   {
-    "album": "De Stijl",
-    "year": 2000,
-    "US_peak_chart_post": "-"
+    "teamName": "test team 1",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
   },
   {
-    "album": "White Blood Cells",
-    "year": 2001,
-    "US_peak_chart_post": 61
+    "teamName": "test team 1",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
   },
   {
-    "album": "Elephant",
-    "year": 2003,
-    "US_peak_chart_post": 6
+    "teamName": "test team 2",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
   },
   {
-    "album": "Get Behind Me Satan",
-    "year": 2005,
-    "US_peak_chart_post": 3
+    "teamName": "test team 2",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
   },
   {
-    "album": "Icky Thump",
-    "year": 2007,
-    "US_peak_chart_post": 2
+    "teamName": "test team 2",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
   },
   {
-    "album": "Under Great White Northern Lights",
-    "year": 2010,
-    "US_peak_chart_post": 11
+    "teamName": "test team 3",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
   },
   {
-    "album": "Live in Mississippi",
-    "year": 2011,
-    "US_peak_chart_post": "-"
+    "teamName": "test team 3",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
   },
   {
-    "album": "Live at the Gold Dollar",
-    "year": 2012,
-    "US_peak_chart_post": "-"
+    "teamName": "test team 3",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
   },
   {
-    "album": "Nine Miles from the White City",
-    "year": 2013,
-    "US_peak_chart_post": "-"
+    "teamName": "test team 4",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 4",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 4",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 5",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 5",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 5",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 6",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 6",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 6",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 7",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 7",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 7",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 8",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 8",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 8",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 9",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 9",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 9",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 10",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 10",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 10",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 11",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 11",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 11",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 12",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 12",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
+  },
+  {
+    "teamName": "test team 12",
+    "teamPicture": "https://a.ppy.sh/19607568",
+    "userId": 19607568,
+    "osuName": "lela",
+    "discordName": "lelavt",
+    "country": "https://osuflags.omkserver.nl/US.png",
+    "profilePicture": "https://a.ppy.sh/19607568",
+    "profileLink": "https://osu.ppy.sh/users/19607568",
+    "rank": 64061
   }
 ]
