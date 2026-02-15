@@ -17,7 +17,7 @@ const TeamSchema = new mongoose.Schema({
   teamPicture: { type: String, required: true, unique: false },
   player1: { type: mongoose.Schema.Types.ObjectId, ref: "Player", required: true },
   player2: { type: mongoose.Schema.Types.ObjectId, ref: "Player", required: true },
-  player3: { type: mongoose.Schema.Types.ObjectId, ref: "Player", required: true },
+  player3: { type: mongoose.Schema.Types.ObjectId, ref: "Player", required: false },
 });
 
 if (!mongoose.models.Player) {
@@ -125,8 +125,8 @@ export async function POST(request: Request) {
 
     // Process each team
     for (const [teamName, players] of teamMap.entries()) {
-      if (players.length !== 3) {
-        errors.push(`Team "${teamName}" has ${players.length} players, expected 3. Skipping.`);
+      if (players.length < 2 || players.length > 3) {
+        errors.push(`Team "${teamName}" has ${players.length} players, expected 2 or 3. Skipping.`);
         continue;
       }
 
@@ -134,7 +134,7 @@ export async function POST(request: Request) {
         // Insert all players for this team
         const p1 = await insertPlayer(players[0]);
         const p2 = await insertPlayer(players[1]);
-        const p3 = await insertPlayer(players[2]);
+        const p3 = players[2] ? await insertPlayer(players[2]) : undefined;
 
         const teamPicture = players[0].teamPicture;
 
@@ -146,7 +146,7 @@ export async function POST(request: Request) {
           existingTeam.teamPicture = teamPicture;
           existingTeam.player1 = p1._id;
           existingTeam.player2 = p2._id;
-          existingTeam.player3 = p3._id;
+          existingTeam.player3 = p3?._id;
           await existingTeam.save();
           updatedTeams.push(existingTeam);
         } else {
@@ -156,7 +156,7 @@ export async function POST(request: Request) {
             teamPicture,
             player1: p1._id,
             player2: p2._id,
-            player3: p3._id,
+            ...(p3 && { player3: p3._id }),
           });
           importedTeams.push(team);
         }
