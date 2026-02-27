@@ -19,7 +19,7 @@ interface Team {
   teamPicture: string;
   player1: Player;
   player2: Player;
-  player3: Player;
+  player3?: Player;
 }
 
 function ScrollingDiscordName({ name }: { name: string }) {
@@ -190,7 +190,7 @@ export default function TeamsPage() {
               {team.teamName}
             </h3>
             <ul style={{ margin: 0, padding: "0.3vh 0.6vw 0.6vw", listStyle: "none", display: "flex", flexDirection: "column", gap: "2vh" }}>
-              {[team.player1, team.player2, team.player3].flatMap((player, i, arr) => [
+              {[team.player1, team.player2, team.player3].filter((p): p is Player => p !== undefined).flatMap((player, i, arr) => [
                 <li key={player._id}>
                   <a
                     href={player.profileLink}

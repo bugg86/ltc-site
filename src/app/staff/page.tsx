@@ -26,9 +26,9 @@ const POSITIONS = [
   "PLAYTESTERS",
   "SHEETERS",
   "WEBSITE DEVELOPERS",
+  "Referees",
   "GRANDS TB",
   "COLLAB",
-  "Referees",
 ];
 
 export default function StaffPage() {
@@ -124,7 +124,7 @@ export default function StaffPage() {
                   style={{
                     display: "flex",
                     flexWrap: "wrap",
-                    gap: "2vw",
+                    gap: "1.2vw",
                   }}
                 >
                   {members.map((member) => (
