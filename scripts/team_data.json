@@ -1,11 +1,11 @@
 [
   {
-    "teamName": "test team 1",
+    "teamName": "test team 1aaaaaa",
     "teamPicture": "https://a.ppy.sh/19607568",
     "player1": {
       "User ID": 19607568,
       "Username": "lela",
-      "Discord": "lelavt",
+      "Discord": "lelavtaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
       "Country": "https://osuflags.omkserver.nl/US.png",
       "profilePicture": "https://a.ppy.sh/19607568",
       "profileLink": "https://osu.ppy.sh/users/19607568",
@@ -23,7 +23,7 @@
     "player3": {
       "User ID": 19607568,
       "Username": "lela",
-      "Discord": "lelavt",
+      "Discord": "lelavtaaaaaaaaaaaaaaaaaaaa",
       "Country": "https://osuflags.omkserver.nl/US.png",
       "profilePicture": "https://a.ppy.sh/19607568",
       "profileLink": "https://osu.ppy.sh/users/19607568",
@@ -31,7 +31,7 @@
     }
   },
   {
-    "teamName": "test team 2",
+    "teamName": "test team 10",
     "teamPicture": "https://a.ppy.sh/19607568",
     "player1": {
       "User ID": 19607568,
@@ -45,7 +45,7 @@
     "player2": {
       "User ID": 19607568,
       "Username": "lela",
-      "Discord": "lelavt",
+      "Discord": "lelavtaaaaaaaaaaaaaaaaaa",
       "Country": "https://osuflags.omkserver.nl/US.png",
       "profilePicture": "https://a.ppy.sh/19607568",
       "profileLink": "https://osu.ppy.sh/users/19607568",

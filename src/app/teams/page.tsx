@@ -1,7 +1,7 @@
 "use client";
 
 import { DesktopNavbar } from "@/components/common/NavBar";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Player {
   _id: string;
@@ -20,6 +20,32 @@ interface Team {
   player1: Player;
   player2: Player;
   player3: Player;
+}
+
+function ScrollingDiscordName({ name }: { name: string }) {
+  const textRef = useRef<HTMLSpanElement>(null);
+  const [overflows, setOverflows] = useState(false);
+
+  useEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
+    const check = () => setOverflows(el.scrollWidth > el.clientWidth);
+    check();
+    const observer = new ResizeObserver(check);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [name]);
+
+  return (
+    <span style={{ flex: 1, minWidth: 0, overflow: "hidden" }}>
+      <span
+        ref={textRef}
+        className={`discord-name-text${overflows ? " discord-name-overflow" : ""}`}
+      >
+        {name}
+      </span>
+    </span>
+  );
 }
 
 export default function TeamsPage() {
@@ -45,6 +71,23 @@ export default function TeamsPage() {
         overflowX: "hidden",
       }}
     >
+      <style>{`
+        .discord-name-text {
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .team-card:hover .discord-name-overflow {
+          overflow: visible;
+          text-overflow: clip;
+          animation: discord-marquee 4s linear infinite;
+        }
+        @keyframes discord-marquee {
+          0%, 15% { transform: translateX(0); }
+          85%, 100% { transform: translateX(-130%); }
+        }
+      `}</style>
       <div
         style={{
           position: "absolute",
@@ -120,6 +163,7 @@ export default function TeamsPage() {
         ) : teams.map((team) => (
           <div
             key={team._id}
+            className="team-card"
             style={{
               backgroundColor: "rgba(209, 223, 213, 1)",
               borderRadius: "0 0.833vw 0.833vw 0.833vw",
@@ -179,11 +223,11 @@ export default function TeamsPage() {
                         )}
                       </div>
                       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", opacity: 0.75 }}>
-                        <span style={{ display: "flex", alignItems: "center", gap: "0.15vw" }}>
-                          <img src="/teams/discord.png" alt="discord" style={{ height: "1vw" }} />
-                          {player.discordName}
+                        <span style={{ display: "flex", alignItems: "center", gap: "0.15vw", flex: 1, minWidth: 0, overflow: "hidden" }}>
+                          <img src="/teams/discord.png" alt="discord" style={{ height: "1vw", flexShrink: 0 }} />
+                          <ScrollingDiscordName name={player.discordName} />
                         </span>
-                        <span>#{player.rank}</span>
+                        <span style={{ flexShrink: 0, marginLeft: "0.3vw" }}>#{player.rank}</span>
                       </div>
                     </div>
                   </a>
