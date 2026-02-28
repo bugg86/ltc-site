@@ -98,6 +98,56 @@ export default function RulesPage() {
             <li>The mappools will be unconventional overall. There will be no strict format to the slots in the pools, please pay attention to the skillset/notes attached to the maps. We will aim to include maps that have not been pooled often.</li>
             <li><span style={{color: "#9FB878"}}>EZ multiplier</span>, if there is a freemod in an EX slot and/or Tiebreaker, will be given a custom EZ multiplier if warranted.</li>
           </ul>
+        </>
+      ),
+    },
+    {
+      id: "rules-star-rating",
+      label: "Stars and Send-offs",
+      size: "2.3vh",
+      marginBottom: "6vh",
+      indent: "2vw",
+      color: "#9FB878",
+      content: (
+        <>
+          <h3 style={{ fontSize: "2.6vh", marginBottom: "1vh", paddingLeft: "1vw", color: "#FFFCEA" }}>Star Rating and Bans</h3>
+          <table
+            style={{
+              color: "#FFFCEA",
+              fontFamily: "var(--font-josefin-sans)",
+              fontSize: "2.3vh",
+              lineHeight: "3.5vh",
+              borderCollapse: "collapse",
+              marginLeft: "1.5vw",
+            }}
+          >
+            <thead>
+              <tr>
+                <th style={{ paddingLeft: ".5vw", paddingBottom: "1vh", fontWeight: "700", textAlign: "left", paddingRight: "3vw" }}>Round</th>
+                <th style={{ paddingBottom: "1vh", fontWeight: "700", textAlign: "left", paddingRight: "3vw" }}>Star Rating</th>
+                <th style={{ paddingBottom: "1vh", fontWeight: "700", textAlign: "left", paddingRight: "3vw" }}>Best Of</th>
+                <th style={{ paddingBottom: "1vh", fontWeight: "700", textAlign: "left" }}>Bans</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                { round: "Qualifiers", sr: "~7.2", format: "—", bans: "—" },
+                { round: "RO32",       sr: "~6.8", format: "BO9",  bans: "1 Ban" },
+                { round: "RO16",       sr: "~7.0", format: "BO9",  bans: "1 Ban" },
+                { round: "Quarterfinals", sr: "~7.2", format: "BO11", bans: "2 Bans" },
+                { round: "Semifinals", sr: "~7.4", format: "BO11", bans: "2 Bans" },
+                { round: "Finals",     sr: "~7.7", format: "BO13", bans: "2 Bans" },
+                { round: "Grand Finals", sr: "~8", format: "BO13", bans: "2 Bans" },
+              ].map(({ round, sr, format, bans }) => (
+                <tr key={round}>
+                  <td style={{ paddingLeft: ".5vw", paddingBottom: "1vh", paddingRight: "3vw" }}>{round}</td>
+                  <td style={{ paddingBottom: "1vh", paddingRight: "3vw" }}>{sr}</td>
+                  <td style={{ paddingBottom: "1vh", paddingRight: "3vw" }}>{format}</td>
+                  <td style={{ paddingBottom: "1vh" }}>{bans}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
           <Separator />
         </>
       ),
@@ -151,6 +201,7 @@ export default function RulesPage() {
       size: "2.3vh",
       marginBottom: "6vh",
       indent: "2vw",
+      color: "#9FB878",
       content: (
         <>
           <h3 style={{ fontSize: "2.6vh", marginBottom: "1vh", paddingLeft: "1vw", color: "#FFFCEA" }}>Scheduling</h3>
@@ -180,6 +231,7 @@ export default function RulesPage() {
       size: "2.3vh",
       marginBottom: "6vh",
       indent: "2vw",
+      color: "#9FB878",
       content: (
         <>
           <h3 style={{ fontSize: "2.6vh", marginBottom: "1vh", paddingLeft: "1vw", color: "#FFFCEA" }}>Match Procedures</h3>
@@ -214,6 +266,7 @@ export default function RulesPage() {
       size: "2.3vh",
       marginBottom: "6vh",
       indent: "2vw",
+      color: "#9FB878",
       content: (
         <>
           <h3 style={{ fontSize: "2.6vh", marginBottom: "1vh", paddingLeft: "1vw", color: "#FFFCEA" }}>Bans and Picks</h3>
@@ -243,6 +296,7 @@ export default function RulesPage() {
       size: "2.3vh",
       marginBottom: "10vh",
       indent: "2vw",
+      color: "#9FB878",
       content: (
         <>
           <h3 style={{ fontSize: "2.6vh", marginBottom: "1vh", paddingLeft: "1vw", color: "#FFFCEA" }}>Tiebreaker</h3>
@@ -352,6 +406,7 @@ export default function RulesPage() {
       size: "2.3vh",
       marginBottom: "10vh",
       indent: "2vw",
+      color: "#9FB878",
       content: (
         <>
           <h3 style={{ fontSize: "2.6vh", marginBottom: "1vh", color:"#FFFCEA"}}>Charity Donation</h3>
@@ -413,6 +468,7 @@ export default function RulesPage() {
         overflowX: "hidden",
       }}
     >
+
         <div
           style={{
             position: "absolute",
@@ -467,7 +523,7 @@ export default function RulesPage() {
             margin: 0,
             display: "flex",
             flexDirection: "column",
-            gap: "2vh",
+            gap: "3vh",
           }}
         >
           {navItems.map((item) => (
@@ -477,8 +533,9 @@ export default function RulesPage() {
                 onClick={handleNavClick}
                 style={{
                   fontSize: item.size,
-                  textDecoration: "no5ne",
+                  textDecoration: "none",
                   paddingLeft: item.indent || "0px",
+                  color: item.color,
                 }}
               >
                 {item.label}
@@ -503,7 +560,7 @@ export default function RulesPage() {
             id={item.id}
             style={{ 
               marginBottom: item.marginBottom, 
-              scrollMarginTop: "20vh", 
+              scrollMarginTop: "34vh", 
               whiteSpace: "normal",
               maxWidth: "68vw",
               overflowWrap: "anywhere",
