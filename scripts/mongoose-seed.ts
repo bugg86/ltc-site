@@ -10,6 +10,13 @@ const MapSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: false },
   difficulty: { type: String, required: true, unique: false },
   mapper: { type: String, required: true, unique: false },
+  starRating: { type: String, required: true, unique: false },
+  circleSize: { type: String, required: true, unique: false },
+  bpm: { type: String, required: true, unique: false },
+  approachRate: { type: String, required: true, unique: false },
+  length: { type: String, required: true, unique: false },
+  overallDifficulty: { type: String, required: true, unique: false },
+  beatmapId: { type: String, required: true, unique: true },
 });
 
 const PlayerSchema = new mongoose.Schema({
@@ -63,7 +70,14 @@ async function seed() {
     slot: "NM1",
     name: "Harumachi Clover",
     difficulty: "Insane",
-    mapper: "Sotarks"
+    mapper: "Sotarks",
+    starRating: "5.5",
+    circleSize: "3.0",
+    bpm: "180",
+    approachRate: "9.0",
+    length: "90",
+    overallDifficulty: "8.5",
+    beatmapId: "4567089"
   });
 
   await Player.create({
