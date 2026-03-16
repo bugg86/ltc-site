@@ -1,7 +1,7 @@
 "use client";
 
 import { DesktopNavbar } from "@/components/common/NavBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const POOLS = [
   "Qualifiers",
@@ -13,19 +13,135 @@ const POOLS = [
   "Grandfinals",
 ];
 
-export default function SchedulePage() {
-  const [activePool, setActivePool] = useState("Qualifiers");
+interface ScheduleEntry {
+  _id: string;
+  round: string;
+  matchId: string;
+  date: string;
+  time: string;
+  referee: string;
+  teams: string[];
+  mp: string;
+}
+
+const COL = {
+  id:       { width: "5%",  label: "ID" },
+  date:     { width: "18%", label: "DATE / TIME (UTC)" },
+  referee:  { width: "15%", label: "REFEREE" },
+  teams:    { width: "52%", label: "TEAMS" },
+  mp:       { width: "10%", label: "MP" },
+};
+
+function QualifiersTable({ entries }: { entries: ScheduleEntry[] }) {
+  // Group rows by matchId, preserving insertion order
+  const groups: Map<string, ScheduleEntry[]> = new Map();
+  for (let i = 0; i < entries.length; i += 4) {
+    groups.set(String(i), entries.slice(i, i + 4));
+  }
+
+  const headerStyle: React.CSSProperties = {
+    color: "#FFF7C2",
+    fontFamily: "var(--font-josefin-sans)",
+    fontSize: "0.85vw",
+    letterSpacing: "0.08em",
+    textAlign: "left" as const,
+    padding: "0.8vh 0.8vw",
+  };
+
+  const cellStyle: React.CSSProperties = {
+    padding: "0.9vh 0.8vw",
+    fontFamily: "var(--font-josefin-sans)",
+    fontSize: "0.9vw",
+    color: "#374426",
+    verticalAlign: "middle" as const,
+  };
 
   return (
-    <div
-      style={{
-        width: "100%",
-        minHeight: "100vh",
-        position: "relative",
-        overflowX: "hidden",
-      }}
-    >
-      {/* Top background image */}
+    <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "2vh" }}>
+      {Array.from(groups.entries()).map(([matchId, rows]) => (
+        <div key={matchId}>
+          {/* Header — no border or radius */}
+          <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+            <thead>
+              <tr>
+                <th style={{ ...headerStyle, width: COL.id.width }}>{COL.id.label}</th>
+                <th style={{ ...headerStyle, width: COL.date.width }}>{COL.date.label}</th>
+                <th style={{ ...headerStyle, width: COL.referee.width }}>{COL.referee.label}</th>
+                <th style={{ ...headerStyle, width: COL.teams.width }}>{COL.teams.label}</th>
+                <th style={{ ...headerStyle, width: COL.mp.width, textAlign: "right" }}>{COL.mp.label}</th>
+              </tr>
+            </thead>
+          </table>
+
+          {/* Body — bordered and rounded */}
+          <div style={{ borderRadius: "0.5vw", overflow: "hidden", border: "1px solid rgba(255, 247, 194, 0.3)" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+            <colgroup>
+              <col style={{ width: COL.id.width }} />
+              <col style={{ width: COL.date.width }} />
+              <col style={{ width: COL.referee.width }} />
+              <col style={{ width: COL.teams.width }} />
+              <col style={{ width: COL.mp.width }} />
+            </colgroup>
+          <tbody>
+            {rows.map((row) => (
+              <tr
+                key={row._id}
+                style={{
+                  backgroundColor: "#9FB878",
+                  borderBottom: "1px solid rgba(255, 247, 194, 0.15)",
+                }}
+              >
+                <td style={{ ...cellStyle, color: "#FFF7C2", fontFamily: "var(--font-sunlight-dreams)", fontWeight: 700 }}>
+                  {row.matchId}
+                </td>
+                <td style={cellStyle}>
+                  <span style={{ opacity: 0.8 }}>{row.date}</span>
+                  {"  "}
+                  <span style={{ fontWeight: 600 }}>{row.time}</span>
+                </td>
+                <td style={cellStyle}>{row.referee}</td>
+                <td style={{ ...cellStyle, whiteSpace: "normal", overflowWrap: "break-word" }}>
+                  {row.teams.join(" ÷ ")}
+                </td>
+                <td style={{ ...cellStyle, textAlign: "right" }}>
+                  {row.mp && (
+                    <a
+                      href={`https://osu.ppy.sh/mp/${row.mp}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: "#B2EAF1", textDecoration: "none", fontSize: "0.8vw" }}
+                    >
+                      {row.mp}
+                    </a>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+          </table>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default function SchedulePage() {
+  const [activePool, setActivePool] = useState("Qualifiers");
+  const [entries, setEntries] = useState<ScheduleEntry[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`/api/schedule?round=${encodeURIComponent(activePool)}`)
+      .then((res) => res.json())
+      .then((data) => { setEntries(data); setLoading(false); })
+      .catch(() => setLoading(false));
+  }, [activePool]);
+
+  return (
+    <div style={{ width: "100%", minHeight: "100vh", position: "relative", overflowX: "hidden" }}>
       <div
         style={{
           position: "absolute",
@@ -41,7 +157,6 @@ export default function SchedulePage() {
 
       <DesktopNavbar />
 
-      {/* Page title */}
       <h1
         style={{
           position: "absolute",
@@ -57,7 +172,6 @@ export default function SchedulePage() {
         Schedule
       </h1>
 
-      {/* Green gradient background box */}
       <div
         style={{
           position: "absolute",
@@ -72,7 +186,6 @@ export default function SchedulePage() {
         }}
       />
 
-      {/* Content */}
       <div
         style={{
           position: "relative",
@@ -87,7 +200,7 @@ export default function SchedulePage() {
           gap: "5vh",
         }}
       >
-        {/* Pool tab navbar — styled like global nav */}
+        {/* Tab navbar */}
         <div
           style={{
             display: "flex",
@@ -124,23 +237,28 @@ export default function SchedulePage() {
           ))}
         </div>
 
-        {/* Page content — no box */}
-        <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <img
-            src="/sleep.gif"
-            alt="Sleeping animation"
-            style={{ width: "320px", height: "auto" }}
-          />
-          <p
-            style={{
-              marginTop: "1rem",
-              fontSize: "2vw",
-              color: "#FFF7C2",
-              fontFamily: "var(--font-sunlight-dreams)",
-            }}
-          >
-            Page under construction!!
-          </p>
+        {/* Content */}
+        <div style={{ width: "100%" }}>
+          {loading ? (
+            <p style={{ color: "#FFF7C2", fontFamily: "var(--font-josefin-sans)", fontSize: "1.2vw" }}>
+              Loading schedule...
+            </p>
+          ) : entries.length === 0 ? (
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "4vh 0" }}>
+              <p style={{ fontSize: "2vw", color: "#FFF7C2", textAlign: "center", fontFamily: "var(--font-josefin-sans)", margin: 0 }}>
+                No schedule found...
+              </p>
+              <img src="/teams/noteams.png" alt="" style={{ marginTop: "2vh" }} />
+            </div>
+          ) : activePool === "Qualifiers" ? (
+            <QualifiersTable entries={entries} />
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "4vh 0" }}>
+              <p style={{ fontSize: "2vw", color: "#FFF7C2", textAlign: "center", fontFamily: "var(--font-josefin-sans)", margin: 0 }}>
+                Bracket stage schedule coming soon...
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

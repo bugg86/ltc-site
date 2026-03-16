@@ -66,5 +66,62 @@ function sendTeamsToAPI() {
 }
 
 function sendQualsToAPI() {
-  
+  const API_URL = "https://lelastechcup.com/api/import-schedule";
+  const SHEET_NAME = "convexbullshit_quals";
+  const RANGE = "A1:G";
+
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+  const data = sheet.getRange(RANGE).getValues();
+
+  // Remove header row (A: round, B: lobbyId, C: date, D: time, E: referee, F: teams, G: mpLink)
+  data.shift();
+
+  const rows = [];
+
+  for (const row of data) {
+    // Skip rows with no lobbyId
+    if (!row[1]) continue;
+
+    const teamsRaw = String(row[5] || "").trim();
+    const teams = teamsRaw
+      ? teamsRaw.split("+").map(t => t.trim()).filter(Boolean)
+      : [];
+
+    rows.push({
+      round:   String(row[0] || "").trim(),
+      matchId: String(row[1] || "").trim(),
+      date:    String(row[2] || "").trim(),
+      time:    String(row[3] || "").trim(),
+      referee: String(row[4] || "").trim(),
+      teams:   teams,
+      mp:      String(row[6] || "").trim(),
+    });
+  }
+
+  Logger.log("Sending " + rows.length + " schedule entries...");
+
+  const options = {
+    method: "post",
+    contentType: "application/json",
+    payload: JSON.stringify(rows),
+    muteHttpExceptions: true,
+  };
+
+  try {
+    const response = UrlFetchApp.fetch(API_URL, options);
+    const result = JSON.parse(response.getContentText());
+
+    if (response.getResponseCode() === 200) {
+      const message = "Success!\n" + result.message;
+      Logger.log(message);
+      try { SpreadsheetApp.getUi().alert(message); } catch (e) {}
+    } else {
+      const message = "Error: " + result.error;
+      Logger.log(message);
+      try { SpreadsheetApp.getUi().alert(message); } catch (e) {}
+    }
+  } catch (error) {
+    Logger.log("Error sending data: " + error);
+    try { SpreadsheetApp.getUi().alert("Error sending data: " + error); } catch (e) {}
+  }
 }
