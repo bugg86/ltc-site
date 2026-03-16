@@ -64,3 +64,7 @@ function sendTeamsToAPI() {
     try { SpreadsheetApp.getUi().alert("Error sending data: " + error); } catch (e) {}
   }
 }
+
+function sendQualsToAPI() {
+  
+}

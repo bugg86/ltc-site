@@ -47,7 +47,15 @@ const StaffSchema = new mongoose.Schema({
   profileLink: { type: String, required: false, unique: false },
 });
 
-const ScheduleSchema = new mongoose.Schema({});
+const ScheduleSchema = new mongoose.Schema({
+  round: { type: String, required: true, unique: false },
+  lobbyId: { type: String, required: true, unique: true },
+  date: { type: String, required: true, unique: false },
+  time: { type: String, required: true, unique: false },
+  referee: { type: String, required: true, unique: false },
+  teams: { type: String, required: true, unique: false },
+  mpLink: { type: String, required: true, unique: false }
+});
 
 // Example models
 const Map = mongoose.model("Map", MapSchema);

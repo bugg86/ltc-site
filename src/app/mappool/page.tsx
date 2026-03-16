@@ -52,9 +52,7 @@ function MapCard({ map }: { map: MapEntry }) {
         overflow: "hidden",
         boxShadow: hovered ? "0 8px 20px rgba(0,0,0,0.4)" : "0 4px 12px rgba(0,0,0,0.3)",
         fontFamily: "var(--font-josefin-sans)",
-        transition: "transform 0.2s, box-shadow 0.2s",
-        transform: hovered ? "translateY(-2px)" : "translateY(0)",
-        position: "relative",
+        transition: "box-shadow 0.2s",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -73,7 +71,6 @@ function MapCard({ map }: { map: MapEntry }) {
             style={{ width: "100%", display: "block", objectFit: "cover", height: "5vw", cursor: "pointer" }}
           />
         )}
-
         {/* Slot badge */}
         <div
           style={{
@@ -84,6 +81,7 @@ function MapCard({ map }: { map: MapEntry }) {
             color: "#000",
             fontSize: "0.75vw",
             fontWeight: 700,
+            fontFamily: "var(--font-sunlight-dreams)",
             letterSpacing: "0.05em",
             padding: "0.15vw 0.4vw",
             borderRadius: "0 0 0.3vw 0",
@@ -94,60 +92,41 @@ function MapCard({ map }: { map: MapEntry }) {
       </a>
 
       {/* Always visible body */}
-        <div style={{ padding: "0.6vw 0.7vw", display: "flex", flexDirection: "column", gap: "0.3vw" }}>
-          <div style={{ color: "#000", fontSize: "1vw", fontWeight: 700, lineHeight: 1.2 }}>
-            {map.name}
+      <div style={{ padding: "0.6vw 0.7vw", display: "flex", flexDirection: "column", gap: "0.3vw" }}>
+        <div style={{ color: "#000", fontSize: "1vw", fontWeight: 700, lineHeight: 1.2 }}>{map.name}</div>
+        <div style={{ color: "#000", fontSize: "0.8vw", fontWeight: 600 }}>[{map.difficulty}]</div>
+        <div style={{ color: "#000", fontSize: "0.75vw" }}>mapped by {map.mapper}</div>
+      </div>
+
+      {/* Expanded content */}
+      <div
+        style={{
+          maxHeight: hovered ? "20vw" : "0",
+          overflow: "hidden",
+          transition: "max-height 0.25s ease",
+        }}
+      >
+        <div style={{ padding: "0 0.7vw 0.6vw", display: "flex", flexDirection: "column", gap: "0.4vw" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0.3vw 0.5vw" }}>
+            {[
+              { label: "SR", value: map.starRating },
+              { label: "BPM", value: map.bpm },
+              { label: "Length", value: map.length },
+              { label: "CS", value: map.circleSize },
+              { label: "AR", value: map.approachRate },
+              { label: "OD", value: map.overallDifficulty },
+            ].map(({ label, value }) => (
+              <div key={label} style={{ display: "flex", flexDirection: "column" }}>
+                <span style={{ color: "#000", fontSize: "0.6vw", textTransform: "uppercase", letterSpacing: "0.05em" }}>{label}</span>
+                <span style={{ color: "#000", fontSize: "0.8vw", fontWeight: 600 }}>{value}</span>
+              </div>
+            ))}
           </div>
-          <div style={{ color: "#000", fontSize: "0.8vw", fontWeight: 600 }}>
-            [{map.difficulty}]
-          </div>
-          <div style={{ color: "#000", fontSize: "0.75vw" }}>
-            mapped by {map.mapper}
+          <div style={{ color: "#000", fontSize: "0.65vw", opacity: 0.6, marginTop: "0.2vw" }}>
+            ID: {map.beatmapId}
           </div>
         </div>
-
-        {/* Expanded content on hover */}
-        <div
-          style={{
-            maxHeight: hovered ? "20vw" : "0",
-            overflow: "hidden",
-            transition: "max-height 0.25s ease",
-          }}
-        >
-          <div style={{ padding: "0 0.7vw 0.6vw", display: "flex", flexDirection: "column", gap: "0.4vw" }}>
-            {/* Stats */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr 1fr",
-                gap: "0.3vw 0.5vw",
-              }}
-            >
-              {[
-                { label: "SR", value: map.starRating },
-                { label: "BPM", value: map.bpm },
-                { label: "Length", value: map.length },
-                { label: "CS", value: map.circleSize },
-                { label: "AR", value: map.approachRate },
-                { label: "OD", value: map.overallDifficulty },
-              ].map(({ label, value }) => (
-                <div key={label} style={{ display: "flex", flexDirection: "column" }}>
-                  <span style={{ color: "#000", fontSize: "0.6vw", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                    {label}
-                  </span>
-                  <span style={{ color: "#000", fontSize: "0.8vw", fontWeight: 600 }}>
-                    {value}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Beatmap ID */}
-            <div style={{ color: "#000", fontSize: "0.65vw", opacity: 0.6, marginTop: "0.2vw" }}>
-              ID: {map.beatmapId}
-            </div>
-          </div>
-        </div>
+      </div>
     </div>
   );
 }
@@ -296,8 +275,9 @@ export default function MappoolPage() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(14vw, 1fr))",
+                gridTemplateColumns: "repeat(5, 1fr)",
                 gap: "1vw",
+                alignItems: "start",
               }}
             >
               {maps.map((map) => (

@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 const josefinSans = Josefin_Sans({
   variable: "--font-josefin-sans",
   subsets: ["latin"],
+  weight: ["400", "600", "700"],
 });
 
 const sunlightDreams = localFont({
