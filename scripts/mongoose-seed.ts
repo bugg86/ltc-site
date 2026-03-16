@@ -17,6 +17,7 @@ const MapSchema = new mongoose.Schema({
   length: { type: String, required: true, unique: false },
   overallDifficulty: { type: String, required: true, unique: false },
   beatmapId: { type: String, required: true, unique: true },
+  beatmapLink: { type: String, required: true, unique: true },
 });
 
 const PlayerSchema = new mongoose.Schema({
@@ -77,7 +78,8 @@ async function seed() {
     approachRate: "9.0",
     length: "90",
     overallDifficulty: "8.5",
-    beatmapId: "4567089"
+    beatmapId: "4567089",
+    beatmapLink: "temp",
   });
 
   await Player.create({

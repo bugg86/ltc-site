@@ -1,7 +1,7 @@
 "use client";
 
 import { DesktopNavbar } from "@/components/common/NavBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const POOLS = [
   "Qualifiers",
@@ -13,8 +13,160 @@ const POOLS = [
   "Grandfinals",
 ];
 
+interface MapEntry {
+  _id: string;
+  round: string;
+  slot: string;
+  name: string;
+  difficulty: string;
+  mapper: string;
+  starRating: string;
+  circleSize: string;
+  bpm: string;
+  approachRate: string;
+  length: string;
+  overallDifficulty: string;
+  beatmapId: string;
+  beatmapLink: string;
+  beatmapCover?: string;
+}
+
+function slotColor(slot: string): string {
+  if (slot.includes("NM")) return "#D1DFD5";
+  if (slot.includes("HD")) return "#FFF7C2";
+  if (slot.includes("HR")) return "#FFA3A5";
+  if (slot.includes("DT")) return "#D1C3E9";
+  if (slot.includes("EX")) return "#F6B180";
+  if (slot.includes("TB")) return "#BABABA";
+  return "#D1DFD5";
+}
+
+function MapCard({ map }: { map: MapEntry }) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <div
+      style={{
+        backgroundColor: slotColor(map.slot),
+        borderRadius: "0 0.833vw 0.833vw 0.833vw",
+        overflow: "hidden",
+        boxShadow: hovered ? "0 8px 20px rgba(0,0,0,0.4)" : "0 4px 12px rgba(0,0,0,0.3)",
+        fontFamily: "var(--font-josefin-sans)",
+        transition: "transform 0.2s, box-shadow 0.2s",
+        transform: hovered ? "translateY(-2px)" : "translateY(0)",
+        position: "relative",
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {/* Cover image — clickable */}
+      <a
+        href={map.beatmapLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ display: "block", position: "relative" }}
+      >
+        {map.beatmapCover && (
+          <img
+            src={map.beatmapCover}
+            alt={map.name}
+            style={{ width: "100%", display: "block", objectFit: "cover", height: "5vw", cursor: "pointer" }}
+          />
+        )}
+
+        {/* Slot badge */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            backgroundColor: slotColor(map.slot),
+            color: "#000",
+            fontSize: "0.75vw",
+            fontWeight: 700,
+            letterSpacing: "0.05em",
+            padding: "0.15vw 0.4vw",
+            borderRadius: "0 0 0.3vw 0",
+          }}
+        >
+          {map.slot}
+        </div>
+      </a>
+
+      {/* Always visible body */}
+        <div style={{ padding: "0.6vw 0.7vw", display: "flex", flexDirection: "column", gap: "0.3vw" }}>
+          <div style={{ color: "#000", fontSize: "1vw", fontWeight: 700, lineHeight: 1.2 }}>
+            {map.name}
+          </div>
+          <div style={{ color: "#000", fontSize: "0.8vw", fontWeight: 600 }}>
+            [{map.difficulty}]
+          </div>
+          <div style={{ color: "#000", fontSize: "0.75vw" }}>
+            mapped by {map.mapper}
+          </div>
+        </div>
+
+        {/* Expanded content on hover */}
+        <div
+          style={{
+            maxHeight: hovered ? "20vw" : "0",
+            overflow: "hidden",
+            transition: "max-height 0.25s ease",
+          }}
+        >
+          <div style={{ padding: "0 0.7vw 0.6vw", display: "flex", flexDirection: "column", gap: "0.4vw" }}>
+            {/* Stats */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr 1fr",
+                gap: "0.3vw 0.5vw",
+              }}
+            >
+              {[
+                { label: "SR", value: map.starRating },
+                { label: "BPM", value: map.bpm },
+                { label: "Length", value: map.length },
+                { label: "CS", value: map.circleSize },
+                { label: "AR", value: map.approachRate },
+                { label: "OD", value: map.overallDifficulty },
+              ].map(({ label, value }) => (
+                <div key={label} style={{ display: "flex", flexDirection: "column" }}>
+                  <span style={{ color: "#000", fontSize: "0.6vw", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                    {label}
+                  </span>
+                  <span style={{ color: "#000", fontSize: "0.8vw", fontWeight: 600 }}>
+                    {value}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Beatmap ID */}
+            <div style={{ color: "#000", fontSize: "0.65vw", opacity: 0.6, marginTop: "0.2vw" }}>
+              ID: {map.beatmapId}
+            </div>
+          </div>
+        </div>
+    </div>
+  );
+}
+
 export default function MappoolPage() {
   const [activePool, setActivePool] = useState("Qualifiers");
+  const [maps, setMaps] = useState<MapEntry[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`/api/maps?round=${encodeURIComponent(activePool)}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setMaps(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, [activePool]);
 
   return (
     <div
@@ -25,7 +177,6 @@ export default function MappoolPage() {
         overflowX: "hidden",
       }}
     >
-      {/* Top background image */}
       <div
         style={{
           position: "absolute",
@@ -41,7 +192,6 @@ export default function MappoolPage() {
 
       <DesktopNavbar />
 
-      {/* Page title */}
       <h1
         style={{
           position: "absolute",
@@ -57,7 +207,6 @@ export default function MappoolPage() {
         Mappool
       </h1>
 
-      {/* Green gradient background box */}
       <div
         style={{
           position: "absolute",
@@ -72,7 +221,6 @@ export default function MappoolPage() {
         }}
       />
 
-      {/* Content */}
       <div
         style={{
           position: "relative",
@@ -87,7 +235,7 @@ export default function MappoolPage() {
           gap: "5vh",
         }}
       >
-        {/* Pool tab navbar — styled like global nav */}
+        {/* Pool tab navbar */}
         <div
           style={{
             display: "flex",
@@ -123,6 +271,8 @@ export default function MappoolPage() {
             </button>
           ))}
         </div>
+
+        {/* Maps content area */}
         <div
           style={{
             width: "100%",
@@ -130,26 +280,31 @@ export default function MappoolPage() {
             border: "0.417vw solid rgba(255, 247, 194, 1)",
             borderRadius: "0.833vw",
             padding: "1.5vw",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            minHeight: "20vh",
           }}
         >
-          <img
-            src="/sleep.gif"
-            alt="Sleeping animation"
-            style={{ width: "320px", height: "auto" }}
-          />
-          <p
-            style={{
-              marginTop: "1rem",
-              fontSize: "2vw",
-              color: "#FFF7C2",
-              fontFamily: "var(--font-sunlight-dreams)",
-            }}
-          >
-            Page under construction!!
-          </p>
+          {loading ? (
+            <p style={{ color: "#FFF7C2", fontFamily: "var(--font-josefin-sans)", fontSize: "1.2vw", margin: 0 }}>
+              Loading maps...
+            </p>
+          ) : maps.length === 0 ? (
+            <div style={{ gridColumn: "1 / -1", display: "flex", flexDirection: "column", alignItems: "center", padding: "4vh 0" }}>
+              <p style={{ fontSize: "2vw", color: "#FFF7C2", textAlign: "center", fontFamily: "var(--font-josefin-sans)", margin: 0 }}>No maps found...</p>
+              <img src="/mappool/nomaps.png" alt="" style={{ marginTop: "2vh" }} />
+            </div>
+          ) : (
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(14vw, 1fr))",
+                gap: "1vw",
+              }}
+            >
+              {maps.map((map) => (
+                <MapCard key={map._id} map={map} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
