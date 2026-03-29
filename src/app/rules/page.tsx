@@ -92,6 +92,7 @@ export default function RulesPage() {
             <li>There will be <span style={{color: "#9FB878"}}>NO dedicated freemod</span> category in this tournament.</li>
             <li>During the bracket stage, there will be <span style={{color: "#9FB878"}}>one to three</span> maps under <span style={{color: "#9FB878"}}>EXTRA</span> (<span style={{color: "#9FB878"}}>EX</span> outlined on the main sheet and pooling category). This may entail maps being a specific mod, or even freemod, but this will vary each bracket stage.</li>
             <li>Some rounds may include maps that have different win conditions based on what our pooling team deems is the best way to determine which team is better at a specific map. An easy example is a rhythm map with an accuracy win condition, but it could be other things as well, such as: winner based on miss count, etc. Refer to the main sheet to see which maps have a different win condition.</li>
+            <li>If there are any ties on ex slots, the win condition will be based on <span style={{color: "#9FB878"}}>score.</span></li>
             <li>This will not be a normal pool, and will not be mechanically heavy. Raw aim and raw tapping will not be tested.</li>
             <li>Every mappool will aim to test the following skillsets:</li>
             <li><span style={{color: "#9FB878"}}>Conventional tech</span>, slider aim, <span style={{color: "#9FB878"}}>finger control</span>, aim control, <span style={{color: "#9FB878"}}>obscure reading</span>, and more <span style={{color: "#9FB878"}}>niche skillsets</span>.</li>

@@ -40,34 +40,46 @@ export async function OPTIONS() {
 }
 
 export async function POST(request: Request) {
-  await connectDB();
-  const rows = await request.json();
+  try {
+    await connectDB();
 
-  if (!Array.isArray(rows)) {
-    return NextResponse.json({ error: "Expected an array" }, { status: 400 });
-  }
+    const body = await request.json();
+    const rows = Array.isArray(body) ? body : [];
 
-  const errors: string[] = [];
-  let upserted = 0;
-
-  for (const row of rows) {
-    try {
-      await BracketSchedule.findOneAndUpdate(
-        { round: row.round, id: String(row.id) },
-        row,
-        { upsert: true, new: true }
-      );
-      upserted++;
-    } catch (err) {
-      errors.push(`Row ${row.id}: ${err}`);
+    if (rows.length === 0) {
+      const res = NextResponse.json({ error: "Expected a non-empty array." }, { status: 400 });
+      res.headers.set("Access-Control-Allow-Origin", "*");
+      return res;
     }
-  }
 
-  return NextResponse.json(
-    { message: `Upserted ${upserted} entries.`, errors },
-    {
-      status: 200,
-      headers: { "Access-Control-Allow-Origin": "*" },
+    let inserted = 0;
+    let updated = 0;
+
+    for (const row of rows) {
+      const existing = await BracketSchedule.findOne({ round: row.round, id: String(row.id) });
+      if (existing) {
+        await BracketSchedule.findOneAndUpdate({ round: row.round, id: String(row.id) }, row);
+        updated++;
+      } else {
+        await BracketSchedule.create(row);
+        inserted++;
+      }
     }
-  );
+
+    const res = NextResponse.json({
+      success: true,
+      message: `Processed ${rows.length} entries (${inserted} inserted, ${updated} updated).`,
+      inserted,
+      updated,
+    });
+    res.headers.set("Access-Control-Allow-Origin", "*");
+    return res;
+  } catch (error) {
+    const res = NextResponse.json(
+      { error: "Failed to import bracket", details: error instanceof Error ? error.message : String(error) },
+      { status: 500 }
+    );
+    res.headers.set("Access-Control-Allow-Origin", "*");
+    return res;
+  }
 }
