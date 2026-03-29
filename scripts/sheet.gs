@@ -71,7 +71,7 @@ function sendQualsToAPI() {
   const RANGE = "A1:G";
 
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
-  const data = sheet.getRange(RANGE).getValues();
+  const data = sheet.getRange(RANGE).getDisplayValues();
 
   // Remove header row (A: round, B: lobbyId, C: date, D: time, E: referee, F: teams, G: mpLink)
   data.shift();
@@ -99,6 +99,70 @@ function sendQualsToAPI() {
   }
 
   Logger.log("Sending " + rows.length + " schedule entries...");
+
+  const options = {
+    method: "post",
+    contentType: "application/json",
+    payload: JSON.stringify(rows),
+    muteHttpExceptions: true,
+  };
+
+  try {
+    const response = UrlFetchApp.fetch(API_URL, options);
+    const result = JSON.parse(response.getContentText());
+
+    if (response.getResponseCode() === 200) {
+      const message = "Success!\n" + result.message;
+      Logger.log(message);
+      try { SpreadsheetApp.getUi().alert(message); } catch (e) {}
+    } else {
+      const message = "Error: " + result.error;
+      Logger.log(message);
+      try { SpreadsheetApp.getUi().alert(message); } catch (e) {}
+    }
+  } catch (error) {
+    Logger.log("Error sending data: " + error);
+    try { SpreadsheetApp.getUi().alert("Error sending data: " + error); } catch (e) {}
+  }
+}
+
+function sendBracketToAPI() {
+  const API_URL = "https://lelastechcup.com/api/import-bracket";
+  const SHEET_NAME = "convexbullshit_bracket";
+  const RANGE = "A1:N";
+
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+  const data = sheet.getRange(RANGE).getDisplayValues();
+
+  // Remove header row (A: round, B: id, C: date, D: time, E: referee, F: team1,
+  //   G: team1Score, H: team2Score, I: team2, J: commentators, K: vod, L: vodLink, M: mpLink, N: mpId)
+  data.shift();
+
+  const rows = [];
+
+  for (const row of data) {
+    // Skip rows with no id
+    if (!row[1]) continue;
+
+    rows.push({
+      round:        String(row[0]  || "").trim(),
+      id:           String(row[1]  || "").trim(),
+      date:         String(row[2]  || "").trim(),
+      time:         String(row[3]  || "").trim(),
+      referee:      String(row[4]  || "").trim(),
+      team1:        String(row[5]  || "").trim(),
+      team1Score:   String(row[6]  || "").trim(),
+      team2Score:   String(row[7]  || "").trim(),
+      team2:        String(row[8]  || "").trim(),
+      commentators: String(row[9]  || "").trim(),
+      vod:          String(row[10] || "").trim(),
+      vodLink:      String(row[11] || "").trim(),
+      mpLink:       String(row[12] || "").trim(),
+      mpId:         String(row[13] || "").trim(),
+    });
+  }
+
+  Logger.log("Sending " + rows.length + " bracket entries...");
 
   const options = {
     method: "post",

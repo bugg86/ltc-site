@@ -24,6 +24,24 @@ interface ScheduleEntry {
   mp: string;
 }
 
+interface BracketEntry {
+  _id: string;
+  round: string;
+  id: string;
+  date: string;
+  time: string;
+  referee: string;
+  team1: string;
+  team1Score: string;
+  team2Score: string;
+  team2: string;
+  commentators: string;
+  vod: string;
+  vodLink: string;
+  mpLink: string;
+  mpId: string;
+}
+
 const COL = {
   id:       { width: "5%",  label: "ID" },
   date:     { width: "18%", label: "DATE / TIME (UTC)" },
@@ -127,17 +145,161 @@ function QualifiersTable({ entries }: { entries: ScheduleEntry[] }) {
   );
 }
 
+const BRACKET_COL = {
+  id:          { width: "4%",  label: "ID" },
+  date:        { width: "12%", label: "DATE / TIME (UTC)" },
+  referee:     { width: "9%",  label: "REFEREE" },
+  team1:       { width: "14%", label: "TEAM 1" },
+  score:       { width: "8%",  label: "SCORE" },
+  team2:       { width: "14%", label: "TEAM 2" },
+  commentators:{ width: "14%", label: "COMMENTATORS" },
+  vod:         { width: "8%",  label: "VOD" },
+  mp:          { width: "8%",  label: "MP" },
+};
+
+function BracketTable({ entries }: { entries: BracketEntry[] }) {
+  const headerStyle: React.CSSProperties = {
+    color: "#FFF7C2",
+    fontFamily: "var(--font-josefin-sans)",
+    fontSize: "0.85vw",
+    letterSpacing: "0.08em",
+    textAlign: "left" as const,
+    padding: "0.8vh 0.8vw",
+  };
+
+  const cellStyle: React.CSSProperties = {
+    padding: "0.9vh 0.8vw",
+    fontFamily: "var(--font-josefin-sans)",
+    fontSize: "0.9vw",
+    color: "#374426",
+    verticalAlign: "middle" as const,
+  };
+
+  return (
+    <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "2vh" }}>
+      {/* Header */}
+      <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+        <thead>
+          <tr>
+            <th style={{ ...headerStyle, width: BRACKET_COL.id.width, textAlign: "center" }}>{BRACKET_COL.id.label}</th>
+            <th style={{ ...headerStyle, width: BRACKET_COL.date.width, textAlign: "center" }}>{BRACKET_COL.date.label}</th>
+            <th style={{ ...headerStyle, width: BRACKET_COL.referee.width, textAlign: "center" }}>{BRACKET_COL.referee.label}</th>
+            <th style={{ ...headerStyle, width: BRACKET_COL.team1.width, textAlign: "center" }}>{BRACKET_COL.team1.label}</th>
+            <th style={{ ...headerStyle, width: BRACKET_COL.score.width, textAlign: "center" }}>{BRACKET_COL.score.label}</th>
+            <th style={{ ...headerStyle, width: BRACKET_COL.team2.width, textAlign: "center" }}>{BRACKET_COL.team2.label}</th>
+            <th style={{ ...headerStyle, width: BRACKET_COL.commentators.width, textAlign: "center" }}>{BRACKET_COL.commentators.label}</th>
+            <th style={{ ...headerStyle, width: BRACKET_COL.vod.width, textAlign: "center" }}>{BRACKET_COL.vod.label}</th>
+            <th style={{ ...headerStyle, width: BRACKET_COL.mp.width, textAlign: "center" }}>{BRACKET_COL.mp.label}</th>
+          </tr>
+        </thead>
+      </table>
+
+      {/* Body */}
+      <div style={{ borderRadius: "0.5vw", overflow: "hidden", border: "1px solid rgba(255, 247, 194, 0.3)" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+          <colgroup>
+            <col style={{ width: BRACKET_COL.id.width }} />
+            <col style={{ width: BRACKET_COL.date.width }} />
+            <col style={{ width: BRACKET_COL.referee.width }} />
+            <col style={{ width: BRACKET_COL.team1.width }} />
+            <col style={{ width: BRACKET_COL.score.width }} />
+            <col style={{ width: BRACKET_COL.team2.width }} />
+            <col style={{ width: BRACKET_COL.commentators.width }} />
+            <col style={{ width: BRACKET_COL.vod.width }} />
+            <col style={{ width: BRACKET_COL.mp.width }} />
+          </colgroup>
+          <tbody>
+            {entries.map((row) => (
+              <tr
+                key={row._id}
+                style={{
+                  backgroundColor: "#9FB878",
+                  borderBottom: "1px solid rgba(255, 247, 194, 0.15)",
+                }}
+              >
+                <td style={{ ...cellStyle, color: "#FFF7C2", fontFamily: "var(--font-sunlight-dreams)", fontWeight: 700, textAlign: "center" }}>
+                  {row.id}
+                </td>
+                <td style={{ ...cellStyle, textAlign: "center" }}>
+                  <span style={{ opacity: 0.8 }}>{row.date}</span>
+                  {"  "}
+                  <span style={{ fontWeight: 600 }}>{row.time}</span>
+                </td>
+                <td style={{ ...cellStyle, textAlign: "center" }}>{row.referee}</td>
+                <td style={{ ...cellStyle, textAlign: "center" }}>{row.team1}</td>
+                <td style={{ ...cellStyle, textAlign: "center" }}>
+                  {row.team1Score || row.team2Score ? (() => {
+                    const s1 = Number(row.team1Score);
+                    const s2 = Number(row.team2Score);
+                    const t1Color = row.team2Score === "FF" || s1 > s2 ? "#F94F52" : "inherit";
+                    const t2Color = row.team1Score === "FF" || s2 > s1 ? "#F94F52" : "inherit";
+                    return (
+                      <>
+                        <span style={{ color: t1Color }}>{row.team1Score}</span>
+                        {" - "}
+                        <span style={{ color: t2Color }}>{row.team2Score}</span>
+                      </>
+                    );
+                  })() : ""}
+                </td>
+                <td style={{ ...cellStyle, textAlign: "center" }}>{row.team2}</td>
+                <td style={{ ...cellStyle, textAlign: "center" }}>{row.commentators}</td>
+                <td style={{ ...cellStyle, textAlign: "center" }}>
+                  {row.vod === "FALSE" ? (
+                    <span>✗</span>
+                  ) : row.vodLink ? (
+                    <a
+                      href={row.vodLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mp-link"
+                      style={{ color: "inherit" }}
+                    >
+                      ✓
+                    </a>
+                  ) : null}
+                </td>
+                <td style={{ ...cellStyle, textAlign: "center" }}>
+                  {row.mpId ? (
+                    <a
+                      href={row.mpId}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mp-link"
+                      style={{ color: "inherit" }}
+                    >
+                      {row.mpLink}
+                    </a>
+                  ) : null}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 export default function SchedulePage() {
   const [activePool, setActivePool] = useState("Qualifiers");
   const [entries, setEntries] = useState<ScheduleEntry[]>([]);
+  const [bracketEntries, setBracketEntries] = useState<BracketEntry[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
-    fetch(`/api/schedule?round=${encodeURIComponent(activePool)}`)
-      .then((res) => res.json())
-      .then((data) => { setEntries(data); setLoading(false); })
-      .catch(() => setLoading(false));
+    if (activePool === "Qualifiers") {
+      fetch(`/api/schedule?round=${encodeURIComponent(activePool)}`)
+        .then((res) => res.json())
+        .then((data) => { setEntries(data); setLoading(false); })
+        .catch(() => setLoading(false));
+    } else {
+      fetch(`/api/bracket?round=${encodeURIComponent(activePool)}`)
+        .then((res) => res.json())
+        .then((data) => { setBracketEntries(data); setLoading(false); })
+        .catch(() => setLoading(false));
+    }
   }, [activePool]);
 
   return (
@@ -252,12 +414,15 @@ export default function SchedulePage() {
             </div>
           ) : activePool === "Qualifiers" ? (
             <QualifiersTable entries={entries} />
-          ) : (
+          ) : bracketEntries.length === 0 ? (
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "4vh 0" }}>
               <p style={{ fontSize: "2vw", color: "#FFF7C2", textAlign: "center", fontFamily: "var(--font-josefin-sans)", margin: 0 }}>
-                Bracket stage schedule coming soon...
+                No schedule found...
               </p>
+              <img src="/teams/noteams.png" alt="" style={{ marginTop: "2vh" }} />
             </div>
+          ) : (
+            <BracketTable entries={bracketEntries} />
           )}
         </div>
       </div>

@@ -57,12 +57,30 @@ const ScheduleSchema = new mongoose.Schema({
   mpLink: { type: String, required: true, unique: false }
 });
 
+const BracketScheduleSchema = new mongoose.Schema({
+  round: { type: String, default: "" },
+  id: { type: String, default: "" },
+  date: { type: String, default: "" },
+  time: { type: String, default: "" },
+  referee: { type: String, default: "" },
+  team1: { type: String, default: "" },
+  team1Score: { type: String, default: "" },
+  team2Score: { type: String, default: "" },
+  team2: { type: String, default: "" },
+  commentators: { type: String, default: "" },
+  vod: { type: String, default: "" },
+  vodLink: { type: String, default: "" },
+  mpLink: { type: String, default: "" },
+  mpId: { type: String, default: "" },
+});
+
 // Example models
 const Map = mongoose.model("Map", MapSchema);
 const Staff = mongoose.model("Staff", StaffSchema);
 const Player = mongoose.model("Player", PlayerSchema);
 const Team = mongoose.model("Team", TeamSchema);
 const Schedule = mongoose.model("Schedule", ScheduleSchema);
+const BracketSchedule = mongoose.model("BracketSchedule", BracketScheduleSchema);
 
 async function seed() {
   console.log("Seeding database...");
@@ -133,6 +151,7 @@ async function seed() {
   });
 
   await Schedule.create({});
+  await BracketSchedule.createCollection();
 
   console.log("Database seeded!");
   await mongoose.disconnect();
