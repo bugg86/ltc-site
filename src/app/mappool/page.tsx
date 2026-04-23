@@ -3,6 +3,19 @@
 import { DesktopNavbar } from "@/components/common/NavBar";
 import { useEffect, useState } from "react";
 
+const SLOT_ORDER = ["NM", "HD", "HR", "DT", "EX", "TB"];
+
+function sortMaps(maps: MapEntry[]): MapEntry[] {
+  return [...maps].sort((a, b) => {
+    const aPre = SLOT_ORDER.findIndex((p) => a.slot.startsWith(p));
+    const bPre = SLOT_ORDER.findIndex((p) => b.slot.startsWith(p));
+    if (aPre !== bPre) return aPre - bPre;
+    const aNum = parseInt(a.slot.replace(/\D/g, ""), 10) || 0;
+    const bNum = parseInt(b.slot.replace(/\D/g, ""), 10) || 0;
+    return aNum - bNum;
+  });
+}
+
 const POOLS = [
   "Qualifiers",
   "Round of 32",
@@ -141,7 +154,7 @@ export default function MappoolPage() {
     fetch(`/api/maps?round=${encodeURIComponent(activePool)}`)
       .then((res) => res.json())
       .then((data) => {
-        setMaps(data);
+        setMaps(sortMaps(data));
         setLoading(false);
       })
       .catch(() => setLoading(false));
