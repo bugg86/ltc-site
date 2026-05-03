@@ -10,7 +10,7 @@ const POOLS = [
   "Quarterfinals",
   "Semifinals",
   "Finals",
-  "Grandfinals",
+  "Grand Finals",
 ];
 
 interface ScheduleEntry {
