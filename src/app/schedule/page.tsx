@@ -125,13 +125,13 @@ function QualifiersTable({ entries }: { entries: ScheduleEntry[] }) {
                 <td style={{ ...cellStyle, textAlign: "center" }}>
                   {row.mp && (
                     <a
-                      href={`https://osu.ppy.sh/mp/${row.mp}`}
+                      href={row.mp}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mp-link"
                       style={{ color: "inherit" }}
                     >
-                      {row.mp}
+                      {row.mp.split("/").pop()}
                     </a>
                   )}
                 </td>
