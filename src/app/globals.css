@@ -8,6 +8,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 .first-half { 
@@ -39,6 +40,7 @@ body {
   height: max(100vh, 56.25vw);
   width: 100vw;
   position: relative;
+  overflow: hidden;
 }
 
 .second-half-sub-background {
@@ -189,6 +191,32 @@ body {
 
 .mp-link { text-decoration: none; }
 .mp-link:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .first-half {
+    height: max(100vh, 155vw);
+    height: max(100svh, 155vw);
+    background-size: cover;
+    background-position: center top;
+  }
+
+  .second-half {
+    height: 185vw;
+    min-height: 100vh;
+  }
+
+  .second-half-sub-background {
+    width: 92vw;
+    height: 95%;
+    top: 0%;
+    left: 4vw;
+  }
+
+  .left-decor,
+  .right-decor {
+    display: none;
+  }
+}
 
 @layer base {
   * {

@@ -9,7 +9,10 @@ const Container = styled("div")({
   height: "10.541vw",
   top: "29.115vw",
   left: "16.56vw",
-  zIndex: "2"
+  zIndex: "2",
+  "@media (max-width: 768px)": {
+    display: "none",
+  },
 });
 
 const MushroomLayer1 = styled("div")({

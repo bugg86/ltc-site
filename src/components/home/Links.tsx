@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { styled } from "@mui/material";
 
-
 const Container = styled("div")({
   position: "absolute",
   width: "31.1vw",
@@ -11,6 +10,36 @@ const Container = styled("div")({
   top: "45.563vw",
   left: "34.7vw",
   zIndex: 2,
+  "@media (max-width: 768px)": {
+    display: "none",
+  },
+});
+
+const MobileContainer = styled("div")({
+  display: "none",
+  "@media (max-width: 768px)": {
+    display: "flex",
+    position: "absolute",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: "2.5vw",
+    top: "74%",
+    left: "5vw",
+    width: "90vw",
+    zIndex: 2,
+  },
+});
+
+const MobileLinkButton = styled("a")({
+  fontFamily: "var(--font-josefin-sans)",
+  fontSize: "3.2vw",
+  color: "#FFFCEA",
+  textDecoration: "none",
+  padding: "2vw 4vw",
+  borderRadius: "50vw",
+  border: "1px solid rgba(159, 184, 120, 0.6)",
+  background: "rgba(55, 68, 38, 0.5)",
+  whiteSpace: "nowrap",
 });
 
 const zones = [
@@ -36,7 +65,6 @@ const zones = [
   },
 ];
 
-
 const LinkImage = (
   <Image
     src="/home/links.webp"
@@ -49,26 +77,40 @@ const LinkImage = (
 
 export function Links() {
   return (
-    <Container style={{ position: "absolute" }}>
-      {LinkImage}
-      {zones.map((zone, idx) => (
-        <a
-          key={zone.label}
-          href={zone.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={zone.label}
-          style={{
-            position: "absolute",
-            left: `${(32 / 5) * idx}vw`,
-            top: 0,
-            width: `${32 / 5}vw`,
-            height: "5.006vw",
-            zIndex: 2,
-            display: "block",
-          }}
-        />
-      ))}
-    </Container>
+    <>
+      <Container style={{ position: "absolute" }}>
+        {LinkImage}
+        {zones.map((zone, idx) => (
+          <a
+            key={zone.label}
+            href={zone.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={zone.label}
+            style={{
+              position: "absolute",
+              left: `${(32 / 5) * idx}vw`,
+              top: 0,
+              width: `${32 / 5}vw`,
+              height: "5.006vw",
+              zIndex: 2,
+              display: "block",
+            }}
+          />
+        ))}
+      </Container>
+      <MobileContainer>
+        {zones.map((zone) => (
+          <MobileLinkButton
+            key={zone.label}
+            href={zone.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {zone.label}
+          </MobileLinkButton>
+        ))}
+      </MobileContainer>
+    </>
   );
 }

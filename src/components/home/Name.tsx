@@ -9,7 +9,13 @@ const Container = styled("div")({
   height: "9.563vw",
   left: "3vw",
   top: "42.75vw",
-  zIndex: "3"
+  zIndex: "3",
+  "@media (max-width: 768px)": {
+    width: "55vw",
+    height: "23vw",
+    left: "22.5vw",
+    top: "47%",
+  },
 });
 
 export function Name() {

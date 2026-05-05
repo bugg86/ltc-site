@@ -19,6 +19,14 @@ const ImageLayer = styled("div")({
   top: "6.75vw",
   // aspectRatio: "0.8056",
   zIndex: 2,
+  "@media (max-width: 768px)": {
+    height: "40%",
+    width: "auto",
+    aspectRatio: "40/52",
+    left: "50%",
+    transform: "translateX(-50%)",
+    top: "9%",
+  },
 });
 
 export function LelaAvatar() {

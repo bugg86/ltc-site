@@ -2,12 +2,9 @@
 
 import Image from 'next/image';
 import { styled } from "@mui/material";
-import React from 'react';
-import { useRef, useState } from 'react';
 
 interface NextPageButtonProps {
   onClick?: () => void;
-  className?: string;
   ariaLabel?: string;
 }
 
@@ -15,16 +12,22 @@ const Button = styled("button")({
   position: "absolute",
   width: "1.93vw",
   height: "2.318vw",
-  top: "50.625vw",
+  top: "53vw",
   left: "49.01vw",
   zIndex: "3",
   cursor: "pointer",
+  "@media (max-width: 768px)": {
+    width: "7vw",
+    height: "8.4vw",
+    left: "46.5vw",
+    top: "90%",
+  },
 });
 
 
 
 
-export function NextPageButton({ onClick, className = '', ariaLabel = 'Next page' }: NextPageButtonProps) {
+export function NextPageButton({ onClick, ariaLabel = 'Next page' }: NextPageButtonProps) {
     return (
     <Button
       type="button"

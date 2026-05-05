@@ -11,6 +11,12 @@ const ImageLayer = styled("div")({
   left: "0.938vw",
   aspectRatio: "0.8056",
   zIndex: 3,
+  "@media (max-width: 768px)": {
+    width: "55vw",
+    height: "47.5vw",
+    left: "22.5vw",
+    top: "10vw",
+  },
 });
 
 export function Animal() {

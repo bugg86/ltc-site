@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Josefin_Sans } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -29,6 +29,10 @@ const sunlightDreams = localFont({
 export const metadata: Metadata = {
   title: "Lela's Tech Cup 3",
   description: "i love osu!",
+};
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

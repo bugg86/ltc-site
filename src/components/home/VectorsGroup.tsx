@@ -9,7 +9,10 @@ const Container = styled("div")({
   height: "33.75vw",
   top: "25.202vw",
   left: "-1.875vw",
-  zIndex: "2"
+  zIndex: "2",
+  "@media (max-width: 768px)": {
+    display: "none",
+  },
 });
 
 export function Vectors() {

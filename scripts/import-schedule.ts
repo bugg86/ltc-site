@@ -37,18 +37,22 @@ async function importSchedule() {
   console.log(`Importing ${raw.length} entries...`);
 
   for (const entry of raw) {
-    await Schedule.create({
-      round: entry.round,
-      matchId: entry.lobbyId,
-      date: entry.date,
-      time: entry.time,
-      referee: entry.referee,
-      teams: entry.teams ? entry.teams.split("+").map((t) => t.trim()).filter(Boolean) : [],
-      mp: entry.mpLink,
-    });
+    await Schedule.findOneAndUpdate(
+      { matchId: entry.lobbyId },
+      {
+        round: entry.round,
+        matchId: entry.lobbyId,
+        date: entry.date,
+        time: entry.time,
+        referee: entry.referee,
+        teams: entry.teams ? entry.teams.split("+").map((t) => t.trim()).filter(Boolean) : [],
+        mp: entry.mpLink,
+      },
+      { upsert: true }
+    );
   }
 
-  console.log(`Done! Imported ${raw.length} schedule entries.`);
+  console.log(`Done! Upserted ${raw.length} schedule entries.`);
   await mongoose.disconnect();
 }
 

@@ -11,25 +11,43 @@ const Container = styled("div")({
   height: "9.210vw",
   top: "11.801vw",
   left: "50.677vw",
-  zIndex: "3"
+  zIndex: "3",
+  "@media (max-width: 768px)": {
+    width: "90vw",
+    height: "22vw",
+    top: "59.3%",
+    left: "5vw",
+  },
 });
 
 const SponsorLayer1 = styled("div")({
-    position: "relative",
-    width: "8.698vw",
-    height: "9.210vw",
+  position: "relative",
+  width: "8.698vw",
+  height: "9.210vw",
+  "@media (max-width: 768px)": {
+    width: "20.5vw",
+    height: "22vw",
+  },
 });
 
 const SponsorLayer2 = styled("div")({
-    position: "relative",
-    width: "16.406vw",
-    height: "9.210vw",
+  position: "relative",
+  width: "16.406vw",
+  height: "9.210vw",
+  "@media (max-width: 768px)": {
+    width: "38.7vw",
+    height: "22vw",
+  },
 });
 
 const SponsorLayer3 = styled("div")({
-    position: "relative",
-    width: "8.646vw",
-    height: "9.210vw",
+  position: "relative",
+  width: "8.646vw",
+  height: "9.210vw",
+  "@media (max-width: 768px)": {
+    width: "20.3vw",
+    height: "22vw",
+  },
 });
 
 
@@ -67,9 +85,9 @@ const SPONSOR_3 = (
 export function SponsorHighlight() {
   return (
     <Container>
-        <SponsorLayer1>{SPONSOR_1}</SponsorLayer1>
-        <SponsorLayer2>{SPONSOR_2}</SponsorLayer2>
-        <SponsorLayer3>{SPONSOR_3}</SponsorLayer3>
+      <SponsorLayer1>{SPONSOR_1}</SponsorLayer1>
+      <SponsorLayer2>{SPONSOR_2}</SponsorLayer2>
+      <SponsorLayer3>{SPONSOR_3}</SponsorLayer3>
     </Container>
   );
 }

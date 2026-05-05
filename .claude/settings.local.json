@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\jackf\\\\Documents\\\\repos\\\\ltc-site\" -Recurse -Filter \"page.tsx\" -ErrorAction SilentlyContinue)",
+      "Bash(Select-Object -First 10)"
+    ]
+  }
+}

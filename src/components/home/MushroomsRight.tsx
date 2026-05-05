@@ -10,7 +10,10 @@ const Container = styled("div")({
   top: "26.359vw",
   left: "84.01vw",
   rotate: "0deg",
-  zIndex: "2"
+  zIndex: "2",
+  "@media (max-width: 768px)": {
+    display: "none",
+  },
 });
 
 const MUSHROOM_1 = (
