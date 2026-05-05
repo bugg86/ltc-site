@@ -122,13 +122,14 @@ function QualifiersTable({ entries }: { entries: ScheduleEntry[] }) {
                 <td style={{ ...cellStyle, whiteSpace: "normal", overflowWrap: "break-word" }}>
                   {row.teams.join(" ÷ ")}
                 </td>
-                <td style={{ ...cellStyle, textAlign: "right" }}>
+                <td style={{ ...cellStyle, textAlign: "center" }}>
                   {row.mp && (
                     <a
                       href={`https://osu.ppy.sh/mp/${row.mp}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ color: "#B2EAF1", textDecoration: "none", fontSize: "0.8vw" }}
+                      className="mp-link"
+                      style={{ color: "inherit" }}
                     >
                       {row.mp}
                     </a>
