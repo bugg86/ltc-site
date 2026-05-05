@@ -86,7 +86,7 @@ function QualifiersTable({ entries }: { entries: ScheduleEntry[] }) {
                 <th style={{ ...headerStyle, width: COL.date.width }}>{COL.date.label}</th>
                 <th style={{ ...headerStyle, width: COL.referee.width }}>{COL.referee.label}</th>
                 <th style={{ ...headerStyle, width: COL.teams.width }}>{COL.teams.label}</th>
-                <th style={{ ...headerStyle, width: COL.mp.width, textAlign: "right" }}>{COL.mp.label}</th>
+                <th style={{ ...headerStyle, width: COL.mp.width, textAlign: "center" }}>{COL.mp.label}</th>
               </tr>
             </thead>
           </table>
