@@ -22,13 +22,7 @@ export default function RulesPage() {
 
   const Separator = () => (
     <div
-      style={{
-        position: "relative",
-        width: "30vw",
-        left: "20vw",
-        height: "4.8vh",
-        margin: "5vh 0",
-      }}
+      className="relative my-[5vh] mx-auto md:mx-0 md:left-[20vw] w-[70vw] h-[11vw] md:w-[30vw] md:h-[4.8vh]"
     >
       <Image src="/rules/separator.svg" alt="separator" fill />
     </div>
@@ -112,6 +106,7 @@ export default function RulesPage() {
       content: (
         <>
           <h3 style={{ fontSize: "2.6vh", marginBottom: "1vh", paddingLeft: "1vw", color: "#FFFCEA" }}>Star Rating and Bans</h3>
+          <div className="overflow-x-auto">
           <table
             style={{
               color: "#FFFCEA",
@@ -149,6 +144,7 @@ export default function RulesPage() {
               ))}
             </tbody>
           </table>
+          </div>
           <Separator />
         </>
       ),
@@ -329,6 +325,32 @@ export default function RulesPage() {
       content: (
         <>
           <h2 style={{ fontSize: "3.5vh", marginBottom: "1.2vh" }}>Schedule</h2>
+          {/* Mobile: single-column schedule */}
+          <table
+            className="md:hidden"
+            style={{ color: "#FFFCEA", fontFamily: "var(--font-josefin-sans)", fontSize: "4.5vw", lineHeight: "7vw", width: "100%" }}
+          >
+            <tbody>
+              {[
+                ["Registration", "Feb 14 - Feb 28"],
+                ["Screening", "Mar 1 - Mar 15"],
+                ["Qualifiers", "Mar 20 - Mar 23"],
+                ["Ro32", "Mar 27 - Mar 30"],
+                ["Ro16", "Apr 3 - Apr 6"],
+                ["Quarterfinals", "Apr 10 - Apr 13"],
+                ["Semifinals", "Apr 17 - Apr 20"],
+                ["Finals", "Apr 24 - Apr 27"],
+                ["Grandfinals", "May 1 ~ (TBA)"],
+              ].map(([round, date]) => (
+                <tr key={round}>
+                  <td style={{ paddingBottom: "1.5vw", fontWeight: "700", width: "50%" }}>{round}</td>
+                  <td style={{ paddingBottom: "1.5vw" }}>{date}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {/* Desktop: two-column side-by-side schedule */}
+          <div className="hidden md:block overflow-x-auto">
           <table
             style={{
               color: "#FFFCEA",
@@ -369,6 +391,7 @@ export default function RulesPage() {
               </tr>
             </tbody>
           </table>
+          </div>
           <Separator />
         </>
       ),
@@ -426,7 +449,7 @@ export default function RulesPage() {
             <li>AFSP works to save lives and to bring hope through research, education, advocacy, and support for individuals and families affected by suicide. A charity that has helped me personally and holds deep meaning to me.</li>
             <li>Every donation is a way to remember those we have lost, to honor the impact they had on us, and to help ensure that compassion and support remain present for those who are still here fighting; and still deserving of care. Thank you for taking this moment to remember and for supporting a cause that reflects the care, meaning, and the values this community holds deeply.</li>
           </ul>
-          <div style={{ display: "flex", gap: "5vw", marginTop: "15vh", paddingLeft: "16vw"}}>
+          <div className="flex flex-wrap gap-[5vw] mt-[5vh] justify-center md:justify-start md:mt-[15vh] md:pl-[16vw]">
             <PaginationNext href="https://afsp.org/" label="LEARN MORE" aria-label="learn-more" />
             <PaginationNext href="https://ko-fi.com/lelastechcup" label="DONATE" aria-label="donate" />
           </div>
@@ -461,44 +484,46 @@ export default function RulesPage() {
   ]
 
   return (
-    <div
-      style={{
-        width: "100%",
-        minHeight: "110vh",
-        position: "relative",
-        overflowX: "hidden",
-      }}
-    >
-
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage: "url(/rules/bg.webp)",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "top center",
-            backgroundSize: "100% auto",
-            opacity: 0.7,
-            pointerEvents: "none",
-            zIndex: 0,
-          }}
-        />
-      <DesktopNavbar />
-      <h1
+    <div className="relative overflow-x-hidden" style={{ minHeight: "110vh" }}>
+      {/* Mobile background */}
+      <div
+        className="md:hidden"
         style={{
           position: "absolute",
-          top: "19vh",
-          left: "4vw",
-          zIndex: 3,
-          color: "#FFF7C2",
-          fontFamily: "var(--font-sunlight-dreams)",
-          fontSize: "4vw",
-          margin: 0,
+          inset: 0,
+          backgroundImage: "url(/rules/bg.webp)",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "top center",
+          backgroundSize: "150% auto",
+          opacity: 0.7,
+          pointerEvents: "none",
+          zIndex: 0,
         }}
+      />
+      {/* Desktop background */}
+      <div
+        className="hidden md:block"
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: "url(/rules/bg.webp)",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "top center",
+          backgroundSize: "100% auto",
+          opacity: 0.7,
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      <DesktopNavbar />
+      <h1
+        className="relative z-[3] px-4 pt-[14vh] text-[10vw] md:absolute md:px-0 md:pt-0 md:top-[19vh] md:left-[4vw] md:text-[4vw]"
+        style={{ color: "#FFF7C2", fontFamily: "var(--font-sunlight-dreams)", margin: 0 }}
       >
         Rules & Prizes
       </h1>
       <nav
+        className="hidden md:block"
         style={{
           position: "fixed",
           top: "34vh",
@@ -517,27 +542,13 @@ export default function RulesPage() {
         }}
         aria-label="Rules navigation"
       >
-        <ul
-          style={{
-            listStyle: "none",
-            padding: 0,
-            margin: 0,
-            display: "flex",
-            flexDirection: "column",
-            gap: "3vh",
-          }}
-        >
+        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "3vh" }}>
           {navItems.map((item) => (
             <li key={item.id}>
               <a
                 href={`#${item.id}`}
                 onClick={handleNavClick}
-                style={{
-                  fontSize: item.size,
-                  textDecoration: "none",
-                  paddingLeft: item.indent || "0px",
-                  color: item.color,
-                }}
+                style={{ fontSize: item.size, textDecoration: "none", paddingLeft: item.indent || "0px", color: item.color }}
               >
                 {item.label}
               </a>
@@ -546,24 +557,18 @@ export default function RulesPage() {
         </ul>
       </nav>
       <div
-        style={{
-          position: "relative",
-          zIndex: 2,
-          paddingTop: "20vh",
-          left: "calc(28vw)",
-          color: "#FFF7C2",
-          fontFamily: "var(--font-sunlight-dreams)",
-        }}
+        className="relative z-[2] px-4 pt-[4vh] md:px-0 md:pt-[20vh] md:left-[28vw]"
+        style={{ color: "#FFF7C2", fontFamily: "var(--font-sunlight-dreams)" }}
       >
-        {navItems.map((item, index) => (
+        {navItems.map((item) => (
           <section
             key={item.id}
             id={item.id}
-            style={{ 
-              marginBottom: item.marginBottom, 
-              scrollMarginTop: "34vh", 
+            className="max-w-full md:max-w-[68vw]"
+            style={{
+              marginBottom: item.marginBottom,
+              scrollMarginTop: "34vh",
               whiteSpace: "normal",
-              maxWidth: "68vw",
               overflowWrap: "anywhere",
             }}
           >
@@ -577,14 +582,13 @@ export default function RulesPage() {
           top: "30vh",
           left: "-10vw",
           width: "120vw",
-          height: "109%",
+          bottom: 0,
           backgroundColor: "#374426",
           border: ".6vh solid #FFF7C2",
           zIndex: 1,
           pointerEvents: "none",
         }}
-      >
-      </div>
+      />
     </div>
   );
 }
