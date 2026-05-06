@@ -113,8 +113,8 @@ function QualifiersTable({ entries }: { entries: ScheduleEntry[] }) {
                         {"  "}
                         <span style={{ fontWeight: 600 }}>{row.time}</span>
                       </td>
-                      <td className="sched-cell" style={cellStyle}>{row.referee}</td>
-                      <td className="sched-cell" style={{ ...cellStyle, whiteSpace: "normal", overflowWrap: "break-word" }}>
+                      <td className="sched-cell" style={{ ...cellStyle, overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>{row.referee}</td>
+                      <td className="sched-cell" style={{ ...cellStyle, whiteSpace: "normal", overflowWrap: "break-word", wordBreak: "break-word" }}>
                         {row.teams.join(" ÷ ")}
                       </td>
                       <td className="sched-cell" style={{ ...cellStyle, textAlign: "center" }}>
@@ -305,7 +305,7 @@ export default function SchedulePage() {
             -webkit-overflow-scrolling: touch;
           }
           .sched-inner-wrap {
-            min-width: 500px;
+            min-width: 580px;
           }
           .bracket-inner-wrap {
             min-width: 740px;
