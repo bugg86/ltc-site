@@ -1,7 +1,7 @@
 "use client";
 
 import { DesktopNavbar } from "@/components/common/NavBar";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const SLOT_ORDER = ["NM", "HD", "HR", "DT", "EX", "TB"];
 
@@ -55,20 +55,23 @@ function slotColor(slot: string): string {
 }
 
 function MapCard({ map }: { map: MapEntry }) {
-  const [hovered, setHovered] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const lastPointerType = useRef("");
 
   return (
     <div
+      className="map-card"
       style={{
         backgroundColor: slotColor(map.slot),
         borderRadius: "0 0.833vw 0.833vw 0.833vw",
         overflow: "hidden",
-        boxShadow: hovered ? "0 8px 20px rgba(0,0,0,0.4)" : "0 4px 12px rgba(0,0,0,0.3)",
+        boxShadow: expanded ? "0 8px 20px rgba(0,0,0,0.4)" : "0 4px 12px rgba(0,0,0,0.3)",
         fontFamily: "var(--font-josefin-sans)",
         transition: "box-shadow 0.2s",
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onPointerDown={(e) => { lastPointerType.current = e.pointerType; }}
+      onMouseEnter={() => { if (lastPointerType.current !== "touch") setExpanded(true); }}
+      onMouseLeave={() => { if (lastPointerType.current !== "touch") setExpanded(false); }}
     >
       {/* Cover image — clickable */}
       <a
@@ -81,11 +84,13 @@ function MapCard({ map }: { map: MapEntry }) {
           <img
             src={map.beatmapCover}
             alt={map.name}
+            className="map-cover-img"
             style={{ width: "100%", display: "block", objectFit: "cover", height: "5vw", cursor: "pointer" }}
           />
         )}
         {/* Slot badge */}
         <div
+          className="map-slot-badge"
           style={{
             position: "absolute",
             top: 0,
@@ -104,23 +109,36 @@ function MapCard({ map }: { map: MapEntry }) {
         </div>
       </a>
 
-      {/* Always visible body */}
-      <div style={{ padding: "0.6vw 0.7vw", display: "flex", flexDirection: "column", gap: "0.3vw" }}>
-        <div style={{ color: "#000", fontSize: "1vw", fontWeight: 700, lineHeight: 1.2 }}>{map.name}</div>
-        <div style={{ color: "#000", fontSize: "0.8vw", fontWeight: 600 }}>[{map.difficulty}]</div>
-        <div style={{ color: "#000", fontSize: "0.75vw" }}>mapped by {map.mapper}</div>
+      {/* Always visible body — tap to expand on mobile */}
+      <div
+        className="map-card-body"
+        onClick={() => { if (lastPointerType.current === "touch") setExpanded((prev) => !prev); }}
+        style={{
+          padding: "0.6vw 0.7vw",
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.3vw",
+          cursor: "default",
+        }}
+      >
+        <div className="map-card-name" style={{ color: "#000", fontSize: "1vw", fontWeight: 700, lineHeight: 1.2 }}>{map.name}</div>
+        <div className="map-card-diff" style={{ color: "#000", fontSize: "0.8vw", fontWeight: 600 }}>[{map.difficulty}]</div>
+        <div className="map-card-mapper" style={{ color: "#000", fontSize: "0.75vw" }}>mapped by {map.mapper}</div>
+        <div className="map-expand-hint" style={{ color: "#000", fontSize: "0.75vw", opacity: 0.5, marginTop: "0.2vw" }}>
+          {expanded ? "▲ tap to collapse" : "▼ tap for details"}
+        </div>
       </div>
 
       {/* Expanded content */}
       <div
         style={{
-          maxHeight: hovered ? "20vw" : "0",
+          maxHeight: expanded ? "300px" : "0",
           overflow: "hidden",
           transition: "max-height 0.25s ease",
         }}
       >
-        <div style={{ padding: "0 0.7vw 0.6vw", display: "flex", flexDirection: "column", gap: "0.4vw" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0.3vw 0.5vw" }}>
+        <div className="map-card-expanded" style={{ padding: "0 0.7vw 0.6vw", display: "flex", flexDirection: "column", gap: "0.4vw" }}>
+          <div className="map-stats-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0.3vw 0.5vw" }}>
             {[
               { label: "SR", value: map.starRating },
               { label: "BPM", value: map.bpm },
@@ -130,12 +148,12 @@ function MapCard({ map }: { map: MapEntry }) {
               { label: "OD", value: map.overallDifficulty },
             ].map(({ label, value }) => (
               <div key={label} style={{ display: "flex", flexDirection: "column" }}>
-                <span style={{ color: "#000", fontSize: "0.6vw", textTransform: "uppercase", letterSpacing: "0.05em" }}>{label}</span>
-                <span style={{ color: "#000", fontSize: "0.8vw", fontWeight: 600 }}>{value}</span>
+                <span className="map-stat-label" style={{ color: "#000", fontSize: "0.6vw", textTransform: "uppercase", letterSpacing: "0.05em" }}>{label}</span>
+                <span className="map-stat-value" style={{ color: "#000", fontSize: "0.8vw", fontWeight: 600 }}>{value}</span>
               </div>
             ))}
           </div>
-          <div style={{ color: "#000", fontSize: "0.65vw", opacity: 0.6, marginTop: "0.2vw" }}>
+          <div className="map-beatmap-id" style={{ color: "#000", fontSize: "0.65vw", opacity: 0.6, marginTop: "0.2vw" }}>
             ID: {map.beatmapId}
           </div>
         </div>
@@ -169,7 +187,105 @@ export default function MappoolPage() {
         overflowX: "hidden",
       }}
     >
+      <style>{`
+        .map-expand-hint {
+          display: none;
+        }
+        @media (max-width: 768px) {
+          .map-expand-hint {
+            display: block;
+          }
+          .map-card-body {
+            cursor: pointer !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .map-card {
+            border-radius: 0 3vw 3vw 3vw !important;
+          }
+          .map-cover-img {
+            height: 25vw !important;
+          }
+          .map-slot-badge {
+            font-size: 3vw !important;
+            padding: 0.8vw 1.5vw !important;
+            border-radius: 0 0 1.5vw 0 !important;
+          }
+          .map-card-body {
+            padding: 2vw 2.5vw !important;
+            gap: 1vw !important;
+          }
+          .map-card-name {
+            font-size: 4vw !important;
+          }
+          .map-card-diff {
+            font-size: 3.5vw !important;
+          }
+          .map-card-mapper {
+            font-size: 3vw !important;
+          }
+          .map-expand-hint {
+            font-size: 3vw !important;
+          }
+          .map-card-expanded {
+            padding: 0 2.5vw 2vw !important;
+            gap: 1.5vw !important;
+          }
+          .map-stat-label {
+            font-size: 2.5vw !important;
+          }
+          .map-stat-value {
+            font-size: 3vw !important;
+          }
+          .map-beatmap-id {
+            font-size: 2.5vw !important;
+          }
+          .maps-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 3vw !important;
+          }
+          .maps-container {
+            padding: 3vw !important;
+            border-radius: 4vw !important;
+            border-width: 2px !important;
+          }
+          .pool-tab-bar {
+            gap: 0 !important;
+            padding-left: 2vw !important;
+            padding-right: 2vw !important;
+            overflow-x: auto !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            justify-content: flex-start !important;
+          }
+          .pool-tab-btn {
+            font-size: 3.5vw !important;
+            padding: 0.4vh 3vw !important;
+            flex-shrink: 0 !important;
+          }
+          .no-maps-msg {
+            font-size: 5vw !important;
+          }
+        }
+      `}</style>
+
+      {/* Mobile background */}
       <div
+        className="md:hidden"
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: "url(/bg1.webp)",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "top center",
+          backgroundSize: "200% auto",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      {/* Desktop background */}
+      <div
+        className="hidden md:block"
         style={{
           position: "absolute",
           inset: 0,
@@ -185,16 +301,8 @@ export default function MappoolPage() {
       <DesktopNavbar />
 
       <h1
-        style={{
-          position: "absolute",
-          top: "19vh",
-          left: "4vw",
-          zIndex: 3,
-          color: "#FFF7C2",
-          fontFamily: "var(--font-sunlight-dreams)",
-          fontSize: "4vw",
-          margin: 0,
-        }}
+        className="relative z-3 px-4 pt-[14vh] text-[10vw] md:absolute md:px-0 md:pt-0 md:top-[19vh] md:left-[4vw] md:text-[4vw]"
+        style={{ color: "#FFF7C2", fontFamily: "var(--font-sunlight-dreams)", margin: 0 }}
       >
         Mappool
       </h1>
@@ -214,13 +322,8 @@ export default function MappoolPage() {
       />
 
       <div
+        className="relative z-2 pt-[4vh] px-4 pb-[10vh] md:pt-[22.5vh] md:px-[4vw]"
         style={{
-          position: "relative",
-          zIndex: 2,
-          paddingTop: "22.5vh",
-          paddingLeft: "4vw",
-          paddingRight: "4vw",
-          paddingBottom: "10vh",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -229,6 +332,7 @@ export default function MappoolPage() {
       >
         {/* Pool tab navbar */}
         <div
+          className="pool-tab-bar"
           style={{
             display: "flex",
             alignItems: "center",
@@ -246,6 +350,7 @@ export default function MappoolPage() {
             <button
               key={pool}
               onClick={() => setActivePool(pool)}
+              className="pool-tab-btn"
               style={{
                 background: "none",
                 border: "none",
@@ -266,6 +371,7 @@ export default function MappoolPage() {
 
         {/* Maps content area */}
         <div
+          className="maps-container"
           style={{
             width: "100%",
             backgroundColor: "rgba(159, 184, 120, 1)",
@@ -280,12 +386,13 @@ export default function MappoolPage() {
               Loading maps...
             </p>
           ) : maps.length === 0 ? (
-            <div style={{ gridColumn: "1 / -1", display: "flex", flexDirection: "column", alignItems: "center", padding: "4vh 0" }}>
-              <p style={{ fontSize: "2vw", color: "#FFF7C2", textAlign: "center", fontFamily: "var(--font-josefin-sans)", margin: 0 }}>No maps found...</p>
-              <img src="/mappool/nomaps.png" alt="" style={{ marginTop: "2vh" }} />
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "4vh 0" }}>
+              <p className="no-maps-msg" style={{ fontSize: "2vw", color: "#FFF7C2", textAlign: "center", fontFamily: "var(--font-josefin-sans)", margin: 0 }}>No maps found...</p>
+              <img src="/mappool/nomaps.png" alt="" style={{ marginTop: "2vh", maxWidth: "80vw" }} />
             </div>
           ) : (
             <div
+              className="maps-grid"
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(5, 1fr)",
