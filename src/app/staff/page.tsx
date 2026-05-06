@@ -62,7 +62,68 @@ export default function StaffPage() {
         overflowX: "hidden",
       }}
     >
+      <style>{`
+        @media (max-width: 768px) {
+          .staff-section-heading {
+            font-size: 8vw !important;
+            margin-bottom: 4vw !important;
+          }
+          .staff-cards-row {
+            gap: 3vw !important;
+          }
+          .staff-card {
+            width: 100% !important;
+            height: auto !important;
+            min-height: 22vw !important;
+            border-radius: 0 3vw 3vw 3vw !important;
+          }
+          .staff-profile-pic {
+            width: 22vw !important;
+            height: 22vw !important;
+          }
+          .staff-card-inner {
+            margin-left: 3vw !important;
+            padding: 2vw 0 !important;
+          }
+          .staff-osu-name {
+            font-size: 4.5vw !important;
+          }
+          .staff-country-flag {
+            width: 6vw !important;
+            height: auto !important;
+          }
+          .staff-discord-icon {
+            width: 4.5vw !important;
+            height: 4.5vw !important;
+          }
+          .staff-sub-text {
+            font-size: 3.5vw !important;
+            line-height: 1.4 !important;
+          }
+          .staff-design-element {
+            width: 5vw !important;
+            height: 4vw !important;
+          }
+        }
+      `}</style>
+      {/* Mobile background */}
       <div
+        className="md:hidden"
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: "url(/staff/bg.webp)",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "top center",
+          backgroundSize: "200% auto",
+          opacity: 1,
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      {/* Desktop background */}
+      <div
+        className="hidden md:block"
         style={{
           position: "absolute",
           inset: 0,
@@ -78,30 +139,14 @@ export default function StaffPage() {
       />
       <DesktopNavbar />
       <h1
-        style={{
-          position: "absolute",
-          top: "19vh",
-          left: "4vw",
-          zIndex: 3,
-          color: "#FFF7C2",
-          fontFamily: "var(--font-sunlight-dreams)",
-          fontSize: "4vw",
-          margin: 0,
-        }}
+        className="relative z-3 px-4 pt-[14vh] text-[10vw] md:absolute md:px-0 md:pt-0 md:top-[19vh] md:left-[4vw] md:text-[4vw]"
+        style={{ color: "#FFF7C2", fontFamily: "var(--font-sunlight-dreams)", margin: 0 }}
       >
         Staff
       </h1>
       <div
-        style={{
-          position: "relative",
-          zIndex: 2,
-          paddingTop: "25vh",
-          paddingLeft: "2vw",
-          paddingRight: "2vw",
-          paddingBottom: "10vh",
-          color: "#FFF7C2",
-          fontFamily: "var(--font-sunlight-dreams)",
-        }}
+        className="relative z-2 pt-[4vh] px-4 pb-[10vh] md:pt-[25vh] md:px-[2vw]"
+        style={{ color: "#FFF7C2", fontFamily: "var(--font-sunlight-dreams)" }}
       >
         {loading ? (
           <p style={{ fontSize: "24px" }}>Loading staff...</p>
@@ -112,6 +157,7 @@ export default function StaffPage() {
             return (
               <section key={position} style={{ marginBottom: "4vh" }}>
                 <h2
+                  className="staff-section-heading"
                   style={{
                     fontSize: "3.3vw",
                     marginBottom: "2vw",
@@ -121,6 +167,7 @@ export default function StaffPage() {
                   {position}
                 </h2>
                 <div
+                  className="staff-cards-row"
                   style={{
                     display: "flex",
                     flexWrap: "wrap",
@@ -133,6 +180,7 @@ export default function StaffPage() {
                       href={member.profileLink || undefined}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="staff-card"
                       style={{
                         display: "flex",
                         flexDirection: "row",
@@ -153,6 +201,7 @@ export default function StaffPage() {
                           src={member.profilePicture}
                           alt={member.osuName}
                           referrerPolicy="no-referrer"
+                          className="staff-profile-pic"
                           style={{
                             width: "auto",
                             height: "100%",
@@ -162,9 +211,10 @@ export default function StaffPage() {
                           }}
                         />
                       )}
-                      <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", marginLeft: "1vw" }}>
+                      <div className="staff-card-inner" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", marginLeft: "1vw" }}>
                         <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "0.6vw" }}>
                           <span
+                            className="staff-osu-name"
                             style={{
                               fontSize: "3.8vh",
                               fontWeight: "500",
@@ -177,6 +227,7 @@ export default function StaffPage() {
                             <img
                               src={member.country}
                               alt="flag"
+                              className="staff-country-flag"
                               style={{
                                 width: "2.1vw",
                                 height: "3.8vh",
@@ -187,20 +238,20 @@ export default function StaffPage() {
                         <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "0.4vw", marginTop: "0.3vw" }}>
                           {member.discordName && (
                             <>
-                              <img src="/staff/discord.png" alt="discord" style={{ width: "3vh", height: "3vh" }} />
-                              <span style={{ fontSize: "1.9vh", opacity: 0.7, fontFamily: "var(--font-josefin-sans)", fontStyle: "normal", letterSpacing: "0%", lineHeight: "36px" }}>
+                              <img src="/staff/discord.png" alt="discord" className="staff-discord-icon" style={{ width: "3vh", height: "3vh" }} />
+                              <span className="staff-sub-text" style={{ fontSize: "1.9vh", opacity: 0.7, fontFamily: "var(--font-josefin-sans)", fontStyle: "normal", letterSpacing: "0%", lineHeight: "36px" }}>
                                 {member.discordName}
                               </span>
                             </>
                           )}
                           {member.role && (
-                            <span style={{ fontSize: "1.9vh", opacity: 0.7, fontFamily: "var(--font-josefin-sans)", fontStyle: "normal", letterSpacing: "0%", lineHeight: "36px" }}>
+                            <span className="staff-sub-text" style={{ fontSize: "1.9vh", opacity: 0.7, fontFamily: "var(--font-josefin-sans)", fontStyle: "normal", letterSpacing: "0%", lineHeight: "36px" }}>
                               {member.role}
                             </span>
                           )}
                         </div>
                       </div>
-                      <div style={{ position: "absolute", bottom: ".8vh", left: "63%", width: "2.5vw", height: "2vh" }}>
+                      <div className="staff-design-element" style={{ position: "absolute", bottom: ".8vh", left: "63%", width: "2.5vw", height: "2vh" }}>
                         <Image src="/staff/design.svg" alt="design" fill style={{ objectFit: "contain" }} />
                       </div>
                     </a>
