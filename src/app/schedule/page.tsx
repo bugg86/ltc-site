@@ -51,7 +51,6 @@ const COL = {
 };
 
 function QualifiersTable({ entries }: { entries: ScheduleEntry[] }) {
-  // Group rows by matchId, preserving insertion order
   const groups: Map<string, ScheduleEntry[]> = new Map();
   for (let i = 0; i < entries.length; i += 4) {
     groups.set(String(i), entries.slice(i, i + 4));
@@ -77,68 +76,58 @@ function QualifiersTable({ entries }: { entries: ScheduleEntry[] }) {
   return (
     <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "2vh" }}>
       {Array.from(groups.entries()).map(([matchId, rows]) => (
-        <div key={matchId}>
-          {/* Header — no border or radius */}
-          <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
-            <thead>
-              <tr>
-                <th style={{ ...headerStyle, width: COL.id.width }}>{COL.id.label}</th>
-                <th style={{ ...headerStyle, width: COL.date.width }}>{COL.date.label}</th>
-                <th style={{ ...headerStyle, width: COL.referee.width }}>{COL.referee.label}</th>
-                <th style={{ ...headerStyle, width: COL.teams.width }}>{COL.teams.label}</th>
-                <th style={{ ...headerStyle, width: COL.mp.width, textAlign: "center" }}>{COL.mp.label}</th>
-              </tr>
-            </thead>
-          </table>
+        <div className="sched-scroll-wrap" key={matchId}>
+          <div className="sched-inner-wrap">
+            {/* Header */}
+            <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+              <thead>
+                <tr>
+                  <th className="sched-header" style={{ ...headerStyle, width: COL.id.width }}>{COL.id.label}</th>
+                  <th className="sched-header" style={{ ...headerStyle, width: COL.date.width }}>{COL.date.label}</th>
+                  <th className="sched-header" style={{ ...headerStyle, width: COL.referee.width }}>{COL.referee.label}</th>
+                  <th className="sched-header" style={{ ...headerStyle, width: COL.teams.width }}>{COL.teams.label}</th>
+                  <th className="sched-header" style={{ ...headerStyle, width: COL.mp.width, textAlign: "center" }}>{COL.mp.label}</th>
+                </tr>
+              </thead>
+            </table>
 
-          {/* Body — bordered and rounded */}
-          <div style={{ borderRadius: "0.5vw", overflow: "hidden", border: "1px solid rgba(255, 247, 194, 0.3)" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
-            <colgroup>
-              <col style={{ width: COL.id.width }} />
-              <col style={{ width: COL.date.width }} />
-              <col style={{ width: COL.referee.width }} />
-              <col style={{ width: COL.teams.width }} />
-              <col style={{ width: COL.mp.width }} />
-            </colgroup>
-          <tbody>
-            {rows.map((row) => (
-              <tr
-                key={row._id}
-                style={{
-                  backgroundColor: "#9FB878",
-                  borderBottom: "1px solid rgba(255, 247, 194, 0.15)",
-                }}
-              >
-                <td style={{ ...cellStyle, color: "#FFF7C2", fontFamily: "var(--font-sunlight-dreams)", fontWeight: 700 }}>
-                  {row.matchId}
-                </td>
-                <td style={cellStyle}>
-                  <span style={{ opacity: 0.8 }}>{row.date}</span>
-                  {"  "}
-                  <span style={{ fontWeight: 600 }}>{row.time}</span>
-                </td>
-                <td style={cellStyle}>{row.referee}</td>
-                <td style={{ ...cellStyle, whiteSpace: "normal", overflowWrap: "break-word" }}>
-                  {row.teams.join(" ÷ ")}
-                </td>
-                <td style={{ ...cellStyle, textAlign: "center" }}>
-                  {row.mp && (
-                    <a
-                      href={row.mp}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mp-link"
-                      style={{ color: "inherit" }}
-                    >
-                      {row.mp.split("/").pop()}
-                    </a>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-          </table>
+            {/* Body */}
+            <div style={{ borderRadius: "0.5vw", overflow: "hidden", border: "1px solid rgba(255, 247, 194, 0.3)" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+                <colgroup>
+                  <col style={{ width: COL.id.width }} />
+                  <col style={{ width: COL.date.width }} />
+                  <col style={{ width: COL.referee.width }} />
+                  <col style={{ width: COL.teams.width }} />
+                  <col style={{ width: COL.mp.width }} />
+                </colgroup>
+                <tbody>
+                  {rows.map((row) => (
+                    <tr key={row._id} style={{ backgroundColor: "#9FB878", borderBottom: "1px solid rgba(255, 247, 194, 0.15)" }}>
+                      <td className="sched-cell" style={{ ...cellStyle, color: "#FFF7C2", fontFamily: "var(--font-sunlight-dreams)", fontWeight: 700 }}>
+                        {row.matchId}
+                      </td>
+                      <td className="sched-cell" style={cellStyle}>
+                        <span style={{ opacity: 0.8 }}>{row.date}</span>
+                        {"  "}
+                        <span style={{ fontWeight: 600 }}>{row.time}</span>
+                      </td>
+                      <td className="sched-cell" style={cellStyle}>{row.referee}</td>
+                      <td className="sched-cell" style={{ ...cellStyle, whiteSpace: "normal", overflowWrap: "break-word" }}>
+                        {row.teams.join(" ÷ ")}
+                      </td>
+                      <td className="sched-cell" style={{ ...cellStyle, textAlign: "center" }}>
+                        {row.mp && (
+                          <a href={row.mp} target="_blank" rel="noopener noreferrer" className="mp-link" style={{ color: "inherit" }}>
+                            {row.mp.split("/").pop()}
+                          </a>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       ))}
@@ -177,106 +166,88 @@ function BracketTable({ entries }: { entries: BracketEntry[] }) {
   };
 
   return (
-    <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "2vh" }}>
-      {/* Header */}
-      <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
-        <thead>
-          <tr>
-            <th style={{ ...headerStyle, width: BRACKET_COL.id.width, textAlign: "center" }}>{BRACKET_COL.id.label}</th>
-            <th style={{ ...headerStyle, width: BRACKET_COL.date.width, textAlign: "center" }}>{BRACKET_COL.date.label}</th>
-            <th style={{ ...headerStyle, width: BRACKET_COL.referee.width, textAlign: "center" }}>{BRACKET_COL.referee.label}</th>
-            <th style={{ ...headerStyle, width: BRACKET_COL.team1.width, textAlign: "center" }}>{BRACKET_COL.team1.label}</th>
-            <th style={{ ...headerStyle, width: BRACKET_COL.score.width, textAlign: "center" }}>{BRACKET_COL.score.label}</th>
-            <th style={{ ...headerStyle, width: BRACKET_COL.team2.width, textAlign: "center" }}>{BRACKET_COL.team2.label}</th>
-            <th style={{ ...headerStyle, width: BRACKET_COL.commentators.width, textAlign: "center" }}>{BRACKET_COL.commentators.label}</th>
-            <th style={{ ...headerStyle, width: BRACKET_COL.vod.width, textAlign: "center" }}>{BRACKET_COL.vod.label}</th>
-            <th style={{ ...headerStyle, width: BRACKET_COL.mp.width, textAlign: "center" }}>{BRACKET_COL.mp.label}</th>
-          </tr>
-        </thead>
-      </table>
-
-      {/* Body */}
-      <div style={{ borderRadius: "0.5vw", overflow: "hidden", border: "1px solid rgba(255, 247, 194, 0.3)" }}>
+    <div className="sched-scroll-wrap" style={{ width: "100%" }}>
+      <div className="bracket-inner-wrap" style={{ display: "flex", flexDirection: "column", gap: "2vh" }}>
+        {/* Header */}
         <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
-          <colgroup>
-            <col style={{ width: BRACKET_COL.id.width }} />
-            <col style={{ width: BRACKET_COL.date.width }} />
-            <col style={{ width: BRACKET_COL.referee.width }} />
-            <col style={{ width: BRACKET_COL.team1.width }} />
-            <col style={{ width: BRACKET_COL.score.width }} />
-            <col style={{ width: BRACKET_COL.team2.width }} />
-            <col style={{ width: BRACKET_COL.commentators.width }} />
-            <col style={{ width: BRACKET_COL.vod.width }} />
-            <col style={{ width: BRACKET_COL.mp.width }} />
-          </colgroup>
-          <tbody>
-            {entries.map((row) => (
-              <tr
-                key={row._id}
-                style={{
-                  backgroundColor: "#9FB878",
-                  borderBottom: "1px solid rgba(255, 247, 194, 0.15)",
-                }}
-              >
-                <td style={{ ...cellStyle, color: "#FFF7C2", fontFamily: "var(--font-sunlight-dreams)", fontWeight: 700, textAlign: "center" }}>
-                  {row.id}
-                </td>
-                <td style={{ ...cellStyle, textAlign: "center" }}>
-                  <span style={{ opacity: 0.8 }}>{row.date}</span>
-                  {"  "}
-                  <span style={{ fontWeight: 600 }}>{row.time}</span>
-                </td>
-                <td style={{ ...cellStyle, textAlign: "center" }}>{row.referee}</td>
-                <td style={{ ...cellStyle, textAlign: "center" }}>{row.team1}</td>
-                <td style={{ ...cellStyle, textAlign: "center" }}>
-                  {row.team1Score || row.team2Score ? (() => {
-                    const s1 = Number(row.team1Score);
-                    const s2 = Number(row.team2Score);
-                    const t1Color = row.team2Score === "FF" || s1 > s2 ? "#F94F52" : "inherit";
-                    const t2Color = row.team1Score === "FF" || s2 > s1 ? "#F94F52" : "inherit";
-                    return (
-                      <>
-                        <span style={{ color: t1Color }}>{row.team1Score}</span>
-                        {" - "}
-                        <span style={{ color: t2Color }}>{row.team2Score}</span>
-                      </>
-                    );
-                  })() : ""}
-                </td>
-                <td style={{ ...cellStyle, textAlign: "center" }}>{row.team2}</td>
-                <td style={{ ...cellStyle, textAlign: "center" }}>{row.commentators}</td>
-                <td style={{ ...cellStyle, textAlign: "center" }}>
-                  {row.vod === "FALSE" ? (
-                    <span>✗</span>
-                  ) : row.vodLink ? (
-                    <a
-                      href={row.vodLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mp-link"
-                      style={{ color: "inherit" }}
-                    >
-                      ✓
-                    </a>
-                  ) : null}
-                </td>
-                <td style={{ ...cellStyle, textAlign: "center" }}>
-                  {row.mpId ? (
-                    <a
-                      href={row.mpId}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mp-link"
-                      style={{ color: "inherit" }}
-                    >
-                      {row.mpLink}
-                    </a>
-                  ) : null}
-                </td>
-              </tr>
-            ))}
-          </tbody>
+          <thead>
+            <tr>
+              <th className="sched-header" style={{ ...headerStyle, width: BRACKET_COL.id.width, textAlign: "center" }}>{BRACKET_COL.id.label}</th>
+              <th className="sched-header" style={{ ...headerStyle, width: BRACKET_COL.date.width, textAlign: "center" }}>{BRACKET_COL.date.label}</th>
+              <th className="sched-header" style={{ ...headerStyle, width: BRACKET_COL.referee.width, textAlign: "center" }}>{BRACKET_COL.referee.label}</th>
+              <th className="sched-header" style={{ ...headerStyle, width: BRACKET_COL.team1.width, textAlign: "center" }}>{BRACKET_COL.team1.label}</th>
+              <th className="sched-header" style={{ ...headerStyle, width: BRACKET_COL.score.width, textAlign: "center" }}>{BRACKET_COL.score.label}</th>
+              <th className="sched-header" style={{ ...headerStyle, width: BRACKET_COL.team2.width, textAlign: "center" }}>{BRACKET_COL.team2.label}</th>
+              <th className="sched-header" style={{ ...headerStyle, width: BRACKET_COL.commentators.width, textAlign: "center" }}>{BRACKET_COL.commentators.label}</th>
+              <th className="sched-header" style={{ ...headerStyle, width: BRACKET_COL.vod.width, textAlign: "center" }}>{BRACKET_COL.vod.label}</th>
+              <th className="sched-header" style={{ ...headerStyle, width: BRACKET_COL.mp.width, textAlign: "center" }}>{BRACKET_COL.mp.label}</th>
+            </tr>
+          </thead>
         </table>
+
+        {/* Body */}
+        <div style={{ borderRadius: "0.5vw", overflow: "hidden", border: "1px solid rgba(255, 247, 194, 0.3)" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+            <colgroup>
+              <col style={{ width: BRACKET_COL.id.width }} />
+              <col style={{ width: BRACKET_COL.date.width }} />
+              <col style={{ width: BRACKET_COL.referee.width }} />
+              <col style={{ width: BRACKET_COL.team1.width }} />
+              <col style={{ width: BRACKET_COL.score.width }} />
+              <col style={{ width: BRACKET_COL.team2.width }} />
+              <col style={{ width: BRACKET_COL.commentators.width }} />
+              <col style={{ width: BRACKET_COL.vod.width }} />
+              <col style={{ width: BRACKET_COL.mp.width }} />
+            </colgroup>
+            <tbody>
+              {entries.map((row) => (
+                <tr key={row._id} style={{ backgroundColor: "#9FB878", borderBottom: "1px solid rgba(255, 247, 194, 0.15)" }}>
+                  <td className="sched-cell" style={{ ...cellStyle, color: "#FFF7C2", fontFamily: "var(--font-sunlight-dreams)", fontWeight: 700, textAlign: "center" }}>
+                    {row.id}
+                  </td>
+                  <td className="sched-cell" style={{ ...cellStyle, textAlign: "center" }}>
+                    <span style={{ opacity: 0.8 }}>{row.date}</span>
+                    {"  "}
+                    <span style={{ fontWeight: 600 }}>{row.time}</span>
+                  </td>
+                  <td className="sched-cell" style={{ ...cellStyle, textAlign: "center" }}>{row.referee}</td>
+                  <td className="sched-cell" style={{ ...cellStyle, textAlign: "center" }}>{row.team1}</td>
+                  <td className="sched-cell" style={{ ...cellStyle, textAlign: "center" }}>
+                    {row.team1Score || row.team2Score ? (() => {
+                      const s1 = Number(row.team1Score);
+                      const s2 = Number(row.team2Score);
+                      const t1Color = row.team2Score === "FF" || s1 > s2 ? "#F94F52" : "inherit";
+                      const t2Color = row.team1Score === "FF" || s2 > s1 ? "#F94F52" : "inherit";
+                      return (
+                        <>
+                          <span style={{ color: t1Color }}>{row.team1Score}</span>
+                          {" - "}
+                          <span style={{ color: t2Color }}>{row.team2Score}</span>
+                        </>
+                      );
+                    })() : ""}
+                  </td>
+                  <td className="sched-cell" style={{ ...cellStyle, textAlign: "center" }}>{row.team2}</td>
+                  <td className="sched-cell" style={{ ...cellStyle, textAlign: "center" }}>{row.commentators}</td>
+                  <td className="sched-cell" style={{ ...cellStyle, textAlign: "center" }}>
+                    {row.vod === "FALSE" ? (
+                      <span>✗</span>
+                    ) : row.vodLink ? (
+                      <a href={row.vodLink} target="_blank" rel="noopener noreferrer" className="mp-link" style={{ color: "inherit" }}>✓</a>
+                    ) : null}
+                  </td>
+                  <td className="sched-cell" style={{ ...cellStyle, textAlign: "center" }}>
+                    {row.mpId ? (
+                      <a href={row.mpId} target="_blank" rel="noopener noreferrer" className="mp-link" style={{ color: "inherit" }}>
+                        {row.mpLink}
+                      </a>
+                    ) : null}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
@@ -305,7 +276,63 @@ export default function SchedulePage() {
 
   return (
     <div style={{ width: "100%", minHeight: "100vh", position: "relative", overflowX: "hidden" }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .pool-tab-bar {
+            gap: 0 !important;
+            padding-left: 2vw !important;
+            padding-right: 2vw !important;
+            overflow-x: auto !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            justify-content: flex-start !important;
+          }
+          .pool-tab-btn {
+            font-size: 3.5vw !important;
+            padding: 0.4vh 3vw !important;
+            flex-shrink: 0 !important;
+          }
+          .sched-scroll-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
+          .sched-inner-wrap {
+            min-width: 500px;
+          }
+          .bracket-inner-wrap {
+            min-width: 740px;
+          }
+          .sched-header {
+            font-size: 3vw !important;
+            padding: 1.5vw 2vw !important;
+          }
+          .sched-cell {
+            font-size: 3vw !important;
+            padding: 1.5vw 2vw !important;
+          }
+          .no-sched-msg {
+            font-size: 5vw !important;
+          }
+        }
+      `}</style>
+
+      {/* Mobile background */}
       <div
+        className="md:hidden"
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: "url(/bg1.webp)",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "top center",
+          backgroundSize: "200% auto",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      {/* Desktop background */}
+      <div
+        className="hidden md:block"
         style={{
           position: "absolute",
           inset: 0,
@@ -321,16 +348,8 @@ export default function SchedulePage() {
       <DesktopNavbar />
 
       <h1
-        style={{
-          position: "absolute",
-          top: "19vh",
-          left: "4vw",
-          zIndex: 3,
-          color: "#FFF7C2",
-          fontFamily: "var(--font-sunlight-dreams)",
-          fontSize: "4vw",
-          margin: 0,
-        }}
+        className="relative z-3 px-4 pt-[14vh] text-[10vw] md:absolute md:px-0 md:pt-0 md:top-[19vh] md:left-[4vw] md:text-[4vw]"
+        style={{ color: "#FFF7C2", fontFamily: "var(--font-sunlight-dreams)", margin: 0 }}
       >
         Schedule
       </h1>
@@ -350,21 +369,12 @@ export default function SchedulePage() {
       />
 
       <div
-        style={{
-          position: "relative",
-          zIndex: 2,
-          paddingTop: "22.5vh",
-          paddingLeft: "4vw",
-          paddingRight: "4vw",
-          paddingBottom: "10vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "5vh",
-        }}
+        className="relative z-2 pt-[4vh] px-4 pb-[10vh] md:pt-[22.5vh] md:px-[4vw]"
+        style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "5vh" }}
       >
         {/* Tab navbar */}
         <div
+          className="pool-tab-bar"
           style={{
             display: "flex",
             alignItems: "center",
@@ -382,6 +392,7 @@ export default function SchedulePage() {
             <button
               key={pool}
               onClick={() => setActivePool(pool)}
+              className="pool-tab-btn"
               style={{
                 background: "none",
                 border: "none",
@@ -408,19 +419,19 @@ export default function SchedulePage() {
             </p>
           ) : entries.length === 0 ? (
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "4vh 0" }}>
-              <p style={{ fontSize: "2vw", color: "#FFF7C2", textAlign: "center", fontFamily: "var(--font-josefin-sans)", margin: 0 }}>
+              <p className="no-sched-msg" style={{ fontSize: "2vw", color: "#FFF7C2", textAlign: "center", fontFamily: "var(--font-josefin-sans)", margin: 0 }}>
                 No schedule found...
               </p>
-              <img src="/teams/noteams.png" alt="" style={{ marginTop: "2vh" }} />
+              <img src="/teams/noteams.png" alt="" style={{ marginTop: "2vh", maxWidth: "80vw" }} />
             </div>
           ) : activePool === "Qualifiers" ? (
             <QualifiersTable entries={entries} />
           ) : bracketEntries.length === 0 ? (
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "4vh 0" }}>
-              <p style={{ fontSize: "2vw", color: "#FFF7C2", textAlign: "center", fontFamily: "var(--font-josefin-sans)", margin: 0 }}>
+              <p className="no-sched-msg" style={{ fontSize: "2vw", color: "#FFF7C2", textAlign: "center", fontFamily: "var(--font-josefin-sans)", margin: 0 }}>
                 No schedule found...
               </p>
-              <img src="/teams/noteams.png" alt="" style={{ marginTop: "2vh" }} />
+              <img src="/teams/noteams.png" alt="" style={{ marginTop: "2vh", maxWidth: "80vw" }} />
             </div>
           ) : (
             <BracketTable entries={bracketEntries} />
