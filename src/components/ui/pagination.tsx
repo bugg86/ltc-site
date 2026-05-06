@@ -90,7 +90,6 @@ function PaginationPrevious({
     fontFamily: "var(--font-josefin-sans)",
     fontStyle: "italic",
     fontWeight: 500,
-    fontSize: "3.6vh",
     overflow: "hidden",
   }
 
@@ -99,7 +98,7 @@ function PaginationPrevious({
       aria-label="Go to previous page"
       size="default"
       className={cn(
-        "group relative gap-2 px-6 w-[16.6667vw] h-[7.6923vh] -translate-y-[10vh]",
+        "group relative gap-2 px-4 text-[4vw] w-[42vw] h-[12vw] -translate-y-[2vh] md:px-6 md:text-[3.6vh] md:w-[16.6667vw] md:h-[7.6923vh] md:-translate-y-[10vh]",
         className
       )}
       style={{ ...registerStyle, ...style }}
@@ -112,7 +111,7 @@ function PaginationPrevious({
         }}
       />
       <span
-        className="pointer-events-none absolute left-1/2 -translate-x-1/2"
+        className="pointer-events-none absolute left-1/2 -translate-x-1/2 hidden md:block"
         style={{
           top: "calc(7.6923vh * -0.05 - .75vh)",
           width: "calc(16.6667vw * 0.641)",
@@ -146,7 +145,6 @@ function PaginationNext({
     fontFamily: "var(--font-josefin-sans)",
     fontStyle: "italic",
     fontWeight: 500,
-    fontSize: "3.6vh",
     overflow: "hidden",
   }
 
@@ -155,7 +153,7 @@ function PaginationNext({
       aria-label="Go to next page"
       size="default"
       className={cn(
-        "group relative gap-2 px-6 w-[16.6667vw] h-[7.6923vh] -translate-y-[10vh]",
+        "group relative gap-2 px-4 text-[4vw] w-[42vw] h-[12vw] -translate-y-[2vh] md:px-6 md:text-[3.6vh] md:w-[16.6667vw] md:h-[7.6923vh] md:-translate-y-[10vh]",
         className
       )}
       style={{ ...registerStyle, ...style }}
@@ -168,7 +166,7 @@ function PaginationNext({
         }}
       />
       <span
-        className="pointer-events-none absolute left-1/2 -translate-x-1/2"
+        className="pointer-events-none absolute left-1/2 -translate-x-1/2 hidden md:block"
         style={{
           top: "calc(7.6923vh * -0.05 - .75vh)",
           width: "calc(16.6667vw * 0.641)",

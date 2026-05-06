@@ -1,143 +1,211 @@
 "use client";
 
 import * as React from "react";
+import { styled } from "@mui/material";
 import { DesktopNavbar } from "@/components/common/NavBar";
 import { LorePagination } from "@/components/lore/LorePagination";
 import { Pagination, PaginationContent, PaginationItem, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { cn } from "@/lib/utils";
 
+const LoreBox1 = styled("div")({
+  width: "48vw",
+  height: "43vh",
+  position: "relative",
+  left: "5vw",
+  top: "4vh",
+  background: "rgba(159, 184, 120, 0.25)",
+  border: ".2vh solid var(--Primary-Pistachio, #9FB878)",
+  borderRadius: "1.2vh",
+  padding: "2.4vh",
+  fontFamily: "var(--font-josefin-sans)",
+  fontSize: "3.8vh",
+  lineHeight: "100%",
+  letterSpacing: "0%",
+  fontWeight: "400",
+  fontStyle: "normal",
+  alignContent: "center",
+  "@media (max-width: 768px)": {
+    width: "100%",
+    height: "auto",
+    position: "relative",
+    left: "auto",
+    top: "auto",
+    margin: "0 auto",
+    fontSize: "4.5vw",
+    lineHeight: "160%",
+    padding: "4vw",
+    borderRadius: "3vw",
+  },
+});
+
+const LoreBox2 = styled("div")({
+  width: "80vw",
+  height: "30vh",
+  position: "absolute",
+  top: "15vh",
+  left: "10vw",
+  background: "rgba(159, 184, 120, 0.25)",
+  border: ".2vh solid var(--Primary-Pistachio, #9FB878)",
+  borderRadius: "1.6vh",
+  padding: "2vh",
+  fontFamily: "var(--font-josefin-sans)",
+  fontSize: "3.8vh",
+  lineHeight: "100%",
+  letterSpacing: "0%",
+  fontWeight: "400",
+  fontStyle: "normal",
+  alignContent: "center",
+  "@media (max-width: 768px)": {
+    width: "100%",
+    height: "auto",
+    position: "relative",
+    left: "auto",
+    top: "auto",
+    margin: "0 auto",
+    fontSize: "4.5vw",
+    lineHeight: "160%",
+    padding: "4vw",
+    borderRadius: "3vw",
+  },
+});
+
+const LoreBox3 = styled("div")({
+  width: "46vw",
+  height: "33vh",
+  position: "absolute",
+  top: "10vh",
+  left: "2vw",
+  background: "rgba(159, 184, 120, 0.25)",
+  border: ".2vh solid var(--Primary-Pistachio, #9FB878)",
+  borderRadius: "2vh",
+  padding: "2vh",
+  fontFamily: "var(--font-josefin-sans)",
+  fontSize: "3.8vh",
+  lineHeight: "100%",
+  letterSpacing: "0%",
+  fontWeight: "400",
+  fontStyle: "normal",
+  alignContent: "center",
+  "@media (max-width: 768px)": {
+    width: "100%",
+    height: "auto",
+    position: "relative",
+    left: "auto",
+    top: "auto",
+    margin: "0 auto",
+    fontSize: "4.5vw",
+    lineHeight: "160%",
+    padding: "4vw",
+    borderRadius: "3vw",
+  },
+});
+
+const LoreBox4A = styled("div")({
+  width: "38vw",
+  height: "22vh",
+  left: "3vw",
+  top: "2vh",
+  position: "absolute",
+  background: "rgba(159, 184, 120, 0.25)",
+  border: ".2vh solid var(--Primary-Pistachio, #9FB878)",
+  borderRadius: "2vh",
+  padding: "2vh",
+  fontFamily: "var(--font-josefin-sans)",
+  fontSize: "3.8vh",
+  lineHeight: "100%",
+  letterSpacing: "0%",
+  fontWeight: "400",
+  fontStyle: "normal",
+  alignContent: "center",
+  justifyContent: "center",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "2vh",
+  "@media (max-width: 768px)": {
+    width: "100%",
+    height: "auto",
+    position: "relative",
+    left: "auto",
+    top: "auto",
+    margin: "0 auto",
+    fontSize: "4.5vw",
+    lineHeight: "160%",
+    padding: "4vw",
+    borderRadius: "3vw",
+    gap: "3vw",
+  },
+});
+
+const LargeQuoteText = styled("p")({
+  fontSize: "6.3vh",
+  "@media (max-width: 768px)": {
+    fontSize: "8vw",
+  },
+});
+
+const LoreBox4B = styled("div")({
+  width: "62vw",
+  height: "25vh",
+  position: "absolute",
+  top: "30vh",
+  right: "3vw",
+  background: "rgba(159, 184, 120, 0.25)",
+  border: ".2vh solid var(--Primary-Pistachio, #9FB878)",
+  borderRadius: "2vh",
+  padding: "2vh",
+  fontFamily: "var(--font-josefin-sans)",
+  fontSize: "3.8vh",
+  lineHeight: "100%",
+  letterSpacing: "0%",
+  fontWeight: "400",
+  fontStyle: "normal",
+  alignContent: "center",
+  "@media (max-width: 768px)": {
+    width: "100%",
+    height: "auto",
+    position: "relative",
+    right: "auto",
+    left: "auto",
+    top: "auto",
+    margin: "4vw 0 0",
+    fontSize: "4.5vw",
+    lineHeight: "160%",
+    padding: "4vw",
+    borderRadius: "3vw",
+  },
+});
+
 export default function LorePage() {
   const pageOneContent = (
-    <div
-      style={{
-        width: "48vw",
-        height: "43vh",
-        position: "relative",
-        left: "5vw",
-        top: "4vh",
-        background: "rgba(159, 184, 120, 0.25)",
-        border: ".2vh solid var(--Primary-Pistachio, #9FB878)",
-        borderRadius: "1.2vh",
-        padding: "2.4vh",
-        fontFamily: "var(--font-josefin-sans)",
-        fontSize: "3.8vh",
-        lineHeight: "100%",
-        letterSpacing: "0%",
-        fontWeight: "400",
-        fontStyle: "normal",
-        alignContent: "center"
-      }}
-    >
-      <p>As Lela journeys through the world, lost and uncertain, she comes across the remnants of an  ancient civilization. A place where magic and technology were once united in harmony. There,  deep within a hidden library carved into the side of a mountain, Lela uncovers texts that  describe a concept called Mech-Tech.</p>
-    </div>
-  )
+    <LoreBox1>
+      <p>As Lela journeys through the world, lost and uncertain, she comes across the remnants of an ancient civilization. A place where magic and technology were once united in harmony. There, deep within a hidden library carved into the side of a mountain, Lela uncovers texts that describe a concept called Mech-Tech.</p>
+    </LoreBox1>
+  );
 
   const pageTwoContent = (
-    <div
-      style={{
-        width: "80vw",
-        height: "30vh",
-        position: "absolute",
-        top: "15vh",
-        left: "10vw",
-        background: "rgba(159, 184, 120, 0.25)",
-        border: ".2vh solid var(--Primary-Pistachio, #9FB878)",
-        borderRadius: "1.6vh",
-        padding: "2vh",
-        fontFamily: "var(--font-josefin-sans)",
-        fontSize: "3.8vh",
-        lineHeight: "100%",
-        letterSpacing: "0%",
-        fontWeight: "400",
-        fontStyle: "normal",
-        alignContent: "center"
-      }}
-    >
+    <LoreBox2>
       <p>This fusion of magic and technology was once thought to be dangerous and forbidden, but Lela sees something different: a potential to heal the world, to restore balance, and to create something new from the ashes of the old.</p>
-    </div>
-  )
+    </LoreBox2>
+  );
 
   const pageThreeContent = (
-    <div
-      style={{
-        width: "46vw",
-        height: "33vh",
-        position: "absolute",
-        top: "10vh",
-        left: "2vw",
-        background: "rgba(159, 184, 120, 0.25)",
-        border: ".2vh solid var(--Primary-Pistachio, #9FB878)",
-        borderRadius: "2vh",
-        padding: "2vh",
-        fontFamily: "var(--font-josefin-sans)",
-        fontSize: "3.8vh",
-        lineHeight: "100%",
-        letterSpacing: "0%",
-        fontWeight: "400",
-        fontStyle: "normal",
-        alignContent: "center"
-      }}
-    >
+    <LoreBox3>
       <p>Using her knowledge of both magic and tech, Lela crafts a series of enticing virtual spaces: hidden, digital sanctuaries where people can escape from their harsh realities. She promises them freedom, strength, and mastery over their own fates.</p>
-    </div>
-  )
+    </LoreBox3>
+  );
 
   const pageFourContent = (
     <>
-      <div
-        style={{
-          width: "38vw",
-          height: "22vh",
-          left: "3vw",
-          top: "2vh",
-          position: "absolute",
-          background: "rgba(159, 184, 120, 0.25)",
-          border: ".2vh solid var(--Primary-Pistachio, #9FB878)",
-          borderRadius: "2vh",
-          padding: "2vh",
-          fontFamily: "var(--font-josefin-sans)",
-          fontSize: "3.8vh",
-          lineHeight: "100%",
-          letterSpacing: "0%",
-          fontWeight: "400",
-          fontStyle: "normal",
-          alignContent: "center",
-          justifyContent: "center",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "2vh"
-        }}
-      >
-        <p style={{ fontSize: "6.3vh" }}>
-          "Join me"
-        </p>
+      <LoreBox4A>
+        <LargeQuoteText>&ldquo;Join me&rdquo;</LargeQuoteText>
         <p>She says, her voice soft.</p>
-      </div>
-      <div
-        style={{
-          width: "62vw",
-          height: "25vh",
-          position: "absolute",
-          top: "30vh",
-          right: "3vw",
-          background: "rgba(159, 184, 120, 0.25)",
-          border: ".2vh solid var(--Primary-Pistachio, #9FB878)",
-          borderRadius: "2vh",
-          padding: "2vh",
-          fontFamily: "var(--font-josefin-sans)",
-          fontSize: "3.8vh",
-          lineHeight: "100%",
-          letterSpacing: "0%",
-          fontWeight: "400",
-          fontStyle: "normal",
-          alignContent: "center"
-        }}
-      >
-        <p>"Together, we create a world free of nature’s constraints. Imagine it, an era where we control time itself, shape the elements with a word, and mold reality to our will."</p>
-      </div>
+      </LoreBox4A>
+      <LoreBox4B>
+        <p>&ldquo;Together, we create a world free of nature&rsquo;s constraints. Imagine it, an era where we control time itself, shape the elements with a word, and mold reality to our will.&rdquo;</p>
+      </LoreBox4B>
     </>
-  )
+  );
 
   const sections: {
     id: string
@@ -145,6 +213,7 @@ export default function LorePage() {
     title: string
     body: React.ReactNode
     backgroundImage: string
+    backgroundPosition: string
   }[] = [
     {
       id: "lore-1",
@@ -152,6 +221,7 @@ export default function LorePage() {
       title: "Lore One",
       body: pageOneContent,
       backgroundImage: "/lore/lore1.webp",
+      backgroundPosition: "80%",
     },
     {
       id: "lore-2",
@@ -159,6 +229,7 @@ export default function LorePage() {
       title: "Lore Two",
       body: pageTwoContent,
       backgroundImage: "/lore/lore2.webp",
+      backgroundPosition: "center",
     },
     {
       id: "lore-3",
@@ -166,6 +237,7 @@ export default function LorePage() {
       title: "Lore Three",
       body: pageThreeContent,
       backgroundImage: "/lore/lore3.webp",
+      backgroundPosition: "65%",
     },
     {
       id: "lore-4",
@@ -173,93 +245,75 @@ export default function LorePage() {
       title: "Lore Four",
       body: pageFourContent,
       backgroundImage: "/lore/lore4.webp",
+      backgroundPosition: "60%",
     },
-  ]
+  ];
 
-
-  //BACKGROUND STYLING AND FADING
-  const [currentIndex, setCurrentIndex] = React.useState(0)
-  const [previousIndex, setPreviousIndex] = React.useState<number | null>(null)
-  const [isFading, setIsFading] = React.useState(false)
-  const section = sections[currentIndex]
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [previousIndex, setPreviousIndex] = React.useState<number | null>(null);
+  const [isFading, setIsFading] = React.useState(false);
+  const section = sections[currentIndex];
 
   const getBackgroundStyle = (index: number) => {
-    const image = sections[index]?.backgroundImage
+    const image = sections[index]?.backgroundImage;
     if (image) {
       return {
         backgroundImage: `url(${image})`,
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: sections[index].backgroundPosition,
         backgroundRepeat: "no-repeat",
-      }
+      };
     }
-
     return {
       background:
         "linear-gradient(270deg, var(--Primary-Deep-Forest, rgba(55, 68, 38, 0.34)) 0%, rgba(55, 98, 42, 0.34) 100%)",
-    }
-  }
+    };
+  };
 
-
-  //FADING
   const handleChange = (nextIndex: number) => {
-    if (nextIndex === currentIndex) {
-      return
-    }
-
-    setPreviousIndex(currentIndex)
-    setCurrentIndex(nextIndex)
-    setIsFading(false)
+    if (nextIndex === currentIndex) return;
+    setPreviousIndex(currentIndex);
+    setCurrentIndex(nextIndex);
+    setIsFading(false);
     requestAnimationFrame(() => {
-      setIsFading(true)
-    })
-  }
+      setIsFading(true);
+    });
+  };
 
   const handlePrevious = () => {
-    const nextIndex =
-      currentIndex === 0 ? sections.length - 1 : currentIndex - 1
-    handleChange(nextIndex)
-  }
+    const nextIndex = currentIndex === 0 ? sections.length - 1 : currentIndex - 1;
+    handleChange(nextIndex);
+  };
 
   const handleNext = () => {
-    const nextIndex =
-      currentIndex === sections.length - 1 ? 0 : currentIndex + 1
-    handleChange(nextIndex)
-  }
+    const nextIndex = currentIndex === sections.length - 1 ? 0 : currentIndex + 1;
+    handleChange(nextIndex);
+  };
 
   React.useEffect(() => {
-    if (!isFading) {
-      return
-    }
-
+    if (!isFading) return;
     const timeout = window.setTimeout(() => {
-      setPreviousIndex(null)
-      setIsFading(false)
-    }, 450)
-
-    return () => window.clearTimeout(timeout)
-  }, [isFading])
-
-
+      setPreviousIndex(null);
+      setIsFading(false);
+    }, 450);
+    return () => window.clearTimeout(timeout);
+  }, [isFading]);
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      <div
-        className="absolute inset-0"
-        style={{ ...getBackgroundStyle(currentIndex)}}
-      />
+    <div className="relative min-h-screen overflow-hidden flex flex-col md:block">
+      <div className="absolute inset-0" style={{ ...getBackgroundStyle(currentIndex) }} />
       {previousIndex !== null && (
         <div
           className={cn(
             "absolute inset-0 transition-opacity duration-500",
             isFading ? "opacity-0" : "opacity-100"
           )}
-          style={{ ...getBackgroundStyle(previousIndex)}}
+          style={{ ...getBackgroundStyle(previousIndex) }}
         />
       )}
       <div className="absolute inset-0 bg-black/20" />
       <DesktopNavbar />
-      <main className="relative mx-auto min-h-[60vh] px-6 py-20 text-[var(--Shade-White,_#FFFCEA)]">
+      <main className="relative mx-auto flex-1 flex flex-col justify-end px-6 pt-10 pb-28 md:flex-none md:block md:min-h-[60vh] md:py-20 text-[var(--Shade-White,_#FFFCEA)]">
         <div className="relative">
           <div key={section.id} className="animate-in fade-in duration-500">
             {section.body}
@@ -288,8 +342,8 @@ export default function LorePage() {
               <PaginationPrevious
                 href="#"
                 onClick={(event) => {
-                  event.preventDefault()
-                  handlePrevious()
+                  event.preventDefault();
+                  handlePrevious();
                 }}
               />
             </PaginationItem>
@@ -305,8 +359,8 @@ export default function LorePage() {
               hoverBackground="linear-gradient(270deg, rgba(159, 184, 120, 0.50) 0%, rgba(55, 68, 38, 0.50) 100%), var(--Primary-Deep-Forest, #374426)"
               onClick={(event) => {
                 if (currentIndex !== sections.length - 1) {
-                  event.preventDefault()
-                  handleNext()
+                  event.preventDefault();
+                  handleNext();
                 }
               }}
             />
