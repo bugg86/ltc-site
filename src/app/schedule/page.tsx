@@ -75,8 +75,9 @@ function QualifiersTable({ entries }: { entries: ScheduleEntry[] }) {
 
   return (
     <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "2vh" }}>
-      {Array.from(groups.entries()).map(([matchId, rows]) => (
-        <div className="sched-scroll-wrap" key={matchId}>
+      {Array.from(groups.entries()).map(([matchId, rows], index) => (
+        <div key={matchId}>
+        <div className="sched-scroll-wrap">
           <div className="sched-inner-wrap">
             {/* Header */}
             <table style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
@@ -129,6 +130,10 @@ function QualifiersTable({ entries }: { entries: ScheduleEntry[] }) {
               </table>
             </div>
           </div>
+        </div>
+        {index === 0 && (
+          <p className="sched-scroll-hint">swipe to scroll →</p>
+        )}
         </div>
       ))}
     </div>
@@ -277,6 +282,9 @@ export default function SchedulePage() {
   return (
     <div style={{ width: "100%", minHeight: "100vh", position: "relative", overflowX: "hidden" }}>
       <style>{`
+        .sched-scroll-hint {
+          display: none;
+        }
         @media (max-width: 768px) {
           .pool-tab-bar {
             gap: 0 !important;
@@ -309,6 +317,15 @@ export default function SchedulePage() {
           .sched-cell {
             font-size: 3vw !important;
             padding: 1.5vw 2vw !important;
+          }
+          .sched-scroll-hint {
+            display: block;
+            text-align: right;
+            font-size: 3vw;
+            color: #FFF7C2;
+            opacity: 0.7;
+            font-family: var(--font-josefin-sans);
+            margin-top: 1vw;
           }
           .no-sched-msg {
             font-size: 5vw !important;
