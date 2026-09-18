@@ -44,4 +44,9 @@ jobs:
             docker pull ${{ secrets.DOCKER_USERNAME }}/${{vars.SITE_NAME }}:latest
             curl -o docker-compose-prod.yml -L "https://raw.githubusercontent.com/bugg86/ltc-site/refs/heads/master/docker-compose-prod.yml"
             curl -o init-mongo.js -L "https://raw.githubusercontent.com/bugg86/ltc-site/refs/heads/master/init-mongo.js"
-            docker compose -f docker-compose-prod.yml up -d
+            # Shared with the united-states-suiji stack, whose Caddy serves
+            # this site too. Created here if that stack has not been deployed
+            # yet, since compose refuses to start without it.
+            docker network inspect edge >/dev/null 2>&1 || docker network create edge
+            # --remove-orphans clears the retired ltc-caddy container.
+            docker compose -f docker-compose-prod.yml up -d --remove-orphans

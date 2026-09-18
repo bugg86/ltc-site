@@ -1,23 +1,9 @@
 version: '3.8'
 
+# Caddy lives in the united-states-suiji stack on this box: only one container
+# can hold ports 80 and 443, so that one terminates TLS for both sites and
+# reaches this one over the shared `edge` network.
 services:
-  caddy:
-    image: caddy:2
-    container_name: ltc-caddy
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy_data:/data
-      - caddy_config:/config
-    depends_on:
-      - web
-    networks:
-      - ltc-network
-
   web:
     image: bugg86/ltc-site:latest
     container_name: ltc-site-web
@@ -28,7 +14,10 @@ services:
       - mongo
     restart: unless-stopped
     networks:
+      # `edge` is where the box's Caddy reaches this container, by the name
+      # above; `ltc-network` is this stack's own, where mongo lives.
       - ltc-network
+      - edge
 
   mongo:
     image: mongo:6.0
@@ -51,9 +40,11 @@ services:
 
 volumes:
   mongo_data:
-  caddy_data:
-  caddy_config:
 
 networks:
   ltc-network:
     driver: bridge
+  # Owned by neither stack: whichever deploy runs first creates it, and the
+  # Caddy in united-states-suiji joins it too.
+  edge:
+    external: true
