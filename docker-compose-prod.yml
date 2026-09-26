@@ -1,5 +1,12 @@
 version: '3.8'
 
+# Fixed, because compose otherwise names the project after whatever directory
+# the deploy happens to run in - and the project name is what prefixes the
+# volumes. When the deploy moved to the home directory the project became
+# `root`, Mongo came up on a brand new `root_mongo_data`, and the site served
+# an empty database while every document sat untouched in this one.
+name: ltc-site
+
 # Caddy lives in the united-states-suiji stack on this box: only one container
 # can hold ports 80 and 443, so that one terminates TLS for both sites and
 # reaches this one over the shared `edge` network.

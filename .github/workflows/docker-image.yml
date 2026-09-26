@@ -48,5 +48,17 @@ jobs:
             # this site too. Created here if that stack has not been deployed
             # yet, since compose refuses to start without it.
             docker network inspect edge >/dev/null 2>&1 || docker network create edge
+
+            # The compose file now fixes the project name. Containers left by
+            # an older one still hold these names, and compose will not take a
+            # name from another project, so drop those. Only the containers:
+            # the volumes they used are what the data lives in.
+            for c in ltc-site-web ltc-mongo; do
+              owner=$(docker inspect -f '{{index .Config.Labels "com.docker.compose.project"}}' "$c" 2>/dev/null || true)
+              if [ -n "$owner" ] && [ "$owner" != "ltc-site" ]; then
+                echo "removing $c, left behind by the '$owner' project"
+                docker rm -f "$c" >/dev/null
+              fi
+            done
             # --remove-orphans clears the retired ltc-caddy container.
             docker compose -f docker-compose-prod.yml up -d --remove-orphans
