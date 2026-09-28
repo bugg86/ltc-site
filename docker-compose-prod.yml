@@ -7,9 +7,10 @@ version: '3.8'
 # an empty database while every document sat untouched in this one.
 name: ltc-site
 
-# Caddy lives in the united-states-suiji stack on this box: only one container
-# can hold ports 80 and 443, so that one terminates TLS for both sites and
-# reaches this one over the shared `edge` network.
+# No ports are published here. The box's reverse proxy is its own stack in the
+# convex-infra repo (`caddy/`): only one container can hold ports 80 and 443,
+# so that one terminates TLS for every site on the box and reaches this one
+# over the shared `edge` network.
 services:
   web:
     image: bugg86/ltc-site:latest
@@ -51,7 +52,7 @@ volumes:
 networks:
   ltc-network:
     driver: bridge
-  # Owned by neither stack: whichever deploy runs first creates it, and the
-  # Caddy in united-states-suiji joins it too.
+  # Owned by no one stack: whichever deploy runs first creates it, and the
+  # box's Caddy (convex-infra) and the other sites' stacks join it too.
   edge:
     external: true
